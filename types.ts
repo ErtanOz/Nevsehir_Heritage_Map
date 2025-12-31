@@ -1,14 +1,25 @@
 
-export interface HeritageBinding {
-  item: { type: string; value: string };
-  coords: { datatype: string; type: string; value: string };
-  itemLabel: { "xml:lang": string; type: string; value: string };
-  typeLabel: { "xml:lang": string; type: string; value: string };
-  adminLabel: { "xml:lang": string; type: string; value: string };
-  image?: { type: string; value: string };
-  heritageLabel?: { "xml:lang": string; type: string; value: string };
-  kulturenvanteriID?: { type: string; value: string };
-  culturePortalID?: { type: string; value: string };
+export interface GeoJSONFeature {
+  type: "Feature";
+  geometry: {
+    type: "Point";
+    coordinates: [number, number]; // [lng, lat]
+  };
+  properties: {
+    item: string;
+    itemLabel: string;
+    typeLabel: string;
+    adminLabel: string;
+    image?: string;
+    heritageLabel?: string;
+    kulturenvanteriID?: string;
+    culturePortalID?: string;
+  };
+}
+
+export interface GeoJSONData {
+  type: "FeatureCollection";
+  features: GeoJSONFeature[];
 }
 
 export interface HeritageSite {
@@ -18,16 +29,9 @@ export interface HeritageSite {
   coords: [number, number]; // [lat, lng]
   image?: string;
   admin: string;
-  heritage?: string;
+  isUnesco: boolean;
   externalLinks: {
     wiki: string;
     kultur?: string;
-    portal?: string;
-  };
-}
-
-export interface RawData {
-  results: {
-    bindings: HeritageBinding[];
   };
 }

@@ -1,50 +1,18 @@
 
-import { RawData } from './types';
+import { GeoJSONData } from './types';
 
-// Expanded dataset focused on Nevşehir's high-density areas
-export const RAW_HERITAGE_DATA: RawData = {
-  "results": {
-    "bindings": [
-      // Major Sites
-      {"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1013468"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.750443 38.465686)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Kaymakl%C4%B1%20Underground%20City%20large%20room.JPG"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kaymaklı Underground City"},"typeLabel":{"xml:lang":"en","type":"literal","value":"Underground City"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir"},"heritageLabel":{"xml:lang":"en","type":"literal","value":"UNESCO World Heritage"}},
-      {"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1328958"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.735034 38.373403)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Derinkuyu%20Underground%20City%209831%20Nevit%20Enhancer.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Derinkuyu Underground City"},"typeLabel":{"xml:lang":"en","type":"literal","value":"Underground City"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir"},"heritageLabel":{"xml:lang":"en","type":"literal","value":"UNESCO World Heritage"}},
-      {"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q28221127"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.725 38.628055555)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20museum%20in%202019%201556.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir Museum"},"typeLabel":{"xml:lang":"en","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir"}},
-      
-      // Göreme Cluster (Synthetic expansion for 282 points request)
-      ...Array.from({ length: 50 }).map((_, i) => ({
-        "item":{"type":"uri","value":`http://example.org/goreme-${i}`},
-        "coords":{"datatype":"wkt","type":"literal","value":`Point(${34.8 + Math.random() * 0.1} ${38.6 + Math.random() * 0.1})`},
-        "itemLabel":{"xml:lang":"en","type":"literal","value": i % 3 === 0 ? `Rock Church ${i}` : i % 2 === 0 ? `Fairy Chimney Cluster ${i}` : `Cave Dwelling ${i}`},
-        "typeLabel":{"xml:lang":"en","type":"literal","value": i % 3 === 0 ? "Rock Church" : i % 2 === 0 ? "Fairy Chimney" : "Cave"},
-        "adminLabel":{"xml:lang":"en","type":"literal","value":"Göreme"}
-      })),
-
-      // Ürgüp Cluster
-      ...Array.from({ length: 40 }).map((_, i) => ({
-        "item":{"type":"uri","value":`http://example.org/urgup-${i}`},
-        "coords":{"datatype":"wkt","type":"literal","value":`Point(${34.9 + Math.random() * 0.05} ${38.6 + Math.random() * 0.05})`},
-        "itemLabel":{"xml:lang":"en","type":"literal","value": `Heritage Site ${i + 50}`},
-        "typeLabel":{"xml:lang":"en","type":"literal","value": i % 4 === 0 ? "Monastery" : "Mansion"},
-        "adminLabel":{"xml:lang":"en","type":"literal","value":"Ürgüp"}
-      })),
-
-      // Avanos Cluster
-      ...Array.from({ length: 30 }).map((_, i) => ({
-        "item":{"type":"uri","value":`http://example.org/avanos-${i}`},
-        "coords":{"datatype":"wkt","type":"literal","value":`Point(${34.8 + Math.random() * 0.08} ${38.7 + Math.random() * 0.05})`},
-        "itemLabel":{"xml:lang":"en","type":"literal","value": `Pottery Workshop & Site ${i}`},
-        "typeLabel":{"xml:lang":"en","type":"literal","value": "Historical Workshop"},
-        "adminLabel":{"xml:lang":"en","type":"literal","value":"Avanos"}
-      })),
-
-      // Other areas to reach 282...
-      ...Array.from({ length: 145 }).map((_, i) => ({
-        "item":{"type":"uri","value":`http://example.org/misc-${i}`},
-        "coords":{"datatype":"wkt","type":"literal","value":`Point(${34.4 + Math.random() * 0.6} ${38.3 + Math.random() * 0.6})`},
-        "itemLabel":{"xml:lang":"en","type":"literal","value": `Rural Heritage Point ${i}`},
-        "typeLabel":{"xml:lang":"en","type":"literal","value": "Archaeological Site"},
-        "adminLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir"}
-      }))
-    ]
-  }
+export const RAW_GEOJSON_DATA: GeoJSONData = {
+  "type": "FeatureCollection",
+  "features": [
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.750443,38.465686]},"properties":{"item":"http://www.wikidata.org/entity/Q1013468","itemLabel":"Kaymaklı Underground City","typeLabel":"Underground City","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Kaymakl%C4%B1%20Underground%20City%20large%20room.JPG","kulturenvanteriID":"3338"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.735034,38.373403]},"properties":{"item":"http://www.wikidata.org/entity/Q1328958","itemLabel":"Derinkuyu Underground City","typeLabel":"Underground City","heritageLabel":"UNESCO World Heritage","adminLabel":"Derinkuyu","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Derinkuyu%20Underground%20City%209831%20Nevit%20Enhancer.jpg","kulturenvanteriID":"3335"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.480277777,38.493083333]},"properties":{"item":"http://www.wikidata.org/entity/Q25378109","itemLabel":"Topada Rock Inscription","typeLabel":"Archaeological Site","adminLabel":"Acıgöl","kulturenvanteriID":"65883"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.725,38.628055555]},"properties":{"item":"http://www.wikidata.org/entity/Q28221127","itemLabel":"Nevşehir Museum","typeLabel":"Museum","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20museum%20in%202019%201556.jpg","kulturenvanteriID":"3922"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.85,38.66667]},"properties":{"item":"http://www.wikidata.org/entity/Q64705367","itemLabel":"Göreme National Park","typeLabel":"National Park","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Vallegoreme2.jpg"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.805555555,38.630333333]},"properties":{"item":"http://www.wikidata.org/entity/Q112865630","itemLabel":"Uçhisar Castle","typeLabel":"Castle","adminLabel":"Uçhisar","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20U%C3%A7%20hisar%20kalesi.jpg","kulturenvanteriID":"3055"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.839127063,38.6386709]},"properties":{"item":"http://www.wikidata.org/entity/Q109519139","itemLabel":"El Nazar Church","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"3307"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.61553812,38.747929248]},"properties":{"item":"http://www.wikidata.org/entity/Q131526402","itemLabel":"St Demetrius Church","typeLabel":"Church","adminLabel":"Gülşehir","kulturenvanteriID":"3293"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.863055555,38.652777777]},"properties":{"item":"http://www.wikidata.org/entity/Q620593","itemLabel":"Göreme Valley","typeLabel":"Fairy Chimney","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Goreme%20valley.jpg","kulturenvanteriID":"2028"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.846267,38.6387]},"properties":{"item":"http://www.wikidata.org/entity/Q114383869","itemLabel":"Dark Church","typeLabel":"Rock Church","heritageLabel":"UNESCO World Heritage","adminLabel":"Göreme","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Dark%20Church%20%28Karanl%C4%B1k%20Kilise%29%20in%20Cappadocia%2C%20G%C3%B6reme.jpg"}}
+  ]
 };
