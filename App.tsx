@@ -6,6 +6,19 @@ declare const L: any;
 
 type MapType = 'standard' | 'satellite' | 'terrain';
 
+// Helper for distance calculation
+const getDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+  const R = 6371; // km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+};
+
 const getIconConfig = (types: string[] = [], isUnesco: boolean = false) => {
   const allTypesStr = types.join(' ').toLowerCase();
   let path = '';
@@ -45,17 +58,12 @@ const getProcessedSites = (): HeritageSite[] => {
     const key = `${feature.properties.item}_${lat}_${lng}`;
     
     if (!acc.has(key)) {
-      let imageName = undefined;
-      if (feature.properties.image) {
-        const parts = feature.properties.image.split('/');
-        imageName = parts[parts.length - 1];
-      }
       acc.set(key, {
         id: key,
         name: feature.properties.itemLabel,
         types: [],
         coords: [lat, lng],
-        image: feature.properties.image, // Keep full URI for Wikipedia Special:FilePath logic
+        image: feature.properties.image,
         admin: feature.properties.adminLabel,
         isUnesco: false,
         externalLinks: {
@@ -81,7 +89,6 @@ const getProcessedSites = (): HeritageSite[] => {
 const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: boolean }> = ({ site, onClick, isActive }) => {
   const { path, color } = getIconConfig(site.types, site.isUnesco);
   
-  // Format image URL
   const imageUrl = site.image 
     ? (site.image.includes('Special:FilePath') 
         ? site.image + '?width=200' 
@@ -110,7 +117,7 @@ const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: bo
           <div className="flex justify-between items-start">
             <h3 className="font-bold text-slate-800 text-sm truncate leading-tight flex-1">{site.name}</h3>
             {site.isUnesco && (
-              <span className="bg-amber-600 text-white text-[7px] px-1 py-0.5 rounded font-black uppercase tracking-tight ml-2 shrink-0">UNESCO</span>
+              <span className="bg-amber-600 text-white text-[7px] px-1.5 py-0.5 rounded font-black uppercase tracking-tight ml-2 shrink-0">UNESCO</span>
             )}
           </div>
           <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">{site.admin}</p>
@@ -131,10 +138,12 @@ const App: React.FC = () => {
   const [mapType, setMapType] = useState<MapType>('standard');
   const [showLabels, setShowLabels] = useState(true);
   const [isLayersMenuOpen, setIsLayersMenuOpen] = useState(false);
+  const [userPos, setUserPos] = useState<[number, number] | null>(null);
+  const [isLocating, setIsLocating] = useState(false);
   
   const mapRef = useRef<any>(null);
   const clusterGroupRef = useRef<any>(null);
-  const markersRef = useRef<{ [key: string]: any }>({});
+  const userMarkerRef = useRef<any>(null);
   const layersRef = useRef<{ [key: string]: any }>({});
 
   const processedSites = useMemo(() => getProcessedSites(), []);
@@ -142,17 +151,30 @@ const App: React.FC = () => {
   const dynamicCategories = useMemo(() => {
     const types = new Set<string>();
     processedSites.forEach(s => s.types.forEach(t => { if (t) types.add(t.toUpperCase()); }));
-    return ["ALL", ...Array.from(types).sort()];
+    const cats = Array.from(types).sort();
+    return ["ALL", "NEARBY", ...cats];
   }, [processedSites]);
 
   const filteredSites = useMemo(() => {
     return processedSites.filter(s => {
       const matchesSearch = s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             s.admin.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = activeCategory === 'ALL' || s.types.some(t => t.toUpperCase() === activeCategory);
+      
+      let matchesCategory = false;
+      if (activeCategory === 'ALL') {
+        matchesCategory = true;
+      } else if (activeCategory === 'NEARBY') {
+        if (!userPos) return false;
+        // Highlight sites within 10km
+        const dist = getDistance(userPos[0], userPos[1], s.coords[0], s.coords[1]);
+        matchesCategory = dist <= 10;
+      } else {
+        matchesCategory = s.types.some(t => t.toUpperCase() === activeCategory);
+      }
+
       return matchesSearch && matchesCategory;
     });
-  }, [searchTerm, activeCategory, processedSites]);
+  }, [searchTerm, activeCategory, processedSites, userPos]);
 
   const selectedSite = useMemo(() => processedSites.find(s => s.id === selectedSiteId), [selectedSiteId, processedSites]);
 
@@ -175,12 +197,12 @@ const App: React.FC = () => {
       maxClusterRadius: 50,
       iconCreateFunction: (cluster: any) => {
         const markers = cluster.getAllChildMarkers();
-        const unescoCount = markers.filter((m: any) => m.options.isUnesco).length;
         const total = markers.length;
+        const unescoCount = markers.filter((m: any) => m.options.isUnesco).length;
         const isPrimarilyUnesco = unescoCount / total >= 0.5;
         let bgColor = isPrimarilyUnesco ? '#d97706' : '#64748b';
         return L.divIcon({ 
-          html: `<div class="custom-cluster-div" style="background-color: ${bgColor}; border: 3px solid white;"><span>${total}</span></div>`, 
+          html: `<div class="custom-cluster-div" style="background-color: ${bgColor};"><span>${total}</span></div>`, 
           className: 'marker-cluster', 
           iconSize: L.point(40, 40) 
         });
@@ -197,7 +219,6 @@ const App: React.FC = () => {
   useEffect(() => {
     if (!clusterGroupRef.current || !mapRef.current) return;
     clusterGroupRef.current.clearLayers();
-    markersRef.current = {};
 
     filteredSites.forEach(site => {
       const { path, color } = getIconConfig(site.types, site.isUnesco);
@@ -216,7 +237,6 @@ const App: React.FC = () => {
         marker.bindTooltip(site.name, { permanent: true, direction: 'top', offset: [0, -20], className: 'custom-map-label' });
       }
 
-      markersRef.current[site.id] = marker;
       clusterGroupRef.current.addLayer(marker);
     });
   }, [filteredSites, selectedSiteId, showLabels]);
@@ -232,6 +252,47 @@ const App: React.FC = () => {
       mapRef.current.flyTo(selectedSite.coords, 16);
     }
   }, [selectedSite]);
+
+  const handleLocateUser = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser");
+      return;
+    }
+
+    setIsLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const pos: [number, number] = [latitude, longitude];
+        setUserPos(pos);
+        setIsLocating(false);
+        setActiveCategory('NEARBY');
+        setViewMode('map');
+
+        if (mapRef.current) {
+          mapRef.current.flyTo(pos, 13);
+          
+          if (userMarkerRef.current) {
+            mapRef.current.removeLayer(userMarkerRef.current);
+          }
+          
+          const icon = L.divIcon({
+            className: 'user-location-marker',
+            iconSize: [16, 16],
+            iconAnchor: [8, 8]
+          });
+          
+          userMarkerRef.current = L.marker(pos, { icon }).addTo(mapRef.current);
+        }
+      },
+      (error) => {
+        setIsLocating(false);
+        console.error("Error getting location:", error);
+        alert("Unable to retrieve your location. Please check your permissions.");
+      },
+      { enableHighAccuracy: true }
+    );
+  };
 
   return (
     <div className="flex flex-col md:flex-row h-full w-full bg-slate-50 font-sans text-slate-900 overflow-hidden select-none">
@@ -257,7 +318,6 @@ const App: React.FC = () => {
             <svg className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
           
-          {/* Scrollable Filter Section */}
           <div className="mb-4">
             <div className="flex gap-2 overflow-x-auto pb-3 custom-scrollbar-x px-1">
               {dynamicCategories.map(cat => (
@@ -285,13 +345,13 @@ const App: React.FC = () => {
             <SiteCard key={site.id} site={site} onClick={() => { setSelectedSiteId(site.id); setViewMode('map'); }} isActive={selectedSiteId === site.id} />
           ))}
           {filteredSites.length === 0 && (
-            <div className="py-20 text-center text-slate-300">
-               <p className="text-sm font-bold uppercase tracking-widest">No matching heritage</p>
+            <div className="py-20 text-center text-slate-300 px-6">
+               <p className="text-sm font-bold uppercase tracking-widest leading-relaxed">No matching heritage sites found in this category or area.</p>
             </div>
           )}
         </div>
         
-        <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/50 text-[9px] text-slate-400 font-bold uppercase tracking-widest text-center">
+        <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/50 text-[9px] text-slate-400 font-bold uppercase tracking-widest text-center shrink-0">
           <p className="opacity-60">Created by <a href="https://DigitalHeritageLAB.com" target="_blank" rel="noreferrer" className="text-amber-600 hover:underline">DigitalHeritageLAB.com</a></p>
         </div>
       </div>
@@ -303,6 +363,18 @@ const App: React.FC = () => {
         <div className="absolute top-4 left-4 flex flex-col gap-3 z-[1000] pointer-events-auto">
           <button onClick={() => setViewMode('list')} className="md:hidden w-12 h-12 bg-white flex items-center justify-center rounded-2xl shadow-xl border">
             <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+
+          {/* New Locate Me Button */}
+          <button 
+            onClick={handleLocateUser}
+            disabled={isLocating}
+            className={`flex items-center gap-3 px-5 py-3 rounded-2xl shadow-2xl border transition-all ${isLocating ? 'bg-amber-100 text-amber-500' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
+          >
+            <svg className={`w-5 h-5 ${isLocating ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.49-4.38-3.96-7.85-8.34-8.34V1a1 1 0 00-2 0v1.66c-4.38.49-7.85 3.96-8.34 8.34H1a1 1 0 000 2h1.66c.49 4.38 3.96 7.85 8.34 8.34V23a1 1 0 002 0v-1.66c4.38-.49 7.85-3.96 8.34-8.34H23a1 1 0 000-2h-1.66z" />
+            </svg>
+            <span className="font-black text-[11px] uppercase tracking-wider">{isLocating ? 'Locating...' : 'Locate Me'}</span>
           </button>
 
           <div className="relative">

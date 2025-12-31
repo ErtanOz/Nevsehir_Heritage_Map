@@ -79,6 +79,33 @@
     }
     .leaflet-tooltip-top:before { border-top-color: rgba(255, 255, 255, 0.95); }
 
+    /* User Location Pulsing Marker */
+    .user-location-marker {
+      background: #3b82f6;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+      position: relative;
+    }
+    .user-location-marker::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: rgba(59, 130, 246, 0.3);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse-user 2s infinite;
+    }
+    @keyframes pulse-user {
+      0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.8; }
+      100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+    }
+
     /* Custom Marker Animations */
     .custom-heritage-marker {
       cursor: pointer !important;
