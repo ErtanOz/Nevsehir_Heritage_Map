@@ -32,7 +32,6 @@
     ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; border: 1px solid white; }
     ::-webkit-scrollbar-thumb:hover { background: #64748b; }
     
-    /* Force horizontal scrollbar visibility for filters */
     .custom-scrollbar-x {
       scrollbar-width: thin;
       scrollbar-color: #94a3b8 #f1f5f9;
@@ -61,23 +60,34 @@
     .marker-cluster { background: none !important; }
     .marker-cluster div { background: none !important; }
 
-    /* Custom Marker Labels (Map Text) */
+    /* Enhanced Custom Marker Labels */
     .custom-map-label {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(0,0,0,0.05);
-      border-radius: 8px;
-      padding: 3px 10px;
-      font-size: 10px;
-      font-weight: 800;
-      color: #334155;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      pointer-events: none;
-      white-space: nowrap;
+      background: #ffffff !important;
+      border: 2px solid #334155 !important;
+      border-radius: 6px !important;
+      padding: 4px 12px !important;
+      font-size: 11px !important;
+      font-weight: 900 !important;
+      color: #0f172a !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.05em !important;
+      pointer-events: none !important;
+      white-space: nowrap !important;
+      transition: all 0.2s ease !important;
+      opacity: 0.95 !important;
     }
-    .leaflet-tooltip-top:before { border-top-color: rgba(255, 255, 255, 0.95); }
+    
+    /* Highlight labels when zoomed in or on active marker */
+    .leaflet-zoom-animated .custom-map-label {
+      transform: translateY(-5px);
+    }
+
+    .leaflet-tooltip-top:before { 
+      border-top-color: #334155 !important;
+      bottom: -11px !important;
+      border-width: 10px 10px 0 !important;
+    }
 
     /* User Location Pulsing Marker */
     .user-location-marker {
@@ -106,7 +116,6 @@
       100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
     }
 
-    /* Custom Marker Animations */
     .custom-heritage-marker {
       cursor: pointer !important;
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -118,7 +127,6 @@
       box-shadow: 0 12px 24px rgba(0,0,0,0.25) !important;
     }
 
-    /* Active State (Selected) */
     .custom-heritage-marker.is-active { z-index: 10000 !important; }
     .custom-heritage-marker.is-active .marker-container {
       transform: scale(1.25) translateY(-8px);
@@ -145,7 +153,6 @@
     .select-none { -webkit-user-select: none; user-select: none; }
   </style>
 
-  <!-- External Map Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   
@@ -155,6 +162,7 @@
     "react": "https://esm.sh/react@19.0.0",
     "react-dom": "https://esm.sh/react-dom@19.0.0",
     "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "@google/genai": "https://esm.sh/@google/genai",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/"
   }
@@ -163,6 +171,7 @@
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+  <!-- Relative path for GitHub Pages compatibility -->
+  <script type="module" src="./index.tsx"></script>
 </body>
 </html>
