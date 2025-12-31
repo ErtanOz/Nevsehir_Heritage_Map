@@ -29,7 +29,7 @@ const getIconConfig = (types: string[] = [], isUnesco: boolean = false) => {
   } else if (allTypesStr.includes('tell') || allTypesStr.includes('höyük') || allTypesStr.includes('mound')) {
     color = isUnesco ? '#d97706' : '#92400e';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M21 21H3M5 21v-4a7 7 0 0114 0v4M12 17v-4" />`;
-  } else if (allTypesStr.includes('fountain') || allTypesStr.includes('çeşme')) {
+  } else if (allTypesStr.includes('fountain') || allTypesStr.includes('çeşme') || allTypesStr.includes('zierbrunnen')) {
     color = isUnesco ? '#d97706' : '#0ea5e9';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />`;
   } else {
@@ -39,11 +39,9 @@ const getIconConfig = (types: string[] = [], isUnesco: boolean = false) => {
 };
 
 const getProcessedSites = (): HeritageSite[] => {
-  // Aggregate data by Item URI and coordinate pair to handle multi-labels and avoid duplicates
   const aggregateMap = RAW_GEOJSON_DATA.features.reduce((acc, feature) => {
     const lng = feature.geometry.coordinates[0];
     const lat = feature.geometry.coordinates[1];
-    // Key based on coordinates and item URI (some coordinates might be shared by different sites, but usually not)
     const key = `${feature.properties.item}_${lat}_${lng}`;
     
     if (!acc.has(key)) {
@@ -71,7 +69,7 @@ const getProcessedSites = (): HeritageSite[] => {
     if (feature.properties.typeLabel && !site.types.includes(feature.properties.typeLabel)) {
       site.types.push(feature.properties.typeLabel);
     }
-    if (feature.properties.heritageLabel?.toLowerCase().includes('unesco') || feature.properties.heritageLabel?.toLowerCase().includes('welterbestätte')) {
+    if (feature.properties.heritageLabel?.toLowerCase().includes('welterbestätte') || feature.properties.heritageLabel?.toLowerCase().includes('unesco')) {
       site.isUnesco = true;
     }
     return acc;
@@ -110,7 +108,7 @@ const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: bo
           <div className="flex justify-between items-start">
             <h3 className="font-bold text-slate-800 text-sm truncate leading-tight flex-1">{site.name}</h3>
             {site.isUnesco && (
-              <span className="bg-amber-600 text-white text-[7px] px-1 py-0.5 rounded font-black uppercase tracking-tight ml-2">UNESCO</span>
+              <span className="bg-amber-600 text-white text-[7px] px-1.5 py-0.5 rounded font-black uppercase tracking-tight ml-2">UNESCO</span>
             )}
           </div>
           <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">{site.admin}</p>
@@ -237,7 +235,7 @@ const App: React.FC = () => {
     <div className="flex flex-col md:flex-row h-full w-full bg-slate-50 font-sans text-slate-900 overflow-hidden select-none">
       {/* Sidebar - List View */}
       <div className={`${viewMode === 'list' ? 'flex' : 'hidden md:flex'} flex-1 md:flex-none w-full md:w-[420px] bg-white shadow-2xl z-20 flex-col h-full border-r border-slate-100 overflow-hidden`}>
-        <div className="p-6 pb-2">
+        <div className="p-6 pb-2 shrink-0">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 bg-amber-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
@@ -257,7 +255,7 @@ const App: React.FC = () => {
             <svg className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
           
-          <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
+          <div className="flex gap-2 overflow-x-auto pb-4 custom-scrollbar-x px-1">
             {dynamicCategories.map(cat => (
               <button 
                 key={cat} onClick={() => setActiveCategory(cat)} 
@@ -268,7 +266,7 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          <div className="flex justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 px-1">
+          <div className="flex justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2 px-1">
              <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
                 {filteredSites.length} SHOWN

@@ -27,9 +27,12 @@
     .leaflet-container { height: 100%; width: 100%; background: #ebe7e5 !important; }
     
     /* Custom scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; border: 1px solid white; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    .custom-scrollbar-x::-webkit-scrollbar { height: 4px; display: block !important; }
     
     /* Custom Cluster Styling */
     .custom-cluster-div {
