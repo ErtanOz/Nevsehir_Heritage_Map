@@ -46,15 +46,30 @@
       transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
-    .marker-cluster:hover .custom-cluster-div {
-      transform: scale(1.1);
-    }
-    
+    .marker-cluster:hover .custom-cluster-div { transform: scale(1.1); }
     .marker-cluster { background: none !important; }
     .marker-cluster div { background: none !important; }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Custom Marker Labels (Map Text) */
+    .custom-map-label {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 8px;
+      padding: 3px 10px;
+      font-size: 10px;
+      font-weight: 800;
+      color: #334155;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .leaflet-tooltip-top:before { border-top-color: rgba(255, 255, 255, 0.95); }
 
     /* Custom Marker Animations */
     .custom-heritage-marker {
@@ -62,21 +77,14 @@
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       animation: marker-entrance 0.4s ease-out backwards;
     }
-
-    .marker-container {
-      transition: all 0.2s ease-out;
-    }
-
+    .marker-container { transition: all 0.2s ease-out; }
     .custom-heritage-marker:hover .marker-container {
       transform: scale(1.2) translateY(-6px);
       box-shadow: 0 12px 24px rgba(0,0,0,0.25) !important;
     }
 
     /* Active State (Selected) */
-    .custom-heritage-marker.is-active {
-      z-index: 10000 !important;
-    }
-
+    .custom-heritage-marker.is-active { z-index: 10000 !important; }
     .custom-heritage-marker.is-active .marker-container {
       transform: scale(1.25) translateY(-8px);
       border-color: #f59e0b !important;
@@ -84,36 +92,14 @@
       animation: marker-active-bounce 1s infinite alternate ease-in-out;
     }
 
-    .custom-heritage-marker.is-active::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 40px;
-      height: 40px;
-      margin: -20px 0 0 -20px;
-      border-radius: 50%;
-      background: rgba(217, 119, 6, 0.4);
-      animation: marker-pulse 1.5s infinite;
-      z-index: -1;
-    }
-
     @keyframes marker-entrance {
       from { opacity: 0; transform: scale(0.5) translateY(10px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
-
-    @keyframes marker-pulse {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(2.5); opacity: 0; }
-    }
-
     @keyframes marker-active-bounce {
       from { transform: scale(1.25) translateY(-8px); }
       to { transform: scale(1.25) translateY(-12px); }
     }
-
-    input { font-size: 16px !important; }
 
     @keyframes slideUp {
       from { transform: translateY(100%); opacity: 0; }
@@ -121,10 +107,7 @@
     }
     .animate-detail { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
 
-    .select-none {
-      -webkit-user-select: none;
-      user-select: none;
-    }
+    .select-none { -webkit-user-select: none; user-select: none; }
   </style>
 
   <!-- JS Dependencies -->
@@ -145,370 +128,6 @@
 </head>
 <body>
   <div id="root"></div>
-
-  <script type="text/babel">
-    const { useState, useMemo, useEffect, useRef } = React;
-
-    // --- DATA ---
-    const RAW_GEOJSON_DATA = {
-      "type": "FeatureCollection",
-      "features": [
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.750443,38.465686]},"properties":{"item":"http://www.wikidata.org/entity/Q1013468","itemLabel":"Kaymaklı Underground City","typeLabel":"Underground City","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Kaymakl%C4%B1%20Underground%20City%20large%20room.JPG","kulturenvanteriID":"3338"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.735034,38.373403]},"properties":{"item":"http://www.wikidata.org/entity/Q1328958","itemLabel":"Derinkuyu Underground City","typeLabel":"Underground City","heritageLabel":"UNESCO World Heritage","adminLabel":"Derinkuyu","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Derinkuyu%20Underground%20City%209831%20Nevit%20Enhancer.jpg","kulturenvanteriID":"3335"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.480277777,38.493083333]},"properties":{"item":"http://www.wikidata.org/entity/Q25378109","itemLabel":"Topada Rock Inscription","typeLabel":"Archaeological Site","adminLabel":"Acıgöl","kulturenvanteriID":"65883"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.725,38.628055555]},"properties":{"item":"http://www.wikidata.org/entity/Q28221127","itemLabel":"Nevşehir Museum","typeLabel":"Museum","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20museum%20in%202019%201556.jpg","kulturenvanteriID":"3922"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.85,38.66667]},"properties":{"item":"http://www.wikidata.org/entity/Q64705367","itemLabel":"Göreme National Park","typeLabel":"National Park","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Vallegoreme2.jpg"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.46487,38.62947]},"properties":{"item":"http://www.wikidata.org/entity/Q109530744","itemLabel":"Tatlarin Underground City","typeLabel":"Museum","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Tatlarin%2001.jpg","kulturenvanteriID":"3344"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.805555555,38.630333333]},"properties":{"item":"http://www.wikidata.org/entity/Q112865630","itemLabel":"Uçhisar Castle","typeLabel":"Castle","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20U%C3%A7%20hisar%20kalesi.jpg","kulturenvanteriID":"3055"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.714611111,38.622111111]},"properties":{"item":"http://www.wikidata.org/entity/Q116759069","itemLabel":"Kurşunlu Mosque","typeLabel":"Mosque","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20Kur%C5%9Funlu%20Mosque%20in%202011%209870.jpg","kulturenvanteriID":"10820"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.712861111,38.619722222]},"properties":{"item":"http://www.wikidata.org/entity/Q118188189","itemLabel":"Nevşehir Castle","typeLabel":"Castle","adminLabel":"Nevşehir","kulturenvanteriID":"3254"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.734666666,38.376333333]},"properties":{"item":"http://www.wikidata.org/entity/Q118947587","itemLabel":"Derinkuyu Cumhuriyet Mosque","typeLabel":"Mosque","adminLabel":"Nevşehir","kulturenvanteriID":"274845"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.839127063,38.6386709]},"properties":{"item":"http://www.wikidata.org/entity/Q109519139","itemLabel":"El Nazar Church","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"3307"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.61553812,38.747929248]},"properties":{"item":"http://www.wikidata.org/entity/Q131526402","itemLabel":"St Demetrius Church","typeLabel":"Church","adminLabel":"Gülşehir","kulturenvanteriID":"3293"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.634850025,38.740958784]},"properties":{"item":"http://www.wikidata.org/entity/Q131539130","itemLabel":"Aziz Jean Kilisesi","typeLabel":"Church","adminLabel":"Gülşehir","kulturenvanteriID":"3305"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6169392,38.7415023]},"properties":{"item":"http://www.wikidata.org/entity/Q131738430","itemLabel":"Sadrazam Silahtar Baths","typeLabel":"Hammām","adminLabel":"Gülşehir","kulturenvanteriID":"2435"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.2901878,38.6137352]},"properties":{"item":"http://www.wikidata.org/entity/Q132182797","itemLabel":"Topakhöyük","typeLabel":"Tell","adminLabel":"Gülşehir","kulturenvanteriID":"148438"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.7943,38.9522]},"properties":{"item":"http://www.wikidata.org/entity/Q6093345","itemLabel":"Zank Höyük","typeLabel":"Mound","adminLabel":"Avanos","kulturenvanteriID":"176223"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8473,38.7191]},"properties":{"item":"http://www.wikidata.org/entity/Q98091558","itemLabel":"Avanos Mosque","typeLabel":"Mosque","adminLabel":"Avanos","kulturenvanteriID":"10451"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.559956,38.941734]},"properties":{"item":"http://www.wikidata.org/entity/Q109520382","itemLabel":"Hacıbektaş Museum","typeLabel":"Museum","adminLabel":"Hacıbektaş","kulturenvanteriID":"3943"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.560753,38.942855]},"properties":{"item":"http://www.wikidata.org/entity/Q109520387","itemLabel":"Hacıbektaş Atatürk House","typeLabel":"Museum","adminLabel":"Hacıbektaş","kulturenvanteriID":"3945"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.7675,38.717805555]},"properties":{"item":"http://www.wikidata.org/entity/Q130640522","itemLabel":"Çeç Tumulus","typeLabel":"Tumulus","adminLabel":"Avanos","kulturenvanteriID":"39172"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8335266,38.8033295]},"properties":{"item":"http://www.wikidata.org/entity/Q130718376","itemLabel":"Özkonak Ağa Fountain","typeLabel":"Fountain","adminLabel":"Avanos","kulturenvanteriID":"199874"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5583954,38.945591]},"properties":{"item":"http://www.wikidata.org/entity/Q130718383","itemLabel":"Tip Fountain","typeLabel":"Fountain","adminLabel":"Hacıbektaş","kulturenvanteriID":"200089"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5648003,38.9407997]},"properties":{"item":"http://www.wikidata.org/entity/Q130718384","itemLabel":"Feyzullah Baba Fountain","typeLabel":"Fountain","adminLabel":"Hacıbektaş","kulturenvanteriID":"200102"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5624084,38.9423065]},"properties":{"item":"http://www.wikidata.org/entity/Q130718394","itemLabel":"Üçler Fountain","typeLabel":"Fountain","adminLabel":"Hacıbektaş","kulturenvanteriID":"200158"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5623131,38.9424858]},"properties":{"item":"http://www.wikidata.org/entity/Q130718395","itemLabel":"Lion Fountain","typeLabel":"Fountain","adminLabel":"Hacıbektaş","kulturenvanteriID":"200161"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5613976,38.9408722]},"properties":{"item":"http://www.wikidata.org/entity/Q131391285","itemLabel":"Bektash Efendi Tomb","typeLabel":"Tomb","adminLabel":"Hacıbektaş","kulturenvanteriID":"11158"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8242552,38.7907196]},"properties":{"item":"http://www.wikidata.org/entity/Q131523701","itemLabel":"Monastery of Belha","typeLabel":"Monastery","adminLabel":"Avanos","kulturenvanteriID":"3396"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.858385324,38.654231401]},"properties":{"item":"http://www.wikidata.org/entity/Q131526409","itemLabel":"Ayvalı Kilise","typeLabel":"Rock Church","adminLabel":"Avanos","kulturenvanteriID":"3313"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.842948,38.667169]},"properties":{"item":"http://www.wikidata.org/entity/Q131539160","itemLabel":"Vaftizci Yahya Church","typeLabel":"Church","adminLabel":"Avanos","kulturenvanteriID":"9168"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5597687,38.9450684]},"properties":{"item":"http://www.wikidata.org/entity/Q132134023","itemLabel":"Cuma Mosque","typeLabel":"Mosque","adminLabel":"Hacıbektaş","kulturenvanteriID":"27852"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.826767444,39.007279436]},"properties":{"item":"http://www.wikidata.org/entity/Q132182649","itemLabel":"Topaklı Höyük","typeLabel":"Tell","adminLabel":"Avanos","kulturenvanteriID":"3345"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.660965,38.880455]},"properties":{"item":"http://www.wikidata.org/entity/Q132182735","itemLabel":"Abdal Castle","typeLabel":"Tell","adminLabel":"Hacıbektaş","kulturenvanteriID":"66009"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.561405,38.946934]},"properties":{"item":"http://www.wikidata.org/entity/Q132182737","itemLabel":"Suluca Karahöyük","typeLabel":"Tell","adminLabel":"Hacıbektaş","kulturenvanteriID":"66020"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6967316,38.8829994]},"properties":{"item":"http://www.wikidata.org/entity/Q132182793","itemLabel":"Acıçeşme Höyüğü","typeLabel":"Tell","adminLabel":"Hacıbektaş","kulturenvanteriID":"148365"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6974182,38.8793602]},"properties":{"item":"http://www.wikidata.org/entity/Q132182795","itemLabel":"Acıtepe Höyüğü","typeLabel":"Tell","adminLabel":"Hacıbektaş","kulturenvanteriID":"148379"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.562643,38.942114]},"properties":{"item":"http://www.wikidata.org/entity/Q132682066","itemLabel":"Hacı Bektaş-ı Veli Museum","typeLabel":"Museum","adminLabel":"Hacıbektaş","kulturenvanteriID":"3944"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.454075,38.879597]},"properties":{"item":"http://www.wikidata.org/entity/Q133236751","itemLabel":"Karaburna Castle","typeLabel":"Castle","adminLabel":"Hacıbektaş","kulturenvanteriID":"65877"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.844527777,38.666944444]},"properties":{"item":"http://www.wikidata.org/entity/Q134590936","itemLabel":"Çavuşin Kaya Cami","typeLabel":"Mosque","adminLabel":"Çavuşin","image":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%87avu%C5%9Fin%20Eski%20Kaya%20Cami.jpg","kulturenvanteriID":"248525"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.846267,38.6387]},"properties":{"item":"http://www.wikidata.org/entity/Q114383869","itemLabel":"Dark Church","typeLabel":"Rock Church","heritageLabel":"UNESCO World Heritage","adminLabel":"Göreme","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Dark%20Church%20%28Karanl%C4%B1k%20Kilise%29%20in%20Cappadocia%2C%20G%C3%B6reme.jpg"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8460344,38.6387425]},"properties":{"item":"http://www.wikidata.org/entity/Q115445879","itemLabel":"Azize Catherine Şapeli","typeLabel":"Rock Church","adminLabel":"Göreme","image":"http://commons.wikimedia.org/wiki/Special:FilePath/J22%20230%20Agia%20Katharina.jpg","kulturenvanteriID":"9165"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.845178127,38.638905548]},"properties":{"item":"http://www.wikidata.org/entity/Q131523584","itemLabel":"Aziz Basil Şapeli","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"3303"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.845516085,38.639492163]},"properties":{"item":"http://www.wikidata.org/entity/Q131523695","itemLabel":"Rahibeler Manastırı","typeLabel":"Monastery","adminLabel":"Göreme","kulturenvanteriID":"3304"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.845202267,38.642039696]},"properties":{"item":"http://www.wikidata.org/entity/Q131526407","itemLabel":"Kılıçlar Church","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"3310"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8248558,38.6449547]},"properties":{"item":"http://www.wikidata.org/entity/Q131526846","itemLabel":"Bezirhane Kilisesi","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"14630"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.845076203,38.641471956]},"properties":{"item":"http://www.wikidata.org/entity/Q131539131","itemLabel":"Meryem Ana Kilisesi","typeLabel":"Rock Church","adminLabel":"Göreme","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Elmal%C4%B1%20kilisesi.jpg","kulturenvanteriID":"3311"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6781082,38.4530106]},"properties":{"item":"http://www.wikidata.org/entity/Q132134584","itemLabel":"Özlüce Village Mosque","typeLabel":"Mosque","adminLabel":"Derinkuyu","kulturenvanteriID":"274830"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5972562,38.4313035]},"properties":{"item":"http://www.wikidata.org/entity/Q132752892","itemLabel":"Doğala Han","typeLabel":"Caravanserai","adminLabel":"Derinkuyu","kulturenvanteriID":"2613"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.822986,38.414535]},"properties":{"item":"http://www.wikidata.org/entity/Q132752952","itemLabel":"Dolay Han","typeLabel":"Caravanserai","adminLabel":"Derinkuyu","kulturenvanteriID":"2605"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8154454,38.4199091]},"properties":{"item":"http://www.wikidata.org/entity/Q134960345","itemLabel":"Manayı Höyüğü","typeLabel":"Tell","adminLabel":"Derinkuyu","kulturenvanteriID":"305864"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8220817,39.226286]},"properties":{"item":"http://www.wikidata.org/entity/Q134960375","itemLabel":"Hacımusa Höyük","typeLabel":"Tell","adminLabel":"Kozaklı","kulturenvanteriID":"305837"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6390648,38.3418525]},"properties":{"item":"http://www.wikidata.org/entity/Q134960527","itemLabel":"Yazıhöyük","typeLabel":"Tell","adminLabel":"Derinkuyu","kulturenvanteriID":"305567"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.896897222,38.584194444]},"properties":{"item":"http://www.wikidata.org/entity/Q1377935","itemLabel":"Mustafapaşa","typeLabel":"Village","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadoce-Mustafapasa.jpg","kulturenvanteriID":"46711"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.910361111,38.630166666]},"properties":{"item":"http://www.wikidata.org/entity/Q21528347","itemLabel":"Ürgüp Clock Tower","typeLabel":"Clock Tower","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%9Crg%C3%BCp%20Saat%20Kulesi.JPG","kulturenvanteriID":"15711"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.73375,38.372194444]},"properties":{"item":"http://www.wikidata.org/entity/Q25472378","itemLabel":"Saint Theodore Church","typeLabel":"Church","adminLabel":"Derinkuyu","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Catholic%20Church%20Derinkuyu%20Turkey%20-%20panoramio%20-%20Chanilim714%20%281%29.jpg","kulturenvanteriID":"3333"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.9426537,38.5144196]},"properties":{"item":"http://www.wikidata.org/entity/Q56245523","itemLabel":"Keşlik Monastery","typeLabel":"Monastery","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Keslik.JPG","kulturenvanteriID":"11763"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.864329046,38.619935365]},"properties":{"item":"http://www.wikidata.org/entity/Q95640040","itemLabel":"Ortahisar Castle","typeLabel":"Castle","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadocia%20March%202006.jpg","kulturenvanteriID":"302912"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.910194444,38.632638888]},"properties":{"item":"http://www.wikidata.org/entity/Q98091589","itemLabel":"Karamanoğlu Mosque","typeLabel":"Mosque","adminLabel":"Ürgüp","kulturenvanteriID":"10431"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.9128,38.6321]},"properties":{"item":"http://www.wikidata.org/entity/Q109530966","itemLabel":"Ürgüp Museum","typeLabel":"Museum","adminLabel":"Ürgüp","kulturenvanteriID":"3921"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.9661,38.4641]},"properties":{"item":"http://www.wikidata.org/entity/Q124519571","itemLabel":"Sobesos Ancient City","typeLabel":"Archaeological Site","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Capadoccia%20Jul%202023%2023%2000%2016%20105000.jpeg","kulturenvanteriID":"2091"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.895396,38.576889]},"properties":{"item":"http://www.wikidata.org/entity/Q131523702","itemLabel":"Monastery of St Nicholas","typeLabel":"Monastery","adminLabel":"Ürgüp","kulturenvanteriID":"3402"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.9498367,38.4953156]},"properties":{"item":"http://www.wikidata.org/entity/Q131741222","itemLabel":"Taşkın Paşa Medresesi","typeLabel":"Madrasa","adminLabel":"Ürgüp","kulturenvanteriID":"3784"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.863055555,38.652777777]},"properties":{"item":"http://www.wikidata.org/entity/Q620593","itemLabel":"Göreme National Park","typeLabel":"National Park","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Goreme%20valley.jpg","kulturenvanteriID":"2028"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.90888889,38.71166667]},"properties":{"item":"http://www.wikidata.org/entity/Q2225271","itemLabel":"Sarıhan Caravanserai","typeLabel":"Caravanserai","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Sarihangesamt.jpg","kulturenvanteriID":"2560"}},
-        {"type":"Feature","geometry":{"type":"Point","coordinates":[34.56222222,38.94277778]},"properties":{"item":"http://www.wikidata.org/entity/Q20474091","itemLabel":"Hacı Bektaş Complex","typeLabel":"Museum","heritageLabel":"UNESCO Tentative","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg","kulturenvanteriID":"5260"}}
-      ]
-    };
-
-    // --- HELPERS ---
-    const getIconConfig = (types = [], isUnesco = false, isUserGenerated = false) => {
-      if (isUserGenerated) {
-        return {
-          path: `<path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />`,
-          color: '#8b5cf6'
-        };
-      }
-      const allTypesStr = types.join(' ').toLowerCase();
-      let color = isUnesco ? '#d97706' : '#4b5563';
-      let path = `<path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />`;
-      
-      if (allTypesStr.includes('underground')) {
-        color = isUnesco ? '#d97706' : '#78350f';
-        path = `<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />`;
-      } else if (allTypesStr.includes('church') || allTypesStr.includes('monastery')) {
-        color = isUnesco ? '#d97706' : '#2563eb';
-        path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M8 8h8M6 21h12l-2-10H8l-2 10z" />`;
-      } else if (allTypesStr.includes('castle')) {
-        color = isUnesco ? '#d97706' : '#dc2626';
-        path = `<path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M4 21V7l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2v14M9 21v-4a3 3 0 0 1 6 0v4" />`;
-      } else if (allTypesStr.includes('museum')) {
-        color = isUnesco ? '#d97706' : '#059669';
-        path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />`;
-      } else if (allTypesStr.includes('mosque')) {
-        color = isUnesco ? '#d97706' : '#0284c7';
-        path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />`;
-      }
-      return { path, color };
-    };
-
-    const processSites = (userSites) => {
-      const dataSites = Array.from(
-        RAW_GEOJSON_DATA.features.reduce((acc, feature) => {
-          const lat = feature.geometry.coordinates[1];
-          const lng = feature.geometry.coordinates[0];
-          const id = `${feature.properties.item}_${lat}_${lng}`;
-          
-          if (!acc.has(id)) {
-            let imageName = undefined;
-            if (feature.properties.image) {
-              const parts = feature.properties.image.split('/');
-              imageName = parts[parts.length - 1];
-            }
-            acc.set(id, {
-              id,
-              name: feature.properties.itemLabel,
-              types: [],
-              coords: [lat, lng],
-              image: imageName,
-              admin: feature.properties.adminLabel,
-              isUnesco: feature.properties.heritageLabel?.toLowerCase().includes('unesco') || false,
-              externalLinks: { wiki: feature.properties.item, kultur: feature.properties.kulturenvanteriID }
-            });
-          }
-          const site = acc.get(id);
-          if (!site.types.includes(feature.properties.typeLabel)) site.types.push(feature.properties.typeLabel);
-          return acc;
-        }, new Map()).values()
-      );
-      return [...userSites, ...dataSites];
-    };
-
-    // --- COMPONENTS ---
-    const SiteCard = ({ site, onClick, isActive, onDelete }) => {
-      const { path, color } = getIconConfig(site.types, site.isUnesco, site.isUserGenerated);
-      return (
-        <div onClick={onClick} className={`group p-4 mb-3 rounded-2xl border-2 cursor-pointer transition-all duration-300 relative ${isActive ? 'border-amber-500 bg-amber-50 shadow-md translate-x-1' : 'border-gray-50 bg-white hover:border-gray-200 shadow-sm'}`}>
-          {site.isUserGenerated && (
-            <button onClick={(e) => { e.stopPropagation(); onDelete(); }} className="absolute top-2 right-2 p-1 text-slate-300 hover:text-red-500 transition-colors md:opacity-0 group-hover:opacity-100">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-          )}
-          <div className="flex gap-4 items-center">
-            <div className="w-16 h-16 flex-shrink-0 rounded-2xl overflow-hidden bg-slate-50 flex items-center justify-center border border-slate-100">
-              {site.image ? (
-                <img src={`https://commons.wikimedia.org/wiki/Special:FilePath/${site.image}?width=200`} alt={site.name} className="w-full h-full object-cover" loading="lazy" />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: `${color}10`, color: color }}>
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: path }} />
-                </div>
-              )}
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-slate-800 text-sm truncate leading-tight">{site.name}</h3>
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">{site.admin}</p>
-              <div className="flex flex-wrap items-center gap-1 mt-2">
-                {site.isUnesco && <span className="bg-amber-600 text-white text-[8px] px-1.5 py-0.5 rounded font-black uppercase tracking-tight shadow-sm">UNESCO</span>}
-                {site.isUserGenerated && <span className="bg-violet-600 text-white text-[8px] px-1.5 py-0.5 rounded font-black uppercase tracking-tight shadow-sm">Landmark</span>}
-                <span className="text-slate-500 text-[9px] font-medium border border-slate-100 px-1.5 py-0.5 rounded bg-slate-50 truncate max-w-[120px]">{site.types[0] || 'Unknown'}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    };
-
-    const App = () => {
-      const [searchTerm, setSearchTerm] = useState('');
-      const [activeCategory, setActiveCategory] = useState('ALL');
-      const [selectedSiteId, setSelectedSiteId] = useState(null);
-      const [unescoOnly, setUnescoOnly] = useState(false);
-      const [viewMode, setViewMode] = useState('list');
-      const [mapType, setMapType] = useState('standard');
-      const [isAddingPin, setIsAddingPin] = useState(false);
-      
-      const [userSites, setUserSites] = useState(() => {
-        const saved = localStorage.getItem('nevsehir_user_points');
-        return saved ? JSON.parse(saved) : [];
-      });
-
-      const mapRef = useRef(null);
-      const clusterGroupRef = useRef(null);
-      const markersRef = useRef({});
-      const layersRef = useRef({});
-
-      const processedSites = useMemo(() => processSites(userSites), [userSites]);
-      
-      // Dynamic Labels
-      const dynamicCategories = useMemo(() => {
-        const types = new Set();
-        processedSites.forEach(s => s.types.forEach(t => types.add(t.toUpperCase())));
-        return ["ALL", "MY LANDMARKS", ...Array.from(types).sort()];
-      }, [processedSites]);
-
-      const filteredSites = useMemo(() => {
-        return processedSites.filter(s => {
-          const matchesSearch = s.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                                s.admin.toLowerCase().includes(searchTerm.toLowerCase());
-          const matchesCategory = activeCategory === 'ALL' || (activeCategory === 'MY LANDMARKS' ? s.isUserGenerated : s.types.some(t => t.toUpperCase() === activeCategory));
-          const matchesUnesco = !unescoOnly || s.isUnesco;
-          return matchesSearch && matchesCategory && matchesUnesco;
-        });
-      }, [searchTerm, activeCategory, unescoOnly, processedSites]);
-
-      const selectedSite = useMemo(() => processedSites.find(s => s.id === selectedSiteId), [selectedSiteId, processedSites]);
-
-      useEffect(() => {
-        localStorage.setItem('nevsehir_user_points', JSON.stringify(userSites));
-      }, [userSites]);
-
-      useEffect(() => {
-        const container = L.DomUtil.get('map');
-        if (container !== null && container._leaflet_id !== undefined) return;
-
-        const map = L.map('map', { zoomControl: false, tap: false }).setView([38.62, 34.72], 10);
-        L.control.zoom({ position: 'topright' }).addTo(map);
-
-        layersRef.current.standard = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO' });
-        layersRef.current.standard.addTo(map);
-        
-        const clusterGroup = L.markerClusterGroup({
-          showCoverageOnHover: false,
-          maxClusterRadius: 50,
-          iconCreateFunction: (cluster) => {
-            const markers = cluster.getAllChildMarkers();
-            const unescoCount = markers.filter(m => m.options.isUnesco).length;
-            const total = markers.length;
-            const isPrimarilyUnesco = unescoCount / total >= 0.5;
-            let bgColor = isPrimarilyUnesco ? '#d97706' : '#64748b';
-            let extraStyles = isPrimarilyUnesco ? 'box-shadow: 0 0 15px rgba(217, 119, 6, 0.6); border-width: 4px; border-color: #fbbf24;' : '';
-            
-            return L.divIcon({ 
-              html: `<div class="custom-cluster-div" style="background-color: ${bgColor}; ${extraStyles}">
-                      <span>${total}</span>
-                    </div>`, 
-              className: 'marker-cluster', 
-              iconSize: L.point(40, 40) 
-            });
-          }
-        });
-
-        map.addLayer(clusterGroup);
-        mapRef.current = map;
-        clusterGroupRef.current = clusterGroup;
-
-        map.on('contextmenu click', (e) => {
-          if (e.type === 'contextmenu' || isAddingPin) {
-            const name = prompt("Name this landmark:");
-            if (name) {
-              const newPoint = {
-                id: `user_${Date.now()}`,
-                name,
-                types: ['User Landmark'],
-                coords: [e.latlng.lat, e.latlng.lng],
-                admin: 'Discovery',
-                isUnesco: false,
-                isUserGenerated: true,
-                externalLinks: { wiki: '#' }
-              };
-              setUserSites(prev => [newPoint, ...prev]);
-              setSelectedSiteId(newPoint.id);
-              setIsAddingPin(false);
-            }
-          }
-        });
-
-        return () => map.remove();
-      }, [isAddingPin]);
-
-      useEffect(() => {
-        if (!clusterGroupRef.current) return;
-        clusterGroupRef.current.clearLayers();
-        filteredSites.forEach(site => {
-          const { path, color } = getIconConfig(site.types, site.isUnesco, site.isUserGenerated);
-          const icon = L.divIcon({
-            className: `custom-heritage-marker ${site.id === selectedSiteId ? 'is-active' : ''}`,
-            html: `<div class="marker-container" style="background: white; color: ${color}; width: 36px; height: 36px; border-radius: 14px; border: 3px solid ${color}; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="width: 20px; height: 20px;">${path}</svg>
-            </div>`,
-            iconSize: [36, 36], iconAnchor: [18, 18]
-          });
-          const marker = L.marker(site.coords, { icon, isUnesco: site.isUnesco, isUserGenerated: site.isUserGenerated })
-            .on('click', () => { setSelectedSiteId(site.id); setViewMode('map'); });
-          markersRef.current[site.id] = marker;
-          clusterGroupRef.current.addLayer(marker);
-        });
-      }, [filteredSites, selectedSiteId]);
-
-      useEffect(() => {
-        if (selectedSite && mapRef.current) mapRef.current.flyTo(selectedSite.coords, 16);
-      }, [selectedSite]);
-
-      return (
-        <div className="flex h-full w-full bg-slate-50 overflow-hidden flex-col md:flex-row select-none">
-          {/* List View */}
-          <div className={`${viewMode === 'list' ? 'flex' : 'hidden md:flex'} w-full md:w-[420px] bg-white shadow-2xl z-20 flex-col h-full border-r`}>
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-amber-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                </div>
-                <h1 className="text-lg font-black uppercase">DKM Nevşehir</h1>
-              </div>
-              <input type="text" placeholder="Search..." className="w-full px-5 py-3 bg-slate-50 border rounded-2xl mb-4" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-              <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
-                {dynamicCategories.map(cat => (
-                  <button key={cat} onClick={() => setActiveCategory(cat)} className={`flex-shrink-0 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider ${activeCategory === cat ? 'bg-amber-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'}`}>
-                    {cat}
-                  </button>
-                ))}
-              </div>
-              <div className="flex justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">
-                <span>{filteredSites.length} SHOWN</span>
-                <span>TOTAL: {RAW_GEOJSON_DATA.features.length}</span>
-              </div>
-            </div>
-            <div className="flex-1 overflow-y-auto px-6 pb-6">
-              {filteredSites.map(site => (
-                <SiteCard key={site.id} site={site} onClick={() => { setSelectedSiteId(site.id); setViewMode('map'); }} isActive={selectedSiteId === site.id} onDelete={() => setUserSites(prev => prev.filter(s => s.id !== site.id))} />
-              ))}
-            </div>
-          </div>
-
-          {/* Map View */}
-          <div className={`${viewMode === 'map' ? 'block' : 'hidden md:block'} flex-1 relative h-full`}>
-            <div id="map" className="h-full w-full"></div>
-            
-            <div className="absolute top-4 left-4 flex flex-col gap-2 z-[1000]">
-              <button onClick={() => setViewMode('list')} className="md:hidden w-12 h-12 bg-white rounded-2xl shadow-xl flex items-center justify-center border">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-              </button>
-              <button onClick={() => setIsAddingPin(!isAddingPin)} className={`px-4 py-3 rounded-2xl shadow-xl border flex items-center gap-2 ${isAddingPin ? 'bg-amber-500 text-white' : 'bg-white text-slate-700'}`}>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
-                <span className="font-black text-[10px] uppercase">{isAddingPin ? 'Click Map' : 'Add Point'}</span>
-              </button>
-            </div>
-
-            {selectedSite && (
-              <div className="fixed md:absolute bottom-0 right-0 left-0 md:left-auto md:bottom-8 md:right-8 z-[1100] p-6 animate-detail">
-                <div className="bg-white rounded-[40px] shadow-2xl overflow-hidden p-8 md:w-[420px] relative border">
-                  <button onClick={() => setSelectedSiteId(null)} className="absolute top-6 right-6 p-2 text-slate-400">✕</button>
-                  {selectedSite.image && <img src={`https://commons.wikimedia.org/wiki/Special:FilePath/${selectedSite.image}?width=400`} className="w-full h-48 object-cover rounded-[32px] mb-6 shadow-lg" />}
-                  <h2 className="text-2xl font-black mb-1">{selectedSite.name}</h2>
-                  <p className="text-xs font-bold text-amber-600 mb-4">{selectedSite.admin}</p>
-                  <p className="text-sm text-slate-500 leading-relaxed italic">{selectedSite.description || "Historical site in Nevşehir."}</p>
-                  <div className="mt-8 flex gap-3">
-                    <a href={selectedSite.externalLinks.wiki} target="_blank" className="flex-1 py-4 bg-slate-900 text-white text-center rounded-2xl text-[10px] font-black uppercase">Wikipedia</a>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      );
-    };
-
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-  </script>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
