@@ -412,7 +412,8 @@ const App: React.FC = () => {
           ))}
         </div>
         <div className="p-4 border-t border-slate-100 bg-slate-50 text-[9px] text-slate-400 font-bold uppercase tracking-widest text-center">
-          Right-click on map to drop a pin
+          <div>Right-click on map to drop a pin</div>
+          <div className="mt-1 opacity-60">Created by <a href="https://DigitalHeritageLAB.com" target="_blank" rel="noreferrer" className="hover:text-amber-600 underline">DigitalHeritageLAB.com</a></div>
         </div>
       </div>
 
