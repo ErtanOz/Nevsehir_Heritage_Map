@@ -283,11 +283,12 @@ const App: React.FC = () => {
     markersRef.current = {};
     sitesToMark.forEach(site => {
       const { path, color } = getIconConfig(site.types, site.isUnesco, site.isUserGenerated);
+      const isActive = site.id === selectedSiteId;
       const markerIcon = L.divIcon({
-        className: 'custom-heritage-marker',
-        html: `<div style="background: white; color: ${color}; width: 36px; height: 36px; border-radius: 14px; border: 3px solid ${color}; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); position: relative;">
+        className: `custom-heritage-marker ${isActive ? 'is-active' : ''}`,
+        html: `<div class="marker-container" style="background: white; color: ${color}; width: 36px; height: 36px; border-radius: 14px; border: 3px solid ${color}; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); position: relative;">
           <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="width: 20px; height: 20px;">${path}</svg>
-          ${site.isUnesco ? '<div style="position: absolute; top: -6px; right: -6px; background: #d97706; border-radius: 50%; width: 14px; height: 14px; border: 2px solid white;"></div>' : ''}
+          ${site.isUnesco ? '<div class="unesco-dot" style="position: absolute; top: -6px; right: -6px; background: #d97706; border-radius: 50%; width: 14px; height: 14px; border: 2px solid white;"></div>' : ''}
         </div>`,
         iconSize: [36, 36], iconAnchor: [18, 18], popupAnchor: [0, -18]
       });
@@ -299,7 +300,9 @@ const App: React.FC = () => {
     });
   };
 
-  useEffect(() => { if (mapRef.current) updateMarkers(filteredSites); }, [filteredSites]);
+  useEffect(() => { 
+    if (mapRef.current) updateMarkers(filteredSites); 
+  }, [filteredSites, selectedSiteId]);
 
   useEffect(() => {
     if (!mapRef.current) return;

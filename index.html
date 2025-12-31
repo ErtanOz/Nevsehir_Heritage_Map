@@ -43,6 +43,11 @@
       font-weight: 900;
       border: 3px solid white;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .marker-cluster:hover .custom-cluster-div {
+      transform: scale(1.1);
     }
     
     .marker-cluster { background: none !important; }
@@ -51,9 +56,66 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Fix touch handling on Leaflet markers */
+    /* Custom Marker Animations */
     .custom-heritage-marker {
       cursor: pointer !important;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: marker-entrance 0.4s ease-out backwards;
+    }
+
+    .marker-container {
+      transition: all 0.2s ease-out;
+    }
+
+    .custom-heritage-marker:hover {
+      z-index: 9999 !important;
+    }
+
+    .custom-heritage-marker:hover .marker-container {
+      transform: scale(1.2) translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.25) !important;
+    }
+
+    /* Active State (Selected) */
+    .custom-heritage-marker.is-active {
+      z-index: 10000 !important;
+    }
+
+    .custom-heritage-marker.is-active .marker-container {
+      transform: scale(1.25) translateY(-8px);
+      border-color: #f59e0b !important;
+      box-shadow: 0 15px 30px rgba(245, 158, 11, 0.3) !important;
+      animation: marker-active-bounce 1s infinite alternate ease-in-out;
+    }
+
+    .custom-heritage-marker.is-active::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      margin: -20px 0 0 -20px;
+      border-radius: 50%;
+      background: rgba(217, 119, 6, 0.4);
+      animation: marker-pulse 1.5s infinite;
+      z-index: -1;
+    }
+
+    /* Keyframes */
+    @keyframes marker-entrance {
+      from { opacity: 0; transform: scale(0.5) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes marker-pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+
+    @keyframes marker-active-bounce {
+      from { transform: scale(1.25) translateY(-8px); }
+      to { transform: scale(1.25) translateY(-12px); }
     }
 
     /* Prevent mobile input zoom */
