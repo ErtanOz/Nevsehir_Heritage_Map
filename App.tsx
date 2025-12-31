@@ -59,6 +59,7 @@ const getProcessedSites = (userSites: HeritageSite[]): HeritageSite[] => {
     RAW_GEOJSON_DATA.features.reduce((acc, feature) => {
       const lat = feature.geometry.coordinates[1];
       const lng = feature.geometry.coordinates[0];
+      // Site uniqueness based on item identifier and coordinates
       const id = `${feature.properties.item}_${lat}_${lng}`;
       
       if (!acc.has(id)) {
@@ -82,6 +83,7 @@ const getProcessedSites = (userSites: HeritageSite[]): HeritageSite[] => {
         });
       }
       const site = acc.get(id)!;
+      // Merge multiple type labels for the same physical location
       if (!site.types.includes(feature.properties.typeLabel)) {
         site.types.push(feature.properties.typeLabel);
       }
@@ -90,8 +92,6 @@ const getProcessedSites = (userSites: HeritageSite[]): HeritageSite[] => {
   );
   return [...userSites, ...dataSites];
 };
-
-const CATEGORIES = ["ALL", "MY LANDMARKS", "ARCHAEOLOGICAL SITE", "CAVE", "FAIRY CHIMNEY", "MUSEUM", "ROCK CHURCH", "FOUNTAIN", "MOSQUE", "CASTLE", "MONASTERY"];
 
 const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: boolean; onDelete?: () => void }> = ({ site, onClick, isActive, onDelete }) => {
   const { path, color } = getIconConfig(site.types, site.isUnesco, site.isUserGenerated);
@@ -137,7 +137,7 @@ const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: bo
             {site.isUserGenerated && (
               <span className="bg-violet-600 text-white text-[8px] px-1.5 py-0.5 rounded font-black uppercase tracking-tight shadow-sm">Landmark</span>
             )}
-            <span className="text-slate-500 text-[9px] font-medium border border-slate-100 px-1.5 py-0.5 rounded bg-slate-50 truncate max-w-[80px]">{site.types[0] || 'Unknown'}</span>
+            <span className="text-slate-500 text-[9px] font-medium border border-slate-100 px-1.5 py-0.5 rounded bg-slate-50 truncate max-w-[100px]">{site.types[0] || 'Unknown'}</span>
           </div>
           {site.description && (
             <p className="mt-2 text-[10px] text-slate-500 italic line-clamp-1 leading-snug">{site.description}</p>
@@ -172,13 +172,22 @@ const App: React.FC = () => {
 
   const processedSites = useMemo(() => getProcessedSites(userSites), [userSites]);
 
+  // Dynamically extract unique type labels from the data
+  const dynamicCategories = useMemo(() => {
+    const types = new Set<string>();
+    processedSites.forEach(s => s.types.forEach(t => {
+      if (t) types.add(t.toUpperCase());
+    }));
+    return ["ALL", "MY LANDMARKS", ...Array.from(types).sort()];
+  }, [processedSites]);
+
   const filteredSites = useMemo(() => {
     return processedSites.filter(s => {
       const matchesSearch = s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             s.admin.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             (s.description?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false);
       const matchesCategory = activeCategory === 'ALL' || 
-                             (activeCategory === 'MY LANDMARKS' ? s.isUserGenerated : s.types.some(t => t.toUpperCase().includes(activeCategory)));
+                             (activeCategory === 'MY LANDMARKS' ? s.isUserGenerated : s.types.some(t => t.toUpperCase() === activeCategory));
       const matchesUnesco = !unescoOnly || s.isUnesco;
       return matchesSearch && matchesCategory && matchesUnesco;
     });
@@ -376,8 +385,9 @@ const App: React.FC = () => {
             <svg className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
           
+          {/* Dynamic Categories Scrollbar */}
           <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar -mx-2 px-2">
-            {CATEGORIES.map(cat => (
+            {dynamicCategories.map(cat => (
               <button 
                 key={cat} 
                 onClick={() => setActiveCategory(cat)} 
@@ -403,9 +413,12 @@ const App: React.FC = () => {
         </div>
 
         <div className="flex-1 overflow-y-auto px-6 pb-6 space-y-1 scroll-smooth">
-          <div className="mb-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center gap-2 sticky top-0 bg-white py-2 z-10">
-            <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
-            {filteredSites.length} LOCATIONS
+          <div className="mb-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] flex items-center justify-between sticky top-0 bg-white py-2 z-10">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+              {filteredSites.length} LOCATIONS
+            </div>
+            <div className="text-[8px] opacity-60">TOTAL FEATURES: {RAW_GEOJSON_DATA.features.length}</div>
           </div>
           {filteredSites.map(site => (
             <SiteCard 
