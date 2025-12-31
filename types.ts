@@ -30,6 +30,8 @@ export interface HeritageSite {
   image?: string;
   admin: string;
   isUnesco: boolean;
+  isUserGenerated?: boolean; // New flag for user points
+  description?: string; // Optional user notes
   externalLinks: {
     wiki: string;
     kultur?: string;
