@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Nevşehir Heritage Explorer</title>
   
-  <!-- CSS Libraries -->
+  <!-- Map Libraries -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
@@ -26,13 +26,21 @@
     #root { height: 100vh; width: 100vw; overflow: hidden; }
     .leaflet-container { height: 100%; width: 100%; background: #ebe7e5 !important; }
     
-    /* Custom scrollbar */
+    /* Scrollbar Improvements */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; border: 1px solid white; }
-    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; border: 1px solid white; }
+    ::-webkit-scrollbar-thumb:hover { background: #64748b; }
     
-    .custom-scrollbar-x::-webkit-scrollbar { height: 4px; display: block !important; }
+    /* Force horizontal scrollbar visibility for filters */
+    .custom-scrollbar-x {
+      scrollbar-width: thin;
+      scrollbar-color: #94a3b8 #f1f5f9;
+    }
+    .custom-scrollbar-x::-webkit-scrollbar { height: 6px; display: block !important; }
+    .custom-scrollbar-x::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+    .custom-scrollbar-x::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    .custom-scrollbar-x::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     
     /* Custom Cluster Styling */
     .custom-cluster-div {
@@ -52,9 +60,6 @@
     .marker-cluster:hover .custom-cluster-div { transform: scale(1.1); }
     .marker-cluster { background: none !important; }
     .marker-cluster div { background: none !important; }
-
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
     /* Custom Marker Labels (Map Text) */
     .custom-map-label {
@@ -113,16 +118,16 @@
     .select-none { -webkit-user-select: none; user-select: none; }
   </style>
 
-  <!-- JS Dependencies -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- External Map Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-<script type="importmap">
+  
+  <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/"
   }

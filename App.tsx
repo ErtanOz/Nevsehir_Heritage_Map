@@ -11,25 +11,25 @@ const getIconConfig = (types: string[] = [], isUnesco: boolean = false) => {
   let path = '';
   let color = isUnesco ? '#d97706' : '#4b5563';
 
-  if (allTypesStr.includes('underground') || allTypesStr.includes('unterirdisch')) {
+  if (allTypesStr.includes('underground') || allTypesStr.includes('unterirdisch') || allTypesStr.includes('untergrund')) {
     color = isUnesco ? '#d97706' : '#78350f';
     path = `<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />`;
-  } else if (allTypesStr.includes('church') || allTypesStr.includes('kirche') || allTypesStr.includes('monastery') || allTypesStr.includes('kapelle')) {
+  } else if (allTypesStr.includes('church') || allTypesStr.includes('kirche') || allTypesStr.includes('monastery') || allTypesStr.includes('kapelle') || allTypesStr.includes('kloster')) {
     color = isUnesco ? '#d97706' : '#2563eb';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M8 8h8M6 21h12l-2-10H8l-2 10z" />`;
-  } else if (allTypesStr.includes('castle') || allTypesStr.includes('burg') || allTypesStr.includes('festung')) {
+  } else if (allTypesStr.includes('castle') || allTypesStr.includes('burg') || allTypesStr.includes('festung') || allTypesStr.includes('fortress')) {
     color = isUnesco ? '#d97706' : '#dc2626';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M4 21V7l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2v14M9 21v-4a3 3 0 0 1 6 0v4" />`;
-  } else if (allTypesStr.includes('museum') || allTypesStr.includes('madrasa')) {
+  } else if (allTypesStr.includes('museum') || allTypesStr.includes('madrasa') || allTypesStr.includes('külliye') || allTypesStr.includes('medrese')) {
     color = isUnesco ? '#d97706' : '#059669';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />`;
-  } else if (allTypesStr.includes('mosque') || allTypesStr.includes('cami')) {
+  } else if (allTypesStr.includes('mosque') || allTypesStr.includes('cami') || allTypesStr.includes('mescid')) {
     color = isUnesco ? '#d97706' : '#0284c7';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />`;
-  } else if (allTypesStr.includes('tell') || allTypesStr.includes('höyük') || allTypesStr.includes('mound')) {
+  } else if (allTypesStr.includes('tell') || allTypesStr.includes('höyük') || allTypesStr.includes('mound') || allTypesStr.includes('tumulus') || allTypesStr.includes('grab')) {
     color = isUnesco ? '#d97706' : '#92400e';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M21 21H3M5 21v-4a7 7 0 0114 0v4M12 17v-4" />`;
-  } else if (allTypesStr.includes('fountain') || allTypesStr.includes('çeşme') || allTypesStr.includes('zierbrunnen')) {
+  } else if (allTypesStr.includes('fountain') || allTypesStr.includes('çeşme') || allTypesStr.includes('zierbrunnen') || allTypesStr.includes('baths') || allTypesStr.includes('hammam')) {
     color = isUnesco ? '#d97706' : '#0ea5e9';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />`;
   } else {
@@ -55,7 +55,7 @@ const getProcessedSites = (): HeritageSite[] => {
         name: feature.properties.itemLabel,
         types: [],
         coords: [lat, lng],
-        image: imageName,
+        image: feature.properties.image, // Keep full URI for Wikipedia Special:FilePath logic
         admin: feature.properties.adminLabel,
         isUnesco: false,
         externalLinks: {
@@ -80,6 +80,13 @@ const getProcessedSites = (): HeritageSite[] => {
 
 const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: boolean }> = ({ site, onClick, isActive }) => {
   const { path, color } = getIconConfig(site.types, site.isUnesco);
+  
+  // Format image URL
+  const imageUrl = site.image 
+    ? (site.image.includes('Special:FilePath') 
+        ? site.image + '?width=200' 
+        : `https://commons.wikimedia.org/wiki/Special:FilePath/${site.image.split('/').pop()}?width=200`)
+    : null;
 
   return (
     <div 
@@ -90,13 +97,8 @@ const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: bo
     >
       <div className="flex gap-4 items-center">
         <div className="w-16 h-16 flex-shrink-0 rounded-2xl overflow-hidden bg-slate-50 flex items-center justify-center border border-slate-100">
-          {site.image ? (
-            <img 
-              src={`https://commons.wikimedia.org/wiki/Special:FilePath/${site.image}?width=200`} 
-              alt={site.name}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
+          {imageUrl ? (
+            <img src={imageUrl} alt={site.name} className="w-full h-full object-cover" loading="lazy" />
           ) : (
             <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: `${color}10`, color: color }}>
               <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: path }} />
@@ -108,7 +110,7 @@ const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: bo
           <div className="flex justify-between items-start">
             <h3 className="font-bold text-slate-800 text-sm truncate leading-tight flex-1">{site.name}</h3>
             {site.isUnesco && (
-              <span className="bg-amber-600 text-white text-[7px] px-1.5 py-0.5 rounded font-black uppercase tracking-tight ml-2">UNESCO</span>
+              <span className="bg-amber-600 text-white text-[7px] px-1 py-0.5 rounded font-black uppercase tracking-tight ml-2 shrink-0">UNESCO</span>
             )}
           </div>
           <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">{site.admin}</p>
@@ -255,18 +257,21 @@ const App: React.FC = () => {
             <svg className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
           </div>
           
-          <div className="flex gap-2 overflow-x-auto pb-4 custom-scrollbar-x px-1">
-            {dynamicCategories.map(cat => (
-              <button 
-                key={cat} onClick={() => setActiveCategory(cat)} 
-                className={`flex-shrink-0 px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all ${activeCategory === cat ? 'bg-amber-600 text-white shadow-lg' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Scrollable Filter Section */}
+          <div className="mb-4">
+            <div className="flex gap-2 overflow-x-auto pb-3 custom-scrollbar-x px-1">
+              {dynamicCategories.map(cat => (
+                <button 
+                  key={cat} onClick={() => setActiveCategory(cat)} 
+                  className={`flex-shrink-0 px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all ${activeCategory === cat ? 'bg-amber-600 text-white shadow-lg' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="flex justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2 px-1">
+          <div className="flex justify-between items-center text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">
              <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
                 {filteredSites.length} SHOWN
