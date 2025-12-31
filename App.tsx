@@ -26,6 +26,12 @@ const getIconConfig = (types: string[] = [], isUnesco: boolean = false) => {
   } else if (allTypesStr.includes('mosque') || allTypesStr.includes('cami')) {
     color = isUnesco ? '#d97706' : '#0284c7';
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />`;
+  } else if (allTypesStr.includes('tell') || allTypesStr.includes('höyük') || allTypesStr.includes('mound')) {
+    color = isUnesco ? '#d97706' : '#92400e';
+    path = `<path stroke-linecap="round" stroke-linejoin="round" d="M21 21H3M5 21v-4a7 7 0 0114 0v4M12 17v-4" />`;
+  } else if (allTypesStr.includes('fountain') || allTypesStr.includes('çeşme')) {
+    color = isUnesco ? '#d97706' : '#0ea5e9';
+    path = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />`;
   } else {
     path = `<path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />`;
   }
@@ -33,39 +39,45 @@ const getIconConfig = (types: string[] = [], isUnesco: boolean = false) => {
 };
 
 const getProcessedSites = (): HeritageSite[] => {
-  return Array.from(
-    RAW_GEOJSON_DATA.features.reduce((acc, feature) => {
-      const lat = feature.geometry.coordinates[1];
-      const lng = feature.geometry.coordinates[0];
-      const id = `${feature.properties.item || 'feature'}_${lat}_${lng}`;
-      
-      if (!acc.has(id)) {
-        let imageName = undefined;
-        if (feature.properties.image) {
-          const parts = feature.properties.image.split('/');
-          imageName = parts[parts.length - 1];
+  // Aggregate data by Item URI and coordinate pair to handle multi-labels and avoid duplicates
+  const aggregateMap = RAW_GEOJSON_DATA.features.reduce((acc, feature) => {
+    const lng = feature.geometry.coordinates[0];
+    const lat = feature.geometry.coordinates[1];
+    // Key based on coordinates and item URI (some coordinates might be shared by different sites, but usually not)
+    const key = `${feature.properties.item}_${lat}_${lng}`;
+    
+    if (!acc.has(key)) {
+      let imageName = undefined;
+      if (feature.properties.image) {
+        const parts = feature.properties.image.split('/');
+        imageName = parts[parts.length - 1];
+      }
+      acc.set(key, {
+        id: key,
+        name: feature.properties.itemLabel,
+        types: [],
+        coords: [lat, lng],
+        image: imageName,
+        admin: feature.properties.adminLabel,
+        isUnesco: false,
+        externalLinks: {
+          wiki: feature.properties.item,
+          kultur: feature.properties.kulturenvanteriID
         }
-        acc.set(id, {
-          id: id,
-          name: feature.properties.itemLabel || 'Unknown Site',
-          types: [],
-          coords: [lat, lng],
-          image: imageName,
-          admin: feature.properties.adminLabel || 'Nevşehir',
-          isUnesco: feature.properties.heritageLabel?.toLowerCase().includes('unesco') || false,
-          externalLinks: {
-            wiki: feature.properties.item || '#',
-            kultur: feature.properties.kulturenvanteriID
-          }
-        });
-      }
-      const site = acc.get(id)!;
-      if (feature.properties.typeLabel && !site.types.includes(feature.properties.typeLabel)) {
-        site.types.push(feature.properties.typeLabel);
-      }
-      return acc;
-    }, new Map<string, HeritageSite>()).values()
-  );
+      });
+    }
+
+    const site = acc.get(key)!;
+    if (feature.properties.typeLabel && !site.types.includes(feature.properties.typeLabel)) {
+      site.types.push(feature.properties.typeLabel);
+    }
+    if (feature.properties.heritageLabel?.toLowerCase().includes('unesco') || feature.properties.heritageLabel?.toLowerCase().includes('welterbestätte')) {
+      site.isUnesco = true;
+    }
+    return acc;
+  }, new Map<string, HeritageSite>());
+
+  return Array.from(aggregateMap.values());
 };
 
 const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: boolean }> = ({ site, onClick, isActive }) => {
@@ -95,13 +107,15 @@ const SiteCard: React.FC<{ site: HeritageSite; onClick: () => void; isActive: bo
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="font-bold text-slate-800 text-sm truncate leading-tight">{site.name}</h3>
+          <div className="flex justify-between items-start">
+            <h3 className="font-bold text-slate-800 text-sm truncate leading-tight flex-1">{site.name}</h3>
+            {site.isUnesco && (
+              <span className="bg-amber-600 text-white text-[7px] px-1 py-0.5 rounded font-black uppercase tracking-tight ml-2">UNESCO</span>
+            )}
+          </div>
           <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">{site.admin}</p>
           <div className="flex flex-wrap items-center gap-1 mt-2">
-            {site.isUnesco && (
-              <span className="bg-amber-600 text-white text-[8px] px-1.5 py-0.5 rounded font-black uppercase tracking-tight shadow-sm">UNESCO</span>
-            )}
-            <span className="text-slate-500 text-[9px] font-medium border border-slate-100 px-1.5 py-0.5 rounded bg-slate-50 truncate max-w-[120px]">{site.types[0] || 'Unknown Site'}</span>
+            <span className="text-slate-500 text-[9px] font-medium border border-slate-100 px-1.5 py-0.5 rounded bg-slate-50 truncate max-w-[150px]">{site.types[0]}</span>
           </div>
         </div>
       </div>
@@ -113,7 +127,6 @@ const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [selectedSiteId, setSelectedSiteId] = useState<string | null>(null);
-  const [unescoOnly, setUnescoOnly] = useState(false);
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
   const [mapType, setMapType] = useState<MapType>('standard');
   const [showLabels, setShowLabels] = useState(true);
@@ -128,9 +141,7 @@ const App: React.FC = () => {
 
   const dynamicCategories = useMemo(() => {
     const types = new Set<string>();
-    processedSites.forEach(s => s.types.forEach(t => {
-      if (t) types.add(t.toUpperCase());
-    }));
+    processedSites.forEach(s => s.types.forEach(t => { if (t) types.add(t.toUpperCase()); }));
     return ["ALL", ...Array.from(types).sort()];
   }, [processedSites]);
 
@@ -139,16 +150,14 @@ const App: React.FC = () => {
       const matchesSearch = s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             s.admin.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = activeCategory === 'ALL' || s.types.some(t => t.toUpperCase() === activeCategory);
-      const matchesUnesco = !unescoOnly || s.isUnesco;
-      return matchesSearch && matchesCategory && matchesUnesco;
+      return matchesSearch && matchesCategory;
     });
-  }, [searchTerm, activeCategory, unescoOnly, processedSites]);
+  }, [searchTerm, activeCategory, processedSites]);
 
   const selectedSite = useMemo(() => processedSites.find(s => s.id === selectedSiteId), [selectedSiteId, processedSites]);
 
   useEffect(() => {
     if (typeof L === 'undefined') return;
-    
     const container = L.DomUtil.get('map');
     if (container !== null && container._leaflet_id !== undefined) return;
 
@@ -171,9 +180,7 @@ const App: React.FC = () => {
         const isPrimarilyUnesco = unescoCount / total >= 0.5;
         let bgColor = isPrimarilyUnesco ? '#d97706' : '#64748b';
         return L.divIcon({ 
-          html: `<div class="custom-cluster-div" style="background-color: ${bgColor}; border: 3px solid white;">
-                  <span>${total}</span>
-                </div>`, 
+          html: `<div class="custom-cluster-div" style="background-color: ${bgColor}; border: 3px solid white;"><span>${total}</span></div>`, 
           className: 'marker-cluster', 
           iconSize: L.point(40, 40) 
         });
@@ -206,12 +213,7 @@ const App: React.FC = () => {
         .on('click', () => { setSelectedSiteId(site.id); setViewMode('map'); });
 
       if (showLabels) {
-        marker.bindTooltip(site.name, {
-          permanent: true,
-          direction: 'top',
-          offset: [0, -20],
-          className: 'custom-map-label'
-        });
+        marker.bindTooltip(site.name, { permanent: true, direction: 'top', offset: [0, -20], className: 'custom-map-label' });
       }
 
       markersRef.current[site.id] = marker;
@@ -221,9 +223,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (!mapRef.current) return;
-    // Remove existing layers
     Object.values(layersRef.current).forEach((layer: any) => mapRef.current.removeLayer(layer));
-    // Add selected layer
     layersRef.current[mapType].addTo(mapRef.current);
   }, [mapType]);
 
@@ -238,15 +238,13 @@ const App: React.FC = () => {
       {/* Sidebar - List View */}
       <div className={`${viewMode === 'list' ? 'flex' : 'hidden md:flex'} flex-1 md:flex-none w-full md:w-[420px] bg-white shadow-2xl z-20 flex-col h-full border-r border-slate-100 overflow-hidden`}>
         <div className="p-6 pb-2">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-amber-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
-                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-              </div>
-              <div>
-                 <h1 className="text-xl font-black tracking-tighter uppercase leading-none">DKM NEVŞEHİR</h1>
-                 <p className="text-[10px] font-bold text-slate-400 tracking-widest mt-1">HERITAGE EXPLORER</p>
-              </div>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 bg-amber-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
+               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+            </div>
+            <div>
+               <h1 className="text-xl font-black tracking-tighter uppercase leading-none">DKM NEVŞEHİR</h1>
+               <p className="text-[10px] font-bold text-slate-400 tracking-widest mt-1">HERITAGE EXPLORER</p>
             </div>
           </div>
 
@@ -262,9 +260,8 @@ const App: React.FC = () => {
           <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
             {dynamicCategories.map(cat => (
               <button 
-                key={cat} 
-                onClick={() => setActiveCategory(cat)} 
-                className={`flex-shrink-0 px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all ${activeCategory === cat ? 'bg-amber-600 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                key={cat} onClick={() => setActiveCategory(cat)} 
+                className={`flex-shrink-0 px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all ${activeCategory === cat ? 'bg-amber-600 text-white shadow-lg' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
               >
                 {cat}
               </button>
@@ -276,18 +273,13 @@ const App: React.FC = () => {
                 <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
                 {filteredSites.length} SHOWN
              </div>
-             <div className="opacity-60">TOTAL: {RAW_GEOJSON_DATA.features.length}</div>
+             <div className="opacity-60">TOTAL: {processedSites.length}</div>
           </div>
         </div>
 
         <div className="flex-1 overflow-y-auto px-6 pb-2 space-y-1 scroll-smooth">
           {filteredSites.map(site => (
-            <SiteCard 
-              key={site.id} 
-              site={site} 
-              onClick={() => { setSelectedSiteId(site.id); setViewMode('map'); }} 
-              isActive={selectedSiteId === site.id} 
-            />
+            <SiteCard key={site.id} site={site} onClick={() => { setSelectedSiteId(site.id); setViewMode('map'); }} isActive={selectedSiteId === site.id} />
           ))}
           {filteredSites.length === 0 && (
             <div className="py-20 text-center text-slate-300">
@@ -296,11 +288,8 @@ const App: React.FC = () => {
           )}
         </div>
         
-        {/* SIDEBAR FOOTER */}
         <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/50 text-[9px] text-slate-400 font-bold uppercase tracking-widest text-center">
-          <div className="flex flex-col gap-1">
-            <p className="opacity-60">Created by <a href="https://DigitalHeritageLAB.com" target="_blank" rel="noreferrer" className="text-amber-600 hover:underline">DigitalHeritageLAB.com</a></p>
-          </div>
+          <p className="opacity-60">Created by <a href="https://DigitalHeritageLAB.com" target="_blank" rel="noreferrer" className="text-amber-600 hover:underline">DigitalHeritageLAB.com</a></p>
         </div>
       </div>
 
@@ -308,7 +297,7 @@ const App: React.FC = () => {
       <div className={`${viewMode === 'map' ? 'block' : 'hidden md:block'} flex-1 relative h-full bg-slate-200 overflow-hidden`}>
         <div id="map" className="h-full w-full z-0"></div>
         
-        <div className="absolute top-4 left-4 flex flex-col gap-2 z-[1000] pointer-events-auto">
+        <div className="absolute top-4 left-4 flex flex-col gap-3 z-[1000] pointer-events-auto">
           <button onClick={() => setViewMode('list')} className="md:hidden w-12 h-12 bg-white flex items-center justify-center rounded-2xl shadow-xl border">
             <svg className="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
@@ -316,13 +305,13 @@ const App: React.FC = () => {
           <div className="relative">
             <button 
               onClick={() => setIsLayersMenuOpen(!isLayersMenuOpen)}
-              className={`flex items-center gap-2 px-5 py-3 rounded-2xl shadow-xl border transition-all ${isLayersMenuOpen ? 'bg-amber-500 text-white' : 'bg-white text-slate-700 border-slate-100'}`}
+              className={`flex items-center gap-3 px-5 py-3 rounded-2xl shadow-2xl border transition-all ${isLayersMenuOpen ? 'bg-amber-600 text-white' : 'bg-white text-slate-700 border-slate-100'}`}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>
-              <span className="font-black text-[11px] uppercase tracking-wider">Map Layers</span>
+              <span className="font-black text-[11px] uppercase tracking-wider">Layers</span>
             </button>
             {isLayersMenuOpen && (
-              <div className="absolute left-0 mt-2 bg-white border border-slate-100 rounded-2xl shadow-2xl p-2 w-48 animate-detail">
+              <div className="absolute left-0 mt-3 bg-white border border-slate-100 rounded-[24px] shadow-2xl p-2 w-48 animate-detail overflow-hidden">
                 <div className="flex flex-col gap-1">
                   {(['standard', 'satellite', 'terrain'] as MapType[]).map((type) => (
                     <button
@@ -330,7 +319,7 @@ const App: React.FC = () => {
                       onClick={() => { setMapType(type); setIsLayersMenuOpen(false); }}
                       className={`px-4 py-3 rounded-xl text-left text-[10px] font-black uppercase tracking-wider transition-all ${mapType === type ? 'bg-amber-50 text-amber-600' : 'hover:bg-slate-50 text-slate-600'}`}
                     >
-                      {type}
+                      {type} View
                     </button>
                   ))}
                 </div>
@@ -340,10 +329,10 @@ const App: React.FC = () => {
           
           <button 
             onClick={() => setShowLabels(!showLabels)}
-            className={`flex items-center gap-2 px-5 py-3 rounded-2xl shadow-xl border transition-all ${showLabels ? 'bg-slate-900 text-white' : 'bg-white text-slate-700'}`}
+            className={`flex items-center gap-3 px-5 py-3 rounded-2xl shadow-2xl border transition-all ${showLabels ? 'bg-slate-900 text-white' : 'bg-white text-slate-700'}`}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" /></svg>
-            <span className="font-black text-[11px] uppercase tracking-wider">{showLabels ? 'Hide Labels' : 'Show Labels'}</span>
+            <span className="font-black text-[11px] uppercase tracking-wider">{showLabels ? 'Hide Text' : 'Show Text'}</span>
           </button>
         </div>
 
@@ -352,7 +341,7 @@ const App: React.FC = () => {
             <div className="bg-white rounded-[40px] shadow-2xl overflow-hidden pointer-events-auto border w-full md:w-[420px]">
               <div className="relative">
                 {selectedSite.image ? (
-                  <img src={`https://commons.wikimedia.org/wiki/Special:FilePath/${selectedSite.image}?width=600`} className="w-full h-56 object-cover" alt={selectedSite.name} />
+                  <img src={selectedSite.image.includes('Special:FilePath') ? selectedSite.image + '?width=600' : selectedSite.image} className="w-full h-56 object-cover" alt={selectedSite.name} />
                 ) : (
                   <div className="w-full h-40 bg-slate-50 flex items-center justify-center">
                     <svg className="w-12 h-12 text-slate-200" fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
