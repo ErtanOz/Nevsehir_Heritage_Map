@@ -312,6 +312,15 @@ const App: React.FC = () => {
             />
           ))}
         </div>
+
+        {/* Mobile Map Toggle */}
+        <button
+          onClick={() => setViewMode('map')}
+          className="md:hidden absolute bottom-20 right-6 w-14 h-14 bg-amber-500 rounded-full text-white shadow-xl flex items-center justify-center z-30 hover:bg-amber-600 transition-transform active:scale-95 border-2 border-white"
+          aria-label="View Map"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" /></svg>
+        </button>
         <div className="p-4 border-t border-slate-100 bg-slate-50 text-[9px] text-slate-400 font-bold uppercase tracking-widest text-center">
           Right-click on map to drop a pin
         </div>
