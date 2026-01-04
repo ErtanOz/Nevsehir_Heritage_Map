@@ -1,0 +1,3913 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-12-31T00:28:14Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/252585",
+        "alt_name:en": "Göreme National Park and the Rock Sites of Cappadocia",
+        "boundary": "national_park",
+        "heritage": "1",
+        "heritage:operator": "whc",
+        "leisure": "nature_reserve",
+        "name": "Göreme Millî Parkı",
+        "name:be": "Нацыянальны парк Гёрэмэ",
+        "name:de": "Historischer Nationalpark Göreme",
+        "name:en": "Göreme Historical National Park",
+        "name:fa": "گورمه",
+        "name:fr": "Parc national de Göreme et sites rupestres de Cappadoce",
+        "name:hu": "Göreme Nemzeti Park és Kappadókia sziklatemplomai",
+        "name:hy": "Գյորեմե ազգային այգի",
+        "name:it": "Parco nazionale di Göreme",
+        "name:ja": "ギョレメ国立公園",
+        "name:ka": "გიორემეს ისტორიული ეროვნული პარკი",
+        "name:lt": "Gioremės slėnis",
+        "name:pl": "Park Narodowy Göreme",
+        "name:pt": "Parque Nacional de Göreme",
+        "name:ru": "Национальный парк Гёреме",
+        "name:tr": "Göreme Tarihî Parkı",
+        "name:uk": "Національний парк Гьореме",
+        "name:vi": "Vườn quốc gia Göreme",
+        "name:zh": "格莱梅国家公园",
+        "ref:whc": "357",
+        "source_ref": "http://whc.unesco.org/en/list/357",
+        "type": "multipolygon",
+        "whc:inscription_date": "1985",
+        "wikidata": "Q620593",
+        "wikimedia_commons": "Category:Göreme National Park and the Rock Sites of Cappadocia",
+        "wikipedia": "tr:Göreme Tarihî Millî Parkı",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8521049,
+          38.6502189
+        ]
+      },
+      "id": "relation/252585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/7655709",
+        "alt_name": "Saruhan Kervanseray",
+        "building": "yes",
+        "fee": "yes",
+        "heritage": "yes",
+        "historic": "caravanserai",
+        "name": "Sarıhan Kervansaray",
+        "name:en": "Sarıhan Caravanserai",
+        "source": "bing",
+        "tourism": "attraction",
+        "type": "multipolygon",
+        "wikidata": "Q2225271",
+        "wikimedia_commons": "Category:Sarıhan",
+        "wikipedia": "tr:Sarıhan Kervansarayı",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9093862,
+          38.7118058
+        ]
+      },
+      "id": "relation/7655709"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/14217176",
+        "boundary": "protected_area",
+        "name": "Kapadokya Alanı",
+        "operator": "Kapadokya Alan Başkanlığı",
+        "operator:type": "government",
+        "protect_class": "5",
+        "protection_title": "Kapadokya Alanı",
+        "related_law": "7174 sayılı Kapadokya Alanı Hakkında Kanun",
+        "type": "multipolygon",
+        "website": "https://https://kapadokyaalan.ktb.gov.tr",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8453257,
+          38.5651659
+        ]
+      },
+      "id": "relation/14217176"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26045752",
+        "addr:city": "Göreme",
+        "addr:postcode": "50180",
+        "addr:street": "Müze Caddesi",
+        "fee": "yes",
+        "image": "https://photos.app.goo.gl/fH3QrjJJZ4URnMcRA",
+        "name": "Göreme Açık Hava Müzesi",
+        "name:de": "Freilichtmuseum Göreme",
+        "name:el": "Υπαίθριο Μουσείο Κόραμα",
+        "name:en": "Göreme Open Air Museum",
+        "name:es": "Museo al aire libre de Göreme",
+        "name:fr": "Musée de plein air de Göreme",
+        "name:ru": "Музей под открытым небом Гёреме",
+        "name:tr": "Göreme Açık Hava Müzesi",
+        "name:zh": "格雷梅露天博物馆",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:museum_pass": "yes",
+        "tourism": "museum",
+        "wikidata": "Q15210336",
+        "wikimedia_commons": "Category:Churches in Göreme",
+        "wikipedia": "en:Churches of Göreme",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8455909,
+          38.6390817
+        ]
+      },
+      "id": "way/26045752"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/27151654",
+        "historic": "ruins",
+        "image": "https://photos.app.goo.gl/eP48YJuYjSiZj8RC8",
+        "man_made": "underground_city",
+        "name": "Kaymaklı yeraltı şehri",
+        "name:en": "Kaymaklı Underground City",
+        "name:ru": "Каймаклы",
+        "name:zh": "凯马克勒地下城",
+        "natural": "cave_entrance",
+        "tourism": "attraction",
+        "wikidata": "Q1013468",
+        "wikimedia_commons": "Category:Underground City of Kaymaklı",
+        "wikipedia": "en:Kaymaklı, Nevşehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7524882,
+          38.4599265
+        ]
+      },
+      "id": "node/27151654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/30976467",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "survey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8404201,
+          38.7181493
+        ]
+      },
+      "id": "way/30976467"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/70576651",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "survey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8451158,
+          38.7183024
+        ]
+      },
+      "id": "way/70576651"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/87819399",
+        "name": "Zelve Açık Hava Müzesi",
+        "name:en": "Zelve Open-Air Museum",
+        "name:tr": "Zelve Açık Hava Müzesi",
+        "name:zh": "济尔维露天博物馆",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8647905,
+          38.668128
+        ]
+      },
+      "id": "node/87819399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/98410116",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9962665,
+          38.5383415
+        ]
+      },
+      "id": "way/98410116"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/98441320",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9661246,
+          38.5110586
+        ]
+      },
+      "id": "way/98441320"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/98596447",
+        "alt_name": "Manayı;Manaytepe",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Manayı Höyüğü",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8154454,
+          38.4199091
+        ]
+      },
+      "id": "way/98596447"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/98596459",
+        "alt_name": "Dolay Han",
+        "building": "yes",
+        "historic": "caravanserai",
+        "name": "Dolayhan",
+        "source": "bing",
+        "tourism": "attraction",
+        "wikidata": "Q132752952",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8229731,
+          38.414532
+        ]
+      },
+      "id": "way/98596459"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/98635506",
+        "historic": "archaeological_site",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7283076,
+          38.4173181
+        ]
+      },
+      "id": "way/98635506"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/98635616",
+        "historic": "ruins",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7146152,
+          38.5939869
+        ]
+      },
+      "id": "way/98635616"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/98841055",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7891268,
+          38.3440362
+        ]
+      },
+      "id": "way/98841055"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/133420556",
+        "historic": "memorial",
+        "name": "Altıkapı Türbesi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9125444,
+          38.633178
+        ]
+      },
+      "id": "way/133420556"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/133728196",
+        "building": "yes",
+        "name": "Ürgüp Müzesi",
+        "source": "bing",
+        "tourism": "museum",
+        "wikidata": "Q109530966",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9128101,
+          38.6320912
+        ]
+      },
+      "id": "way/133728196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/144468459",
+        "historic": "archaeological_site",
+        "name": "Sobesos",
+        "wheelchair": "no",
+        "wikidata": "Q124519571",
+        "wikimedia_commons": "Category:Sobesos Ancient City",
+        "wikipedia": "tr:Sobesos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9660147,
+          38.464093
+        ]
+      },
+      "id": "node/144468459"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/149861005",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Çeç",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7681915,
+          38.7179218
+        ]
+      },
+      "id": "way/149861005"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/149861006",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Kızılözün Höyük",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6997174,
+          38.7669725
+        ]
+      },
+      "id": "way/149861006"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/149867322",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8167661,
+          38.8085673
+        ]
+      },
+      "id": "way/149867322"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/150159306",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6468735,
+          38.3703865
+        ]
+      },
+      "id": "way/150159306"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/150165386",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.531228,
+          38.4224319
+        ]
+      },
+      "id": "way/150165386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/150170676",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Ağıllı Höyük",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4796646,
+          38.480291
+        ]
+      },
+      "id": "way/150170676"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168254162",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "İlicek Höyüğü",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6325474,
+          39.0125331
+        ]
+      },
+      "id": "way/168254162"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168277655",
+        "abandoned": "yes",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8155041,
+          39.2189775
+        ]
+      },
+      "id": "way/168277655"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168277656",
+        "abandoned": "yes",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8147291,
+          39.2174892
+        ]
+      },
+      "id": "way/168277656"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168327058",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Gökçe Höyüğü",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7076136,
+          39.2493172
+        ]
+      },
+      "id": "way/168327058"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168327061",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Küllüce Höyüğü",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6735049,
+          39.2383365
+        ]
+      },
+      "id": "way/168327061"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168327488",
+        "abandoned": "yes",
+        "historic": "ruins",
+        "landuse": "residential",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6136202,
+          38.989249
+        ]
+      },
+      "id": "way/168327488"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168407973",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Hacıbektaş Höyüğü",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5612555,
+          38.9469647
+        ]
+      },
+      "id": "way/168407973"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168407991",
+        "building": "yes",
+        "name": "Arkeoloji ve Etnografya Müzesi",
+        "name:en": "Archaeology and Ethnography Museum",
+        "source": "bing",
+        "tourism": "museum",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5597698,
+          38.9415858
+        ]
+      },
+      "id": "way/168407991"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168408677",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6177804,
+          38.8317169
+        ]
+      },
+      "id": "way/168408677"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168414969",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9187845,
+          38.7711977
+        ]
+      },
+      "id": "way/168414969"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168414971",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9222646,
+          38.7703496
+        ]
+      },
+      "id": "way/168414971"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168966130",
+        "archaeological_site": "tumulus",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0278251,
+          38.5120705
+        ]
+      },
+      "id": "way/168966130"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/194253954",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6580142,
+          39.1265033
+        ]
+      },
+      "id": "way/194253954"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/196170517",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8373887,
+          38.721485
+        ]
+      },
+      "id": "way/196170517"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/233586090",
+        "building": "yes",
+        "name": "Nevşehir Müzesi",
+        "source": "bing",
+        "tourism": "museum",
+        "wikidata": "Q28221127",
+        "wikimedia_commons": "Category:Nevşehir Museum",
+        "wikipedia": "en:Nevşehir Museum",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7251567,
+          38.6278368
+        ]
+      },
+      "id": "way/233586090"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/234578407",
+        "alt_name": "Ovaören Tümülüsü;Ovaören Höyük;Ovaören Höyüğü",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Yassıhöyük",
+        "source": "bing",
+        "wikidata": "Q132182796",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.297967,
+          38.60852
+        ]
+      },
+      "id": "way/234578407"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/234578408",
+        "alt_name": "Topak Höyük;Topakhöyük",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Topak Höyüğü",
+        "source": "bing",
+        "wikidata": "Q132182797",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.2901523,
+          38.6137872
+        ]
+      },
+      "id": "way/234578408"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/249554168",
+        "amenity": "place_of_worship",
+        "fee": "10 TL",
+        "historic": "ruins",
+        "name": "El Nazar Kilisesi",
+        "name:de": "El Nazar Kirche",
+        "name:en": "El Nazar Church",
+        "name:zh": "魔眼教堂",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q109519139"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8390318,
+          38.6386687
+        ]
+      },
+      "id": "node/249554168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/249555017",
+        "access": "closed",
+        "amenity": "place_of_worship",
+        "description": "The entrance of the Hidden Church, was closed years ago due to landslides. The Church is divided into two columns and three arches. Three apse. The scenes in the Saklı Church, dated to the second half of the",
+        "historic": "ruins",
+        "name": "Saklı Kilise",
+        "name:de": "Sakli Kirche",
+        "name:en": "Hidden Church",
+        "name:ru": "Спрятанная церковь",
+        "name:zh": "隐蔽教堂",
+        "religion": "christian",
+        "service_times": "Closed",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8402106,
+          38.6417867
+        ]
+      },
+      "id": "node/249555017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/249555710",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Üzümlü Kilise",
+        "name:en": "Grape Church",
+        "name:zh": "葡萄教堂",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8602741,
+          38.6526131
+        ]
+      },
+      "id": "node/249555710"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/253077394",
+        "historic": "castle",
+        "name": "Çavuşin Kalesi",
+        "name:en": "Çavuşin Castle",
+        "ruins": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8425411,
+          38.6677144
+        ]
+      },
+      "id": "way/253077394"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262880251",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9994918,
+          38.7851707
+        ]
+      },
+      "id": "way/262880251"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262893194",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0064852,
+          38.7660217
+        ]
+      },
+      "id": "way/262893194"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/264436503",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6063716,
+          38.8722693
+        ]
+      },
+      "id": "way/264436503"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/265012689",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Topaklı Höyük",
+        "source": "bing",
+        "wikidata": "Q132182649",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8266023,
+          39.0072466
+        ]
+      },
+      "id": "way/265012689"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/265041906",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9364244,
+          39.1664289
+        ]
+      },
+      "id": "way/265041906"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/265041907",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9291049,
+          39.230192
+        ]
+      },
+      "id": "way/265041907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/265083609",
+        "alt_name": "Gavurhöyük",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Gavurhöyüğü",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4100902,
+          38.91009
+        ]
+      },
+      "id": "way/265083609"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/281777097",
+        "access": "customers",
+        "historic": "ruins",
+        "historic:civilization": "byzantine",
+        "man_made": "underground_city",
+        "name": "Derinkuyu Yeraltı Şehri",
+        "name:de": "Unterirdische Stadt Derinkuyu",
+        "name:en": "Derinkuyu Underground City",
+        "name:fa": "درینکویو",
+        "name:fi": "Derinkuyun maanalainen kaupunki",
+        "name:hy": "Դերինկույու (ստորգետնյա քաղաք)",
+        "name:id": "Kota bawah tanah Derinkuyu",
+        "name:ko": "데린쿠유 지하도시",
+        "name:nl": "Derinkuyu (stad)",
+        "name:nn": "Derinkuyu undergrunnsby",
+        "name:no": "Derinkuyu undergrunnsby",
+        "name:pt": "Cidade subterrânea de Derinkuyu",
+        "name:ru": "Деринкую (подземный город)",
+        "name:sr": "Деринкују подземни град",
+        "name:zh": "3⃣️代林库尤地下城",
+        "natural": "cave_entrance",
+        "ruins": "village",
+        "tourism": "attraction",
+        "wikidata": "Q1328958",
+        "wikimedia_commons": "Category:Underground City of Derinkuyu",
+        "wikipedia": "en:Derinkuyu underground city"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7351222,
+          38.3735761
+        ]
+      },
+      "id": "node/281777097"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/284661019",
+        "historic": "ruins",
+        "name": "Golgoli",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9017925,
+          38.5387885
+        ]
+      },
+      "id": "node/284661019"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/304510434",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4334316,
+          38.5874337
+        ]
+      },
+      "id": "way/304510434"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/306877927",
+        "castle_type": "castle",
+        "historic": "castle",
+        "image": "https://photos.app.goo.gl/5bgw1hrcnr1GztoVA",
+        "name": "Ortahisar Kalesi",
+        "name:de": "Burg von Ortahisar",
+        "name:en": "Ortahisar Castle",
+        "tourism": "viewpoint",
+        "url": "https://youtu.be/vNoxByZlH2w?si=l70OLaKhKmDgv92E",
+        "wikidata": "Q95640040",
+        "wikimedia_commons": "Category:Ortahisar Castle",
+        "wikipedia": "hu:Ortahisar vára"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8644308,
+          38.619809
+        ]
+      },
+      "id": "node/306877927"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/311217349",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0866463,
+          38.4891952
+        ]
+      },
+      "id": "way/311217349"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/314659421",
+        "name": "Etnoğrafya Müzesi",
+        "name:en": "Ethnographic Museum",
+        "tourism": "museum",
+        "wikidata": "Q6037885",
+        "wikipedia": "tr:Ortahisar Etnografya Müzesi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8648523,
+          38.6213041
+        ]
+      },
+      "id": "node/314659421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/315613165",
+        "historic": "yes",
+        "name": "Bektaş Efendi Türbesi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5614561,
+          38.9409621
+        ]
+      },
+      "id": "way/315613165"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/316753287",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Yusuf Koç Kilisesi",
+        "name:de": "Yusuf Koç Kirche",
+        "name:en": "Yusuf Koç church",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8218618,
+          38.6441095
+        ]
+      },
+      "id": "node/316753287"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/316753288",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Durmuş Kadir Kilisesi",
+        "name:de": "Durmuş Kadir Kirche",
+        "name:en": "Durmuş Kadir  Church",
+        "name:ru": "Церковь",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8189996,
+          38.6383273
+        ]
+      },
+      "id": "node/316753288"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/316770594",
+        "alt_name": "Aziz Barbara Kilisesi",
+        "amenity": "place_of_worship",
+        "historic": "church",
+        "name": "Azize Barbara Şapeli",
+        "name:de": "Barbara-Kapelle",
+        "name:en": "St. Barbara’s Chapel",
+        "name:tr": "Azize Barbara Şapeli",
+        "ref": "13",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q73249333",
+        "wikimedia_commons": "Category:Barbara Kilisesi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8451292,
+          38.6387322
+        ]
+      },
+      "id": "node/316770594"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/316770595",
+        "amenity": "place_of_worship",
+        "historic": "church",
+        "name": "Çarıklı kilise",
+        "name:de": "Çarıklı Kirche",
+        "name:en": "Church with Sandals",
+        "name:tr": "Çarıklı Kilise",
+        "name:zh": "便鞋教堂",
+        "ref": "44",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q115446076",
+        "wikimedia_commons": "Category:Çarıklı Kilise (Sandal church)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8462644,
+          38.6388367
+        ]
+      },
+      "id": "node/316770595"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/316770597",
+        "alt_name:de": "Apfelkirche",
+        "amenity": "place_of_worship",
+        "historic": "church",
+        "name": "Elmalı Kilise",
+        "name:de": "Elmalı Kilise",
+        "name:en": "Apple Church",
+        "name:tr": "Elmalı Kilise",
+        "name:zh": "苹果教堂",
+        "ref": "8",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q115454836",
+        "wikimedia_commons": "Category:Elmalı Kilise"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8450054,
+          38.6387193
+        ]
+      },
+      "id": "node/316770597"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/316770599",
+        "alt_name": "Aziz Onuphrius Kilisesi",
+        "alt_name:de": "St.-Onuphrius-Kirche",
+        "alt_name:en": "St. Onuphrius's Church",
+        "alt_name:tr": "Aziz Onuphrius Kilisesi",
+        "amenity": "place_of_worship",
+        "historic": "church",
+        "name": "Yılanlı Kilise",
+        "name:de": "Schlangen-Kirche",
+        "name:en": "Snake Church",
+        "name:tr": "Yılanlı Kilise",
+        "name:zh": "蛇教堂",
+        "ref": "18",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q115455275",
+        "wikimedia_commons": "Category:Yılanlı Kilise (Göreme)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8452643,
+          38.6383052
+        ]
+      },
+      "id": "node/316770599"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/316770600",
+        "amenity": "place_of_worship",
+        "fee": "yes",
+        "historic": "church",
+        "name": "Karanlık kilise",
+        "name:de": "Dunkle Kirche",
+        "name:en": "Dark Church",
+        "name:tr": "Karanlık kilise",
+        "name:zh": "黑暗教堂",
+        "ref": "28",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q114383869",
+        "wikimedia_commons": "Category:Dark Church"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8462646,
+          38.6387042
+        ]
+      },
+      "id": "node/316770600"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/316770601",
+        "alt_name": "Doghaliklisse",
+        "amenity": "place_of_worship",
+        "fee": "yes",
+        "historic": "church",
+        "name": "Tokalı Kilise",
+        "name:de": "Tokalı-Kirche",
+        "name:en": "Church of the Buckle",
+        "name:ru": "Церковь с пряжкой",
+        "name:zh": "托卡里教堂",
+        "ref": "48",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q115456380",
+        "wikimedia_commons": "Category:Tokalı Kilise"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8446742,
+          38.6411002
+        ]
+      },
+      "id": "node/316770601"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/317003607",
+        "amenity": "place_of_worship",
+        "denomination": "orthodox",
+        "historic": "ruins",
+        "name": "Nikeforos Fokas Kilisesi",
+        "name:de": "Taubenschlagkirche",
+        "name:ru": "церковь Никефора Фокаса",
+        "name:zh": "施洗约翰教堂",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8399268,
+          38.6735765
+        ]
+      },
+      "id": "node/317003607"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/365168109",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5788051,
+          38.9009546
+        ]
+      },
+      "id": "way/365168109"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/467145605",
+        "alt_name": "Karahasanlı Höyük",
+        "denomination": "sunni",
+        "historic": "archaeological_site",
+        "landuse": "cemetery",
+        "man_made": "mound",
+        "name": "Incebucak Höyük",
+        "religion": "muslim",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7240238,
+          39.291929
+        ]
+      },
+      "id": "way/467145605"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/492643645",
+        "building:condition": "renovated",
+        "castle_type": "defensive",
+        "historic": "castle",
+        "name": "Nevşehir Kalesi",
+        "name:de": "Burg Nevsehir",
+        "name:en": "Nevşehir Castle",
+        "name:es": "Castillo de Nevsehir",
+        "name:tr": "Nevşehir Kalesi",
+        "tourism": "attraction",
+        "wikidata": "Q115801729",
+        "wikimedia_commons": "Category:Nevşehir Castle",
+        "wikipedia": "en:Nevşehir Castle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7130514,
+          38.61989
+        ]
+      },
+      "id": "way/492643645"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/498589457",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5878783,
+          38.5921734
+        ]
+      },
+      "id": "way/498589457"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/498598778",
+        "alt_name": "Tatların Kale",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Tatların Kalesi",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4815016,
+          38.6434337
+        ]
+      },
+      "id": "way/498598778"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/498860206",
+        "historic": "ruins",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4873439,
+          38.7084732
+        ]
+      },
+      "id": "way/498860206"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/502810287",
+        "alt_name": "Yazı Höyük",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Yazıhöyük",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6390648,
+          38.3418525
+        ]
+      },
+      "id": "way/502810287"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/542530549",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "survey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8460542,
+          38.7186557
+        ]
+      },
+      "id": "way/542530549"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/542530550",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "survey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8451853,
+          38.7180909
+        ]
+      },
+      "id": "way/542530550"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/542530551",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "survey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8455508,
+          38.7181407
+        ]
+      },
+      "id": "way/542530551"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/614491962",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "digitalGlobe Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7581293,
+          38.7084386
+        ]
+      },
+      "id": "way/614491962"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/642556619",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "survey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8454554,
+          38.7185645
+        ]
+      },
+      "id": "way/642556619"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/673501497",
+        "building": "yes",
+        "historic": "tomb",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5614248,
+          38.9408714
+        ]
+      },
+      "id": "way/673501497"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/678104361",
+        "addr:neighbourhood": "Afatevler Mahallesi",
+        "building": "yes",
+        "description": "Gore ruins covers complicated underground areas",
+        "name": "Göre Müze / Ören Yeri",
+        "opening_hours": "sunrise-sunset",
+        "tourism": "museum",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7152045,
+          38.5964105
+        ]
+      },
+      "id": "way/678104361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/707408836",
+        "historic": "castle",
+        "image": "https://photos.app.goo.gl/rY7m2cjbNjfEfN2y6",
+        "name": "Uçhisar Kalesi",
+        "name:en": "Uchisar Castle",
+        "name:ru": "Крепость Учхисар",
+        "name:uk": "Фортеця Учісар",
+        "name:zh": "乌齐希萨尔城堡",
+        "natural": "rock",
+        "rock": "fairy_chimney",
+        "url": "https://youtu.be/joIwDSXYDiw?si=kjNsgbxXM1Sa2MiD&t=854",
+        "wikidata": "Q112865630",
+        "wikimedia_commons": "Category:Uçhisar Castle",
+        "wikipedia": "tr:Uçhisar Kalesi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.805323,
+          38.6304425
+        ]
+      },
+      "id": "node/707408836"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/713275272",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.86505,
+          38.66885
+        ]
+      },
+      "id": "node/713275272"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/713276447",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.86412,
+          38.666951
+        ]
+      },
+      "id": "node/713276447"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/714983585",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.638525,
+          38.8968434
+        ]
+      },
+      "id": "way/714983585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/714983599",
+        "historic": "ruins",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6609794,
+          38.8805524
+        ]
+      },
+      "id": "way/714983599"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/714983601",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6343641,
+          38.889095
+        ]
+      },
+      "id": "way/714983601"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/714983608",
+        "building": "ruins",
+        "historic": "ruins",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6481015,
+          38.8516128
+        ]
+      },
+      "id": "way/714983608"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/715002579",
+        "building": "ruins",
+        "historic": "ruins",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5656469,
+          38.9419017
+        ]
+      },
+      "id": "way/715002579"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/727435077",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4086212,
+          38.9025134
+        ]
+      },
+      "id": "way/727435077"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/734768523",
+        "area": "yes",
+        "historic": "ruins",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8371198,
+          38.8116646
+        ]
+      },
+      "id": "way/734768523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/774447379",
+        "denomination": "orthodox",
+        "historic": "ruins",
+        "man_made": "place_of_worship",
+        "religion": "christian",
+        "source": "estimated"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9539995,
+          38.4730823
+        ]
+      },
+      "id": "node/774447379"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/800022238",
+        "alt_name": "St. John Church;Karschiklisse;Taxiarchenkirche",
+        "amenity": "place_of_worship",
+        "denomination": "orthodox",
+        "fee": "8TL",
+        "historic": "yes",
+        "name": "Karşı Kilise",
+        "name:de": "Johanneskirche",
+        "name:en": "St. Jean Church",
+        "name:tr": "Karşı Kilise",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q1297810",
+        "wikimedia_commons": "Category:St. John (Gülşehir)",
+        "wikipedia": "de:Johanneskirche (Gülşehir)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6347408,
+          38.7407136
+        ]
+      },
+      "id": "node/800022238"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/800022378",
+        "historic": "monument",
+        "name": "Topada Yazılı Kaya Anıtı",
+        "name:en": "Proto-hittite stone carving",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4802438,
+          38.4930168
+        ]
+      },
+      "id": "node/800022378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/800022437",
+        "amenity": "place_of_worship",
+        "denomination": "orthodox",
+        "historic": "yes",
+        "name": "Açıksaray",
+        "name:de": "Acik Saray Open Air Museum",
+        "opening_hours": "24/7",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q289015",
+        "wikimedia_commons": "Category:Açıksaray",
+        "wikipedia": "de:Açıksaray"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6624123,
+          38.7379843
+        ]
+      },
+      "id": "node/800022437"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/800022528",
+        "historic": "ruins",
+        "name": "Doğala Han",
+        "wikidata": "Q132752949"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5972442,
+          38.4313556
+        ]
+      },
+      "id": "node/800022528"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/805999584",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8122594,
+          38.9115089
+        ]
+      },
+      "id": "way/805999584"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/842223798",
+        "name": "Chez Galip",
+        "shop": "pottery",
+        "tourism": "museum",
+        "website": "https://www.chezgalip.com/hair-museum-avanos/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8486053,
+          38.7198416
+        ]
+      },
+      "id": "node/842223798"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/873152557",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.704751,
+          39.3334323
+        ]
+      },
+      "id": "way/873152557"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/919074426",
+        "access": "no",
+        "archaeological_site": "tumulus",
+        "historic": "archaeological_site",
+        "historic:civilization": "prehistoric",
+        "name": "KARAYAZI TİMÜLÜSÜ 1. DERECE ARKEOLOJİK SİT ALANI",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7380492,
+          38.6810499
+        ]
+      },
+      "id": "way/919074426"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/925227038",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Meryem Ana kilisesi",
+        "name:zh": "聖母瑪利亞教堂",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q131539131",
+        "wikimedia_commons": "Category:Meryem Ana Kilisesi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8447366,
+          38.6429226
+        ]
+      },
+      "id": "node/925227038"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/939100433",
+        "name": "Kaymaklı Yeraltı Şehri",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7525275,
+          38.4602241
+        ]
+      },
+      "id": "node/939100433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/967788706",
+        "building": "yes",
+        "historic": "ruins",
+        "source": "survey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8449162,
+          38.7182799
+        ]
+      },
+      "id": "way/967788706"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979743318",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Hacıbayram Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7088227,
+          38.92689
+        ]
+      },
+      "id": "way/979743318"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979744303",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Zank Höyük",
+        "source": "maxar Premium",
+        "wikidata": "Q6093345",
+        "wikipedia": "tr:Zank Höyük",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7942779,
+          38.9522483
+        ]
+      },
+      "id": "way/979744303"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979815679",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Karaçayır Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.656525,
+          39.2369276
+        ]
+      },
+      "id": "way/979815679"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979816885",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Çatal Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6861553,
+          39.2170081
+        ]
+      },
+      "id": "way/979816885"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979846661",
+        "alt_name": "Samsunhöyük;Samsun Höyük",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Hasanlar Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6700379,
+          39.165499
+        ]
+      },
+      "id": "way/979846661"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979941197",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Abdi Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7905791,
+          39.1138648
+        ]
+      },
+      "id": "way/979941197"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979945172",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Pazarcı Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7561288,
+          39.0525495
+        ]
+      },
+      "id": "way/979945172"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979945173",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7827684,
+          39.0980404
+        ]
+      },
+      "id": "way/979945173"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979951616",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Paşalı Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9837544,
+          39.0108091
+        ]
+      },
+      "id": "way/979951616"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/979956329",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Karayusuf Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0034607,
+          38.9654246
+        ]
+      },
+      "id": "way/979956329"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/980132451",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9218129,
+          39.3672703
+        ]
+      },
+      "id": "way/980132451"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/981975357",
+        "alt_name": "Ağılhöyük",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Ağıl Höyük",
+        "source": "maxar Premium",
+        "wikidata": "Q132182798",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5622909,
+          39.1007027
+        ]
+      },
+      "id": "way/981975357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/982037995",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Karaburun Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7988953,
+          38.7378415
+        ]
+      },
+      "id": "way/982037995"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/982048660",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Terlemez Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.3073308,
+          38.7354544
+        ]
+      },
+      "id": "way/982048660"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/982178190",
+        "alt_name": "Gümüşkent Kaletepe",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Kaletepe",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5518893,
+          38.8394464
+        ]
+      },
+      "id": "way/982178190"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/982181219",
+        "alt_name": "Yeşilöz Höyük;Yeşilöz Höyüğü;Cemel Höyük",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Cemel Höyüğü",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6640647,
+          38.800602
+        ]
+      },
+      "id": "way/982181219"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/982390954",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8192975,
+          39.2241542
+        ]
+      },
+      "id": "way/982390954"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/982390958",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Hacımusa Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8220817,
+          39.226286
+        ]
+      },
+      "id": "way/982390958"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/982776397",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Kül I Höyük",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8247531,
+          39.3037591
+        ]
+      },
+      "id": "way/982776397"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1011951403",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Ayvali Kilise",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8533462,
+          38.6599701
+        ]
+      },
+      "id": "node/1011951403"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1011952379",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Haçlı Kilise",
+        "name:en": "Cross Church",
+        "name:ru": "Церковь Крестоносцев",
+        "name:zh": "三十字架教堂",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8547221,
+          38.6571932
+        ]
+      },
+      "id": "node/1011952379"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1044552761",
+        "historic": "memorial",
+        "memorial": "statue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7161136,
+          38.6401513
+        ]
+      },
+      "id": "node/1044552761"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1067633108",
+        "building": "yes",
+        "historic": "monument",
+        "layer": "1",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7537695,
+          38.4610955
+        ]
+      },
+      "id": "way/1067633108"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1140623190",
+        "historic": "ruins",
+        "man_made": "underground_city",
+        "name": "Özlüce yeraltı şehri",
+        "name:en": "Özlüce Underground City",
+        "name:zh": "2⃣️Ozluce地下城",
+        "natural": "cave_entrance",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6797625,
+          38.4538093
+        ]
+      },
+      "id": "node/1140623190"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1143445897",
+        "historic": "ruins",
+        "man_made": "underground_city",
+        "name": "Mazı yeraltı şehri",
+        "name:en": "Mazi Underground City",
+        "natural": "cave_entrance",
+        "tourism": "attraction",
+        "wikidata": "Q16889342",
+        "wikipedia": "en:Mazı Underground City"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8389111,
+          38.4699909
+        ]
+      },
+      "id": "node/1143445897"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1149680014",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5744896,
+          39.0763054
+        ]
+      },
+      "id": "way/1149680014"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1149680015",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "source": "maxar Premium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5737735,
+          39.0748978
+        ]
+      },
+      "id": "way/1149680015"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1456929732",
+        "historic": "monument",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7330846,
+          38.6566789
+        ]
+      },
+      "id": "way/1456929732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1628116730",
+        "alt_name": "Belha Kilisesi",
+        "amenity": "place_of_worship",
+        "denomination": "orthodox",
+        "fee": "8TL",
+        "historic": "yes",
+        "name": "Belha Manastırı",
+        "name:en": "Belha Monastery",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q131523701"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8238063,
+          38.7906123
+        ]
+      },
+      "id": "node/1628116730"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1628116735",
+        "historic": "ruins",
+        "man_made": "underground_city",
+        "name": "Özkonak Yeralti Şehri",
+        "name:de": "Unterirdische Stadt Özkonak",
+        "name:en": "Özkonak Underground City",
+        "name:tr": "Özkonak Yeralti Şehri",
+        "natural": "cave_entrance",
+        "tourism": "attraction",
+        "wikidata": "Q307912",
+        "wikimedia_commons": "Category:Özkonak",
+        "wikipedia": "en:Özkonak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8407311,
+          38.8068654
+        ]
+      },
+      "id": "node/1628116735"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1765532506",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "big cave church",
+        "name:en": "Columned church",
+        "name:tr": "Direkli Kilise",
+        "name:zh": "石柱教堂",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.855726,
+          38.6552443
+        ]
+      },
+      "id": "node/1765532506"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1765532515",
+        "historic": "ruins",
+        "name:en": "cave beehive",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8542411,
+          38.6556686
+        ]
+      },
+      "id": "node/1765532515"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1765532526",
+        "historic": "ruins",
+        "name": "cave pigeon-loft",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8539646,
+          38.6556754
+        ]
+      },
+      "id": "node/1765532526"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1765532578",
+        "historic": "ruins",
+        "image": "https://photos.app.goo.gl/r2DVNat1v56Zx2jC8",
+        "name": "Impressive Cave Castle (climb through the back entrance, difficult)",
+        "name:en": "Castle",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.844443,
+          38.6524231
+        ]
+      },
+      "id": "node/1765532578"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1765532669",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8567835,
+          38.6551959
+        ]
+      },
+      "id": "node/1765532669"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1765532670",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name:en": "Joachim and Anna Church",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8534704,
+          38.6562176
+        ]
+      },
+      "id": "node/1765532670"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1765534385",
+        "historic": "ruins",
+        "name": "cave beehive",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8542411,
+          38.6556686
+        ]
+      },
+      "id": "node/1765534385"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1765537026",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8365877,
+          38.6370222
+        ]
+      },
+      "id": "node/1765537026"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2324618123",
+        "historic": "monument",
+        "name": "Hallaç Manastir",
+        "source": "Own visit, GPS",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8704152,
+          38.6325878
+        ]
+      },
+      "id": "node/2324618123"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2480190365",
+        "historic": "archaeological_site",
+        "name": "hitit kabartması",
+        "tourism": "artwork"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.2995238,
+          38.6577551
+        ]
+      },
+      "id": "node/2480190365"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2480190367",
+        "historic": "archaeological_site",
+        "name": "hitit yazılı kaya",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.2897928,
+          38.6492067
+        ]
+      },
+      "id": "node/2480190367"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2905381216",
+        "email": "info@guraymuze.com",
+        "fax": "+90 384 511 5756",
+        "name": "Güray Yeraltı Seramik Müzesi",
+        "name:en": "Güray Underground Ceramics Museum",
+        "phone": "+90 384 511 2374",
+        "tourism": "museum",
+        "website": "https://www.guraymuze.com/",
+        "wikidata": "Q125797576",
+        "wikipedia": "tr:Güray Müze"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8346834,
+          38.7099942
+        ]
+      },
+      "id": "node/2905381216"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3186513677",
+        "historic": "monument",
+        "name": "Atatürk Anıtı"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5613801,
+          38.9429605
+        ]
+      },
+      "id": "node/3186513677"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3188509274",
+        "name": "Atatürk Evi",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5603451,
+          38.943036
+        ]
+      },
+      "id": "node/3188509274"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3217976316",
+        "historic": "monument",
+        "name": "Hacıbektaş-ı Veli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5622939,
+          38.9419037
+        ]
+      },
+      "id": "node/3217976316"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3547599058",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Üç Haçlı Kilise",
+        "name:en": "Three Crosses Church",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8492138,
+          38.6591669
+        ]
+      },
+      "id": "node/3547599058"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3726655137",
+        "historic": "ruins",
+        "name": "Konijnenkerk"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8629664,
+          38.5883476
+        ]
+      },
+      "id": "node/3726655137"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4629775975",
+        "contact:phone": "+90 384 353 52 21",
+        "name": "Cappadocia Art & History Museum",
+        "tourism": "museum",
+        "tourism_1": "yes",
+        "website": "https://kapadokyasanattarihmuzesi.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8946971,
+          38.5836104
+        ]
+      },
+      "id": "node/4629775975"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4862240004",
+        "alt_name": "Kızlar Manastırı",
+        "amenity": "place_of_worship",
+        "historic": "church",
+        "image": "https://photos.app.goo.gl/cnXeAMSSy2ayJ1on6",
+        "name": "Rahibe Manastırı",
+        "name:en": "Nunnery",
+        "name:zh": "女修道院",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8454642,
+          38.6394746
+        ]
+      },
+      "id": "node/4862240004"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4862240005",
+        "historic": "ruins",
+        "name": "Mutfak ve Kiler",
+        "name:de": "Küche und Lagerräume",
+        "name:en": "Kitchen and storage rooms",
+        "ref": "25",
+        "tourism": "attraction",
+        "wikimedia_commons": "File:J22 209 Eingänge unter der Karanlık Kilise.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8460976,
+          38.6383978
+        ]
+      },
+      "id": "node/4862240005"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4862240006",
+        "historic": "ruins",
+        "name": "Yemekhane",
+        "name:de": "Essraum",
+        "name:en": "Refectory",
+        "ref": "25",
+        "tourism": "attraction",
+        "wikimedia_commons": "File:Cappadocia Göreme Pantry-Kitchen-Refectory 20241003 143809.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8460795,
+          38.6383706
+        ]
+      },
+      "id": "node/4862240006"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4862240007",
+        "amenity": "place_of_worship",
+        "historic": "church",
+        "name": "Aziz Katarina Şapeli",
+        "name:de": "Kapelle der heiligen Katharina",
+        "name:en": "Saint Catherina Chapel",
+        "name:tr": "Azize Catherine Şapeli",
+        "name:zh": "圣凯瑟琳礼拜堂",
+        "ref": "41",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q115445879",
+        "wikimedia_commons": "Category:Azize Catherine Şapeli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8460323,
+          38.6387608
+        ]
+      },
+      "id": "node/4862240007"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4862240008",
+        "amenity": "place_of_worship",
+        "historic": "church",
+        "name": "Aziz Basil Şapeli",
+        "name:en": "Saint Catherina Chapel",
+        "name:zh": "圣巴塞尔礼拜堂",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q131523584"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8450167,
+          38.6395574
+        ]
+      },
+      "id": "node/4862240008"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4862240009",
+        "alt_name": "Kılıçlar Kilise;Hemsbeyklisse",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Kılıçlar Kilisesi",
+        "name:en": "Swords Church",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q131526407"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8441932,
+          38.6445025
+        ]
+      },
+      "id": "node/4862240009"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4862241542",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "historic:civilization": "byzantine",
+        "name:en": "Church",
+        "name:ru": "Церковь",
+        "natural": "cliff",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8483858,
+          38.6530921
+        ]
+      },
+      "id": "node/4862241542"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4905568763",
+        "historic": "castle",
+        "name": "Kekligin Kale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8066007,
+          38.6316323
+        ]
+      },
+      "id": "node/4905568763"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4905569298",
+        "historic": "castle",
+        "name": "Tiraz Kale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8084974,
+          38.6300023
+        ]
+      },
+      "id": "node/4905569298"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5078112334",
+        "historic": "monument",
+        "name:en": "Church"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8520593,
+          38.6557833
+        ]
+      },
+      "id": "node/5078112334"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6160845696",
+        "historic": "ruins"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8406872,
+          38.6419652
+        ]
+      },
+      "id": "node/6160845696"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6161440405",
+        "description": "Former cave house. There is a relifious fresco on one side.",
+        "historic": "ruins",
+        "historic:civilization": "byzantine",
+        "natural": "cliff",
+        "religion": "christian",
+        "tourism": "attraction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8435491,
+          38.6554424
+        ]
+      },
+      "id": "node/6161440405"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6192482529",
+        "historic": "ruins",
+        "image": "https://photos.app.goo.gl/m84CGNezfpzyNnXR6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8043005,
+          38.6299025
+        ]
+      },
+      "id": "node/6192482529"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6192482574",
+        "name": "Uçhisar Kalesi",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8053716,
+          38.6299908
+        ]
+      },
+      "id": "node/6192482574"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6217287331",
+        "castle_type": "archaeological_site",
+        "historic": "castle",
+        "historic:civilization": "ancient_roman",
+        "name": "Roma Kalesi",
+        "name:en": "Roman Castle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8296205,
+          38.642458
+        ]
+      },
+      "id": "node/6217287331"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6292808985",
+        "historic": "monument",
+        "name": "Refik Başaran"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9125734,
+          38.6299414
+        ]
+      },
+      "id": "node/6292808985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7017581649",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Church",
+        "religion": "christian"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7497085,
+          38.5547165
+        ]
+      },
+      "id": "node/7017581649"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7017590749",
+        "historic": "ruins"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7508522,
+          38.5547574
+        ]
+      },
+      "id": "node/7017590749"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7017597215",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "name": "Church",
+        "religion": "christian"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7491371,
+          38.5544945
+        ]
+      },
+      "id": "node/7017597215"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7043202975",
+        "amenity": "police",
+        "historic": "yes",
+        "image": "https://photos.app.goo.gl/donLqk7FQSXngaVf7",
+        "name": "Chimney Police Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8543926,
+          38.678337
+        ]
+      },
+      "id": "node/7043202975"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9082488223",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Aptalhöyük",
+        "source": "maxar Premium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.2921227,
+          38.6877626
+        ]
+      },
+      "id": "node/9082488223"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9082517591",
+        "historic": "archaeological_site",
+        "man_made": "mound",
+        "name": "Karacaşar Höyük",
+        "source": "maxar Premium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.574672,
+          38.7009994
+        ]
+      },
+      "id": "node/9082517591"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9087648862",
+        "fixme": "Karasenir höyük ? mound ?",
+        "historic": "archaeological_site",
+        "man_made": "mound"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8654985,
+          39.3003407
+        ]
+      },
+      "id": "node/9087648862"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9252564322",
+        "historic": "monument",
+        "name": "Pashaba Valeri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8533139,
+          38.6792976
+        ]
+      },
+      "id": "node/9252564322"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9252634517",
+        "historic": "monument",
+        "name": "Simon Church"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8562571,
+          38.6766072
+        ]
+      },
+      "id": "node/9252634517"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9392821183",
+        "charge": "5 TL",
+        "fee": "yes",
+        "name": "Home museum (cave house)",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9108929,
+          38.6317581
+        ]
+      },
+      "id": "node/9392821183"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9798190489",
+        "historic": "monument",
+        "name": "Cave House (entrance up through bottom chimney)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8532144,
+          38.6601861
+        ]
+      },
+      "id": "node/9798190489"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9798201935",
+        "historic": "monument",
+        "name": "Cave House"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8228885,
+          38.6414905
+        ]
+      },
+      "id": "node/9798201935"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9798207118",
+        "historic": "tomb",
+        "name": "Cave Tomb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8541492,
+          38.6596187
+        ]
+      },
+      "id": "node/9798207118"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9923828220",
+        "amenity": "place_of_worship",
+        "historic": "ruins",
+        "religion": "christian"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8520466,
+          38.6564054
+        ]
+      },
+      "id": "node/9923828220"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10594226544",
+        "historic": "memorial",
+        "name": "M. Kemal ATATÜRK"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7423284,
+          38.6748368
+        ]
+      },
+      "id": "node/10594226544"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10604191023",
+        "historic": "memorial",
+        "memorial": "bust",
+        "name": "Kara Vezir Seyid Mehmet Paşa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7429232,
+          38.6733353
+        ]
+      },
+      "id": "node/10604191023"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10604191024",
+        "historic": "memorial",
+        "memorial": "bust",
+        "name": "Nevşehirli Damat İbrahim Paşa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7422909,
+          38.6733866
+        ]
+      },
+      "id": "node/10604191024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10604191025",
+        "historic": "memorial",
+        "memorial": "bust",
+        "name": "Hakkı Atamulu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7422756,
+          38.6734803
+        ]
+      },
+      "id": "node/10604191025"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10604191026",
+        "historic": "memorial",
+        "memorial": "bust",
+        "name": "Ürgüplü Refik Başaran"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7429073,
+          38.6734403
+        ]
+      },
+      "id": "node/10604191026"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10610615141",
+        "historic": "memorial",
+        "memorial": "bust",
+        "name": "Neşet Günal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7421655,
+          38.6740376
+        ]
+      },
+      "id": "node/10610615141"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10610615142",
+        "historic": "memorial",
+        "memorial": "bust",
+        "name": "HACI BEKTAŞ VELİ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7426639,
+          38.6730812
+        ]
+      },
+      "id": "node/10610615142"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10880582593",
+        "name": "Coffee museum Cappadocia",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9051463,
+          38.5942229
+        ]
+      },
+      "id": "node/10880582593"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10880627983",
+        "historic": "ruins",
+        "name": "Cave"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8449743,
+          38.6524259
+        ]
+      },
+      "id": "node/10880627983"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11029740161",
+        "historic": "tomb",
+        "name": "Hasan Dede Türbesi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4147319,
+          38.5930886
+        ]
+      },
+      "id": "node/11029740161"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11230650399",
+        "historic": "ruins",
+        "name": "Column Church"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8647973,
+          38.6680011
+        ]
+      },
+      "id": "node/11230650399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11285946844",
+        "historic": "ruins",
+        "name": "Tarihi Kilise",
+        "name:en": "St. Timios Church",
+        "ruins": "church"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8730138,
+          38.5731713
+        ]
+      },
+      "id": "node/11285946844"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11601268071",
+        "historic": "monument",
+        "name:en": "cave house"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8558597,
+          38.6607733
+        ]
+      },
+      "id": "node/11601268071"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11822110954",
+        "historic": "vehicle",
+        "image": "https://photos.app.goo.gl/HLGGUC5Q3rPCUvyr6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.864863,
+          38.6207611
+        ]
+      },
+      "id": "node/11822110954"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11822110956",
+        "historic": "memorial",
+        "image": "https://photos.app.goo.gl/LKmd6hmv1he3bDoMA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8654568,
+          38.6221641
+        ]
+      },
+      "id": "node/11822110956"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11823005373",
+        "historic": "ruins",
+        "image": "https://photos.app.goo.gl/hZp4cEZLtyTWWooX9"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.806331,
+          38.6229118
+        ]
+      },
+      "id": "node/11823005373"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13046162041",
+        "amenity": "place_of_worship",
+        "historic": "church",
+        "name": "Pantokrator Kilisesi",
+        "name:de": "Pantokrator-Kirche",
+        "name:en": "Pantocrator Church",
+        "name:tr": "Pantokrator Kilisesi",
+        "ref": "22",
+        "religion": "christian",
+        "tourism": "attraction",
+        "wikidata": "Q115456669",
+        "wikimedia_commons": "Category:Pantokrator Kilisesi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8453726,
+          38.6382477
+        ]
+      },
+      "id": "node/13046162041"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13048347060",
+        "historic": "ruins",
+        "name": "Çarıklı Kilise Yemekhanesi",
+        "name:de": "Speisesaal der Kirche von Çarıklı",
+        "name:en": "Refectory of the church of the Sandals",
+        "name:tr": "Çarıklı Kilise Yemekhanesi",
+        "ref": "43",
+        "tourism": "attraction",
+        "wikimedia_commons": "File:Çarıklı Kilise yemekhanesi.JPG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8462808,
+          38.6388568
+        ]
+      },
+      "id": "node/13048347060"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13077952474",
+        "name": "Doğa Tarihi Müzesi",
+        "name:en": "Natural History Museum",
+        "name:tr": "Doğa Tarihi Müzesi",
+        "tourism": "museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.714122,
+          38.6200082
+        ]
+      },
+      "id": "node/13077952474"
+    }
+  ]
+}

@@ -1,32 +1,2154 @@
-import { GeoJSONData } from './types';
 
-const rawData = {"head":{"vars":["item","itemLabel","typeLabel","heritageLabel","adminLabel","coords","image","kulturenvanteriID","culturePortalID"]},"results":{"bindings":[{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1013468"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.750443 38.465686)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Kaymakl%C4%B1%20Underground%20City%20large%20room.JPG"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Unterirdische Stadt (Kaymaklı)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Belde"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3338"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1013468"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.750443 38.465686)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Kaymakl%C4%B1%20Underground%20City%20large%20room.JPG"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Unterirdische Stadt (Kaymaklı)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3338"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1013468"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.750443 38.465686)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Kaymakl%C4%B1%20Underground%20City%20large%20room.JPG"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Unterirdische Stadt (Kaymaklı)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Untergrundwohnung"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3338"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1328958"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.735034 38.373403)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Derinkuyu%20Underground%20City%209831%20Nevit%20Enhancer.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Unterirdische Stadt"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3335"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1328958"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.735034 38.373403)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Derinkuyu%20Underground%20City%209831%20Nevit%20Enhancer.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Unterirdische Stadt"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Untergrundstadt"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3335"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1328958"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.735034 38.373403)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Derinkuyu%20Underground%20City%209831%20Nevit%20Enhancer.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Unterirdische Stadt"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"3335"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1328958"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.735034 38.373403)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Derinkuyu%20Underground%20City%209831%20Nevit%20Enhancer.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Unterirdische Stadt"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Untergrundstadt"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"3335"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q25378109"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.480277777 38.493083333)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Felsinschrift von Topada"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Inschrift"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"},"kulturenvanteriID":{"type":"literal","value":"65883"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q25378109"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.480277777 38.493083333)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Felsinschrift von Topada"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Denkmal"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"},"kulturenvanteriID":{"type":"literal","value":"65883"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q28221127"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.725 38.628055555)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20museum%20in%202019%201556.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir Museum"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3922"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q28221127"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.725 38.628055555)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20museum%20in%202019%201556.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir Museum"},"typeLabel":{"xml:lang":"de","type":"literal","value":"archäologisches Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3922"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q64705367"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.85 38.66667)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Vallegoreme2.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Göreme National Park and the Rock Sites of Cappadocia"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Gruppe von Schutzgebieten in Natur- oder Landschaftsschutz"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"UNESCO-Welterbe"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q64705367"},"coords":{"datatype":"http://www.opengis.net/ont/gesparql#wktLiteral","type":"literal","value":"Point(34.85 38.66667)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Vallegoreme2.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Göreme National Park and the Rock Sites of Cappadocia"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Gruppe von Schutzgebieten in Natur- oder Landschaftsschutz"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"UNESCO-Welterbe"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109530744"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.46487 38.62947)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Tatlarin%2001.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Tatlarin Underground City"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3344"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109530744"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.46487 38.62947)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Tatlarin%2001.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Tatlarin Underground City"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3344"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109530744"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.46487 38.62947)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Tatlarin%2001.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Tatlarin Underground City"},"typeLabel":{"xml:lang":"de","type":"literal","value":"historische Stadt"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3344"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q112865630"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.805555555 38.630333333)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20U%C3%A7%20hisar%20kalesi.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Burgberg Uçhisar"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Festung"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Kappadokien"},"kulturenvanteriID":{"type":"literal","value":"3055"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q112865630"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.805555555 38.630333333)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20U%C3%A7%20hisar%20kalesi.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Burgberg Uçhisar"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Festung"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3055"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q116759069"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.714611111 38.622111111)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20Kur%C5%9Funlu%20Mosque%20in%202011%209870.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kurşunlu Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"10820"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q116759069"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.714611111 38.622111111)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20Kur%C5%9Funlu%20Mosque%20in%202011%209870.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kurşunlu Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Külliye"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"10820"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q116759069"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.714611111 38.622111111)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20Kur%C5%9Funlu%20Mosque%20in%202011%209870.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kurşunlu Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"historisches Gebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"10820"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q118188189"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.712861111 38.619722222)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir Castle"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Festung"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"3254"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q118947587"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.734666666 38.376333333)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Derinkuyu Cumhuriyet Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"274845"},"culturePortalID":{"type":"literal","value":"turkiye/nevsehir/kulturenvanteri/cumhuryetyen-cam"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q118947587"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.734666666 38.376333333)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Derinkuyu Cumhuriyet Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"274845"},"culturePortalID":{"type":"literal","value":"turkiye/nevsehir/kulturenvanteri/cumhuryetyen-cam"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q118947587"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.734666666 38.376333333)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Derinkuyu Cumhuriyet Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"274845"},"culturePortalID":{"type":"literal","value":"turkiye/nevsehir/kulturenvanteri/cumhuryetyen-cam"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q118947587"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.734666666 38.376333333)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Derinkuyu Cumhuriyet Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"274845"},"culturePortalID":{"type":"literal","value":"turkiye/nevsehir/kulturenvanteri/cumhuryetyen-cam"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109519139"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.839127063 38.6386709)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"El Nazar Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"3307"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109519139"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.839127063 38.6386709)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"El Nazar Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"3307"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109519139"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.839127063 38.6386709)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"El Nazar Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"3307"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109519139"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.839127063 38.6386709)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"El Nazar Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"historische Stadt"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"3307"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131526402"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.61553812 38.747929248)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"St Demetrius Church of Gülşehir"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"},"kulturenvanteriID":{"type":"literal","value":"3293"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131539130"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.634850025 38.740958784)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Aziz Jean Kilisesi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"},"kulturenvanteriID":{"type":"literal","value":"3305"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131738430"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6169392 38.7415023)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Sadrazam Silahtar Kara Vezir Baths"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Hammām"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"},"kulturenvanteriID":{"type":"literal","value":"2435"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132182797"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.2901878 38.6137352)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Topakhöyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"},"kulturenvanteriID":{"type":"literal","value":"148438"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q6093345"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7943 38.9522)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Zank Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"176223"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q6093345"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7943 38.9522)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Zank Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Mound"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"176223"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q98091558"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8473 38.7191)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"mosque in Avanos, Nevşehir"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"10451"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q98091558"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8473 38.7191)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"mosque in Avanos, Nevşehir"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"10451"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109520382"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.559956 38.941734)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacıbektaş Arkeoloji and Etnografya Museum"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"3943"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109520387"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.560753 38.942855)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacıbektaş Atatürk House Museum"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"3945"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130640522"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7675 38.717805555)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Çeç Tumulus"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Hügelgrab"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"39172"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718376"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8335266 38.8033295)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Özkonak Ağa Spring Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"199874"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718383"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5583954 38.945591)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Tip Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200089"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718384"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5648003 38.9407997)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Feyzullah Baba Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200102"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718386"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5784988 38.9383011)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Zamzam Spring Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200118"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718387"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5689316 38.9594421)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Grandfather's Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200126"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718388"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5641174 38.9462357)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Savat Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200143"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718389"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5530777 38.9745598)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Baba Spring Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200146"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718390"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5603523 38.9456367)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hodja Fiqh Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200152"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718394"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5624084 38.9423065)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Üçler Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200158"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718395"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5623131 38.9424858)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Lion Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"200161"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131391285"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5613976 38.9408722)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Bektash Efendi Tomb"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Türbe"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"11158"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131523701"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8242552 38.7907196)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Monastery of Belha"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kloster"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"3396"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131526409"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.858385324 38.654231401)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Ayvalı Kilise"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"3313"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131539160"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.842948 38.667169)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Vaftizci Yahya Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"9168"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134023"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5597687 38.9450684)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Cuma Mosque (Hacıbektaş)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"27852"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132182649"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.826767444 39.007279436)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Topaklı Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"3345"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132182735"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.660965 38.880455)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Abdal Castle"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"66009"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132182737"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.561405 38.946934)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Suluca Karahöyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"66020"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132182793"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6967316 38.8829994)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Acıçeşme Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"148365"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132182795"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6974182 38.8793602)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Acıtepe Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"148379"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132682066"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.562643 38.942114)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Bektaş-ı Veli Museum"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"3944"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q133236751"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.454075 38.879597)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karaburna Castle"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Festung"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"65877"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q133236751"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.454075 38.879597)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karaburna Castle"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Inschrift"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"65877"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134732058"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5625954 38.942585)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Hacı Bektâş-ı Velî Dergâhı Aşevi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Imaret"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"282665"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134734751"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5627518 38.9428215)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Hacı Bektaş-ı Velî Dergâhı Haziresi"},"typeLabel":{"xml:lang":"en","type":"literal","value":"hazire"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"kulturenvanteriID":{"type":"literal","value":"282661"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960317"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8473 38.80592)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Fesleğen Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"},"kulturenvanteriID":{"type":"literal","value":"312340"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q19613323"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.844527777 38.666944444)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%87avu%C5%9Fin%20Eski%20Kaya%20Cami.jpg"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Çavuşin Köyü Eski Kaya Cami"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Çavuşin"},"kulturenvanteriID":{"type":"literal","value":"248525"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q114383869"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.846267 38.6387)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Dark%20Church%20%28Karanl%C4%B1k%20Kilise%29%20in%20Cappadocia%2C%20G%C3%B6reme.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"dunkle Kirche"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchenruine"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q114383869"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.846267 38.6387)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Dark%20Church%20%28Karanl%C4%B1k%20Kilise%29%20in%20Cappadocia%2C%20G%C3%B6reme.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"dunkle Kirche"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Felsenkirche"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q115445879"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8460344 38.6387425)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/J22%20230%20Agia%20Katharina.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Azize Catherine Şapeli"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kapelle"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"9165"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q115445879"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8460344 38.6387425)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/J22%20230%20Agia%20Katharina.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Azize Catherine Şapeli"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Felsenkirche"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"9165"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131523584"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.845178127 38.638905548)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Aziz Basil Şapeli"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kapelle"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"3303"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131523695"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.845516085 38.639492163)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Rahibeler Manastırı"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kloster"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"3304"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131526407"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.845202267 38.642039696)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kılıçlar Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"3310"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131526846"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8248558 38.6449547)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Göreme Bezirhane Kilisesi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"14630"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131539131"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.845076203 38.641471956)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Elmal%C4%B1%20kilisesi.jpg"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Meryem Ana Kilisesi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Göreme"},"kulturenvanteriID":{"type":"literal","value":"3311"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134584"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6781082 38.4530106)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Özlüce Village Old Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"274830"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134584"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6781082 38.4530106)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Özlüce Village Old Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"274830"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134584"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6781082 38.4530106)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Özlüce Village Old Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kloster"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"274830"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132752949"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5972562 38.4313035)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Doğala Han"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Karawanserei"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"2613"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132752952"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.822986 38.414535)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Dolay Han"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Karawanserei"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"2605"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960345"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8154454 38.4199091)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Manayı Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"305864"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960375"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8220817 39.226286)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacımusa Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"},"kulturenvanteriID":{"type":"literal","value":"305837"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960377"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8247531 39.3037591)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Kül I Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"},"kulturenvanteriID":{"type":"literal","value":"305839"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960472"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.656525 39.2369276)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karaçayır Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"},"kulturenvanteriID":{"type":"literal","value":"305711"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960473"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6861553 39.2170081)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Çatal Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"},"kulturenvanteriID":{"type":"literal","value":"305712"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960474"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6700379 39.165499)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hasanlar Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"},"kulturenvanteriID":{"type":"literal","value":"305713"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960475"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7905791 39.1138648)"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Abdi Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"},"kulturenvanteriID":{"type":"literal","value":"305714"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960527"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6390648 38.3418525)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Yazıhöyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"305567"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1377935"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.896897222 38.584194444)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadoce-Mustafapasa.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Mustafapaşa"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Belde"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"46711"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q1377935"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.896897222 38.584194444)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadoce-Mustafapasa.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Mustafapaşa"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Köy"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"46711"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q21528347"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.910361111 38.630166666)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%9Crg%C3%BCp%20Saat%20Kulesi.JPG"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Ürgüp Clock Tower"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Uhrturm"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"15711"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q25472378"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.73375 38.372194444)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Catholic%20Church%20Derinkuyu%20Turkey%20-%20panoramio%20-%20Chanilim714%20%281%29.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Saint Theodore Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"3333"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q25472378"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.73375 38.372194444)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Catholic%20Church%20Derinkuyu%20Turkey%20-%20panoramio%20-%20Chanilim714%20%281%29.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Saint Theodore Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Derinkuyu"},"kulturenvanteriID":{"type":"literal","value":"3333"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q56245523"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9426537 38.5144196)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Keslik.JPG"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Keşlik Monastery"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kloster"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"11763"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q64705498"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.99881 38.59472)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Region"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"320699"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q64705500"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.99822 38.57361)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karlık"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Region"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"320704"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q64705501"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(35.00364 38.55439)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Yeşilöz"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Region"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"320707"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q95640040"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.864329046 38.619935365)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadocia%20March%202006.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Castle of Ortahisar"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Burg"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"302912"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q95640040"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.864329046 38.619935365)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadocia%20March%202006.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Castle of Ortahisar"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Festung"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"302912"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q95640040"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.864329046 38.619935365)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadocia%20March%202006.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Castle of Ortahisar"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Burg"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ortahisar"},"kulturenvanteriID":{"type":"literal","value":"302912"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q95640040"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.864329046 38.619935365)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadocia%20March%202006.jpg"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Castle of Ortahisar"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Festung"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ortahisar"},"kulturenvanteriID":{"type":"literal","value":"302912"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q98091589"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.910194444 38.632638888)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karamanoğlu Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"10431"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q109530966"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9128 38.6321)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Ürgüp Museum"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"3921"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q124519571"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9661 38.4641)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Capadoccia%20Jul%202023%2023%2000%2016%20105000.jpeg"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Sobesos Antik Kenti"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"2091"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718352"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9064064 38.6263733)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199888"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718353"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.905426 38.6337433)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Yunak Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199750"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718355"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9076576 38.632)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Pancarci Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199756"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718356"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9090691 38.6316376)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Madrasa Yahya Efendi Mosque Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199765"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718357"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9078293 38.6328468)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Musa Efendi Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199768"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718377"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9112434 38.6336479)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"School Front Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199880"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718378"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9090996 38.6282349)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Columned Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199883"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718379"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9100113 38.6288071)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Cingilli Street Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199894"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718380"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9106598 38.6291199)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Cingilli Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199897"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718391"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9094124 38.6326523)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kaya Hotel Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"200155"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131391582"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9471512 38.4920616)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hızır Bey Open Tomb"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Türbe"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"143450"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131523696"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.94239211 38.514392687)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Monastery of the Holy Archangel"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kloster"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"3315"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131523702"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.895396 38.576889)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Monastery of St Nicholas"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kloster"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"3402"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131526541"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.897947 38.59)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"St Basil Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"9172"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131539161"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.897227 38.583441)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Eleni Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"9171"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131739221"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.909668 38.6299438)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Ürgüp Baths"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Hammām"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"267025"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131741222"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9498367 38.4953156)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Taşkın Paşa Medresesi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Madrasa"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"3784"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131741524"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9091606 38.6316681)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Medreseli Yahya Efendi Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Madrasa"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199762"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131836655"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9066391 38.6326523)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Burhankale Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"199753"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131903106"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9076195 38.6328964)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Zafer Primary School (Ürgüp)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Schule"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"255172"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134524"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9469719 38.491909)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Damseköy Taşkın Pasha Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"143447"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134524"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9469719 38.491909)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Damseköy Taşkın Pasha Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Külliye"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"143447"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q133236273"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.87018089 38.621701582)"},"itemLabel":{"xml:lang":"en","type":"literal","value":"İshak Castle"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Festung"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"kulturenvanteriID":{"type":"literal","value":"303401"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960772"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6735049 39.2383365)"},"kulturenvanteriID":{"type":"literal","value":"305027"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Küllüce Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q137637960"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.898048457 38.584428565)"},"kulturenvanteriID":{"type":"literal","value":"424920"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Mustafapaşa Cami-i Kebir"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Mustafapaşa"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q137637960"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.898048457 38.584428565)"},"kulturenvanteriID":{"type":"literal","value":"424920"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Mustafapaşa Cami-i Kebir"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Gebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Mustafapaşa"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960476"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7561288 39.0525495)"},"kulturenvanteriID":{"type":"literal","value":"305715"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Pazarcı Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960477"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9837544 39.0108091)"},"kulturenvanteriID":{"type":"literal","value":"305717"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Paşalı Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960478"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(35.0034607 38.9654246)"},"kulturenvanteriID":{"type":"literal","value":"305719"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karayusuf Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960522"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.638525 38.8968434)"},"kulturenvanteriID":{"type":"literal","value":"305603"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Yalnızmezar"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960633"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9994918 38.7851707)"},"kulturenvanteriID":{"type":"literal","value":"305336"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Akkaya Hill"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960770"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6325474 39.0125331)"},"kulturenvanteriID":{"type":"literal","value":"305025"},"itemLabel":{"xml:lang":"en","type":"literal","value":"İlicek Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q135004160"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8354988 38.8126526)"},"kulturenvanteriID":{"type":"literal","value":"200149"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Aynıgüle Çeşmesi ve Çamaşırhanesi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q135582367"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.562233 38.942997)"},"kulturenvanteriID":{"type":"literal","value":"282659"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Güvenç Abdal Türbesi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Türbe"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q135959713"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.84042135 38.79376662)"},"kulturenvanteriID":{"type":"literal","value":"215532"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Mavsut Mound"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Hügelgrab"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q135959715"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.8541794 38.7813148)"},"kulturenvanteriID":{"type":"literal","value":"119354"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Avanos Tumulus"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Hügelgrab"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960373"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6640647 38.800602)"},"kulturenvanteriID":{"type":"literal","value":"305831"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Cemel Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960383"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.3073308 38.7354544)"},"kulturenvanteriID":{"type":"literal","value":"305828"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Terlemez Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960523"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4086212 38.9025134)"},"kulturenvanteriID":{"type":"literal","value":"305605"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kar Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960628"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4100902 38.91009)"},"kulturenvanteriID":{"type":"literal","value":"305341"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Gavurhöyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960778"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.6997174 38.7669725)"},"kulturenvanteriID":{"type":"literal","value":"305014"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kızılözün Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960877"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.2921227 38.6877626)"},"kulturenvanteriID":{"type":"literal","value":"304758"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Aptalhöyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960879"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.574672 38.7009994)"},"kulturenvanteriID":{"type":"literal","value":"304759"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karacaşar Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960382"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7988953 38.7378415)"},"kulturenvanteriID":{"type":"literal","value":"305827"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karaburun Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Avanos"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960468"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7088227 38.92689)"},"kulturenvanteriID":{"type":"literal","value":"305704"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacıbayram Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718361"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.715313 38.6217842)"},"kulturenvanteriID":{"type":"literal","value":"199796"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Damat İbrahim Pasha Mosque Fountain 2"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718363"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7093849 38.6222496)"},"kulturenvanteriID":{"type":"literal","value":"199799"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Orduoğlu Fountain 2"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718364"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7084579 38.6215515)"},"kulturenvanteriID":{"type":"literal","value":"199804"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kütüklü Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718365"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7147102 38.6412277)"},"kulturenvanteriID":{"type":"literal","value":"199807"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Osman Ağa Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718366"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7101288 38.620945)"},"kulturenvanteriID":{"type":"literal","value":"199834"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Seferci Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718367"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7088089 38.6205444)"},"kulturenvanteriID":{"type":"literal","value":"199841"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Şekerci Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718368"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7107353 38.6217308)"},"kulturenvanteriID":{"type":"literal","value":"199844"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Wooden Mosque Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718369"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7130966 38.6215858)"},"kulturenvanteriID":{"type":"literal","value":"199851"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Morukçu Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718370"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7133293 38.6110878)"},"kulturenvanteriID":{"type":"literal","value":"199854"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kurtlu Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718371"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7112846 38.6242104)"},"kulturenvanteriID":{"type":"literal","value":"199857"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Gazi Mustafa Kemal Pasha Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718372"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7113724 38.6243019)"},"kulturenvanteriID":{"type":"literal","value":"199862"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Türkiye Independence Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718373"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5486641 38.5164566)"},"kulturenvanteriID":{"type":"literal","value":"199865"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karapınar Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718374"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4846001 38.6348)"},"kulturenvanteriID":{"type":"literal","value":"199868"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Bosphorus Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718375"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4701157 38.6365204)"},"kulturenvanteriID":{"type":"literal","value":"199871"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Orta Mahalle Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718382"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7154617 38.6181984)"},"kulturenvanteriID":{"type":"literal","value":"199900"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hafız İnce Karar Street Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131526404"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.817368984 38.618094347)"},"kulturenvanteriID":{"type":"literal","value":"3308"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Sarnıç Kilise"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131526405"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.817111492 38.616384257)"},"kulturenvanteriID":{"type":"literal","value":"3309"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Karabulut Church"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131539204"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7140503 38.6143036)"},"kulturenvanteriID":{"type":"literal","value":"143181"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Meryem Ana Kilisesi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Kirchengebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131738431"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.713887 38.622756)"},"kulturenvanteriID":{"type":"literal","value":"2436"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Baths of Damat İbrahim Paşa"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Hammām"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131739034"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7119942 38.6105919)"},"kulturenvanteriID":{"type":"literal","value":"161116"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Rum Hamamı"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Hammām"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131741359"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7142677 38.6220894)"},"kulturenvanteriID":{"type":"literal","value":"10821"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Damat İbrahim Paşa Medresesi"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Madrasa"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q131902910"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7159271 38.6277924)"},"kulturenvanteriID":{"type":"literal","value":"156643"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Nevşehir High School"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Schule"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132088912"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7115707 38.6229897)"},"kulturenvanteriID":{"type":"literal","value":"143186"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Atabey Mansion (Nevşehir)"},"typeLabel":{"xml:lang":"en","type":"literal","value":"konak"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132088912"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7115707 38.6229897)"},"kulturenvanteriID":{"type":"literal","value":"143186"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Atabey Mansion (Nevşehir)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"historisches Gebäude"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134181"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7152748 38.6201057)"},"kulturenvanteriID":{"type":"literal","value":"100051"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kara Mosque (Nevşehir)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134182"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7106171 38.6215973)"},"kulturenvanteriID":{"type":"literal","value":"100080"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Tahta Mosque, Nevşehir"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132134183"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7141151 38.6200638)"},"kulturenvanteriID":{"type":"literal","value":"100146"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kaya Mosque (Nevşehir)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132530298"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7145462 38.6217537)"},"kulturenvanteriID":{"type":"literal","value":"10823"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Damat İbrahim Paşa School"},"typeLabel":{"xml:lang":"en","type":"literal","value":"elementary school in the Ottoman Empire/rüştiye"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132530298"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7145462 38.6217537)"},"kulturenvanteriID":{"type":"literal","value":"10823"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Damat İbrahim Paşa School"},"typeLabel":{"xml:lang":"en","type":"literal","value":"sibyan maktab"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q132752892"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.71492 38.6223831)"},"kulturenvanteriID":{"type":"literal","value":"10824"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Damat İbrahim Paşa Caravanserai (Nevşehir)"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Karawanserei"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960537"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4815016 38.6434337)"},"kulturenvanteriID":{"type":"literal","value":"305555"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Tatların Kalesi Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960779"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4796646 38.480291)"},"kulturenvanteriID":{"type":"literal","value":"305019"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Ağıllı Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q135960861"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(35.027788347 38.512052868)"},"kulturenvanteriID":{"type":"literal","value":"215529"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hodul Mountain Tumulus"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Hügelgrab"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q137628933"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.894210555 38.583308888)"},"kulturenvanteriID":{"type":"literal","value":"424922"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Şeyh Ali Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q137628933"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.894210555 38.583308888)"},"kulturenvanteriID":{"type":"literal","value":"424922"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Şeyh Ali Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q137628933"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.894210555 38.583308888)"},"kulturenvanteriID":{"type":"literal","value":"424922"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Şeyh Ali Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Mustafapaşa"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960372"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5518893 38.8394464)"},"kulturenvanteriID":{"type":"literal","value":"305830"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kaletepe Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Gülşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127634922"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4846382 38.6347733)"},"kulturenvanteriID":{"type":"literal","value":"206605"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Boğazağzı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127634922"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4846382 38.6347733)"},"kulturenvanteriID":{"type":"literal","value":"206605"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Boğazağzı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960774"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9187845 38.7711977)"},"kulturenvanteriID":{"type":"literal","value":"305031"},"itemLabel":{"xml:lang":"en","type":"literal","value":"İdisdağı Hill"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q135582370"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.947113 38.4918747)"},"kulturenvanteriID":{"type":"literal","value":"143453"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Taşkın Paşa Kümbeti"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Türbe"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q135582370"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.947113 38.4918747)"},"kulturenvanteriID":{"type":"literal","value":"143453"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Taşkın Paşa Kümbeti"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Gonbad"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127634922"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4846382 38.6347733)"},"kulturenvanteriID":{"type":"literal","value":"206605"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Boğazağzı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127643321"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5624199 38.9426651)"},"kulturenvanteriID":{"type":"literal","value":"10882"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Bektaş-ı Veli Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127643321"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5624199 38.9426651)"},"kulturenvanteriID":{"type":"literal","value":"10882"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Bektaş-ı Veli Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127643321"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5624199 38.9426651)"},"kulturenvanteriID":{"type":"literal","value":"10882"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Bektaş-ı Veli Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127643321"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.5624199 38.9426651)"},"kulturenvanteriID":{"type":"literal","value":"10882"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Bektaş-ı Veli Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127643434"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7118301 38.6229057)"},"kulturenvanteriID":{"type":"literal","value":"123886"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Şeyh Efendi Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127643434"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7118301 38.6229057)"},"kulturenvanteriID":{"type":"literal","value":"123886"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Şeyh Efendi Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127643434"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7118301 38.6229057)"},"kulturenvanteriID":{"type":"literal","value":"123886"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Şeyh Efendi Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127643434"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7118301 38.6229057)"},"kulturenvanteriID":{"type":"literal","value":"123886"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Hacı Şeyh Efendi Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127786936"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7541542 38.4597549)"},"kulturenvanteriID":{"type":"literal","value":"190027"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kaymaklı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127786936"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7541542 38.4597549)"},"kulturenvanteriID":{"type":"literal","value":"190027"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kaymaklı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127786936"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7541542 38.4597549)"},"kulturenvanteriID":{"type":"literal","value":"190027"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kaymaklı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127786936"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7541542 38.4597549)"},"kulturenvanteriID":{"type":"literal","value":"190027"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Kaymaklı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127787933"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7091484 38.6196632)"},"kulturenvanteriID":{"type":"literal","value":"107082"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Orta Bekdik Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127787933"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7091484 38.6196632)"},"kulturenvanteriID":{"type":"literal","value":"107082"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Orta Bekdik Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127787933"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7091484 38.6196632)"},"kulturenvanteriID":{"type":"literal","value":"107082"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Orta Bekdik Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127787933"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7091484 38.6196632)"},"kulturenvanteriID":{"type":"literal","value":"107082"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Orta Bekdik Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127787956"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9077606 38.6318321)"},"kulturenvanteriID":{"type":"literal","value":"199759"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Pancarcı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127787956"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9077606 38.6318321)"},"kulturenvanteriID":{"type":"literal","value":"199759"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Pancarcı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127787956"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9077606 38.6318321)"},"kulturenvanteriID":{"type":"literal","value":"199759"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Pancarcı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127787956"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9077606 38.6318321)"},"kulturenvanteriID":{"type":"literal","value":"199759"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Pancarcı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127788011"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9113159 38.6331444)"},"kulturenvanteriID":{"type":"literal","value":"199877"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Sagir Masjid Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%9Crg%C3%BCp%20Sagir%20Mescid%20Camii%200776.jpg"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127788011"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9113159 38.6331444)"},"kulturenvanteriID":{"type":"literal","value":"199877"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Sagir Masjid Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%9Crg%C3%BCp%20Sagir%20Mescid%20Camii%200776.jpg"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127788011"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9113159 38.6331444)"},"kulturenvanteriID":{"type":"literal","value":"199877"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Sagir Masjid Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%9Crg%C3%BCp%20Sagir%20Mescid%20Camii%200776.jpg"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127788011"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9113159 38.6331444)"},"kulturenvanteriID":{"type":"literal","value":"199877"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Sagir Masjid Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%9Crg%C3%BCp%20Sagir%20Mescid%20Camii%200776.jpg"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127788372"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9056473 38.6335564)"},"kulturenvanteriID":{"type":"literal","value":"199746"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Yunak Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127788372"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9056473 38.6335564)"},"kulturenvanteriID":{"type":"literal","value":"199746"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Yunak Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127788372"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9056473 38.6335564)"},"kulturenvanteriID":{"type":"literal","value":"199746"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Yunak Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127788372"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.9056473 38.6335564)"},"kulturenvanteriID":{"type":"literal","value":"199746"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Yunak Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Bauwerk"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718358"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7110443 38.6256218)"},"kulturenvanteriID":{"type":"literal","value":"199771"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Tavukçu Mosque Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718359"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7092056 38.6197281)"},"kulturenvanteriID":{"type":"literal","value":"199784"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Bekdik Fountain"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q130718360"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7147217 38.6216202)"},"kulturenvanteriID":{"type":"literal","value":"199792"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Damat İbrahim Pasha Mosque Fountain 1"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Zierbrunnen"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q127634922"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.4846382 38.6347733)"},"kulturenvanteriID":{"type":"literal","value":"206605"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Boğazağzı Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Acıgöl"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960771"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7076136 39.2493172)"},"kulturenvanteriID":{"type":"literal","value":"305026"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Gökçe Höyüğü"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134590936"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.864593501 38.620638667)"},"kulturenvanteriID":{"type":"literal","value":"303643"},"itemLabel":{"xml:lang":"en","type":"literal","value":"Abdioğlu Mosque"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Moschee"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Ürgüp"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134732082"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7143326 38.6218948)"},"kulturenvanteriID":{"type":"literal","value":"10822"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Damat İbrahim Paşa İmareti, Nevşehir"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Imaret"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q134960546"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.7240238 39.291929)"},"kulturenvanteriID":{"type":"literal","value":"305536"},"itemLabel":{"xml:lang":"tr","type":"literal","value":"Incebucak Höyük"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Tell"},"adminLabel":{"xml:lang":"en","type":"literal","value":"Kozaklı district"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q620593"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.863055555 38.652777777)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/00%203598%20Felsformation%20aus%20vulkanischer%20Ascheablagerung%20-%20Felswohnungen.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Nationalpark Göreme"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Park"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"2028"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q620593"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.863055555 38.652777777)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/00%203598%20Felsformation%20aus%20vulkanischer%20Ascheablagerung%20-%20Felswohnungen.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Nationalpark Göreme"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"2028"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q620593"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.863055555 38.652777777)"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/00%203598%20Felsformation%20aus%20vulkanischer%20Ascheablagerung%20-%20Felswohnungen.jpg"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Nationalpark Göreme"},"typeLabel":{"xml:lang":"en","type":"literal","value":"national park"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"kulturenvanteriID":{"type":"literal","value":"2028"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Teil einer UNESCO Welterbestätte"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Külliye"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Türbe"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Gebäudekomplex"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Nevşehir"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Museum"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Külliye"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Türbe"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Archäologische Stätte"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}},{"item":{"type":"uri","value":"http://www.wikidata.org/entity/Q20474091"},"coords":{"datatype":"http://www.opengis.net/ont/geosparql#wktLiteral","type":"literal","value":"Point(34.56222222 38.94277778)"},"itemLabel":{"xml:lang":"de","type":"literal","value":"Hadschi-Bektasch-Komplex"},"typeLabel":{"xml:lang":"de","type":"literal","value":"Gebäudekomplex"},"adminLabel":{"xml:lang":"de","type":"literal","value":"Hacıbektaş"},"image":{"type":"uri","value":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg"},"kulturenvanteriID":{"type":"literal","value":"5260"},"heritageLabel":{"xml:lang":"de","type":"literal","value":"Tentativliste"}}]}}
+import { GeoJSONData } from './types';
 
 export const RAW_GEOJSON_DATA: GeoJSONData = {
   "type": "FeatureCollection",
-  "features": rawData.results.bindings.map((binding, idx) => {
-    // Extract coordinates from "Point(lng lat)" format
-    const coordString = binding.coords.value;
-    const match = coordString.match(/Point\(([\d.-]+)\s+([\d.-]+)\)/);
-    const lng = match ? parseFloat(match[1]) : 0;
-    const lat = match ? parseFloat(match[2]) : 0;
-
-    return {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [lng, lat]
-      },
-      "properties": {
-        "item": binding.item.value,
-        "itemLabel": binding.itemLabel.value,
-        "typeLabel": binding.typeLabel?.value || "Heritage Site",
-        "adminLabel": binding.adminLabel?.value || "Nevşehir",
-        "image": binding.image?.value,
-        "heritageLabel": binding.heritageLabel?.value,
-        "kulturenvanteriID": binding.kulturenvanteriID?.value,
-        "culturePortalID": binding.culturePortalID?.value
-      }
-    };
-  })
+  "features": [
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.750443,38.465686]},"properties":{"item":"http://www.wikidata.org/entity/Q1013468","itemLabel":"Kaymaklı Underground City","typeLabel":"Underground City","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Kaymakl%C4%B1%20Underground%20City%20large%20room.JPG","kulturenvanteriID":"3338"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.735034,38.373403]},"properties":{"item":"http://www.wikidata.org/entity/Q1328958","itemLabel":"Derinkuyu Underground City","typeLabel":"Underground City","heritageLabel":"UNESCO World Heritage","adminLabel":"Derinkuyu","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Derinkuyu%20Underground%20City%209831%20Nevit%20Enhancer.jpg","kulturenvanteriID":"3335"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.480277777,38.493083333]},"properties":{"item":"http://www.wikidata.org/entity/Q25378109","itemLabel":"Topada Rock Inscription","typeLabel":"Archaeological Site","adminLabel":"Acıgöl","kulturenvanteriID":"65883"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.725,38.628055555]},"properties":{"item":"http://www.wikidata.org/entity/Q28221127","itemLabel":"Nevşehir Museum","typeLabel":"Museum","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20museum%20in%202019%201556.jpg","kulturenvanteriID":"3922"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.85,38.66667]},"properties":{"item":"http://www.wikidata.org/entity/Q64705367","itemLabel":"Göreme National Park","typeLabel":"National Park","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Vallegoreme2.jpg"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.46487,38.62947]},"properties":{"item":"http://www.wikidata.org/entity/Q109530744","itemLabel":"Tatlarin Underground City","typeLabel":"Museum","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Tatlarin%2001.jpg","kulturenvanteriID":"3344"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.805555555,38.630333333]},"properties":{"item":"http://www.wikidata.org/entity/Q112865630","itemLabel":"Uçhisar Castle","typeLabel":"Castle","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20U%C3%A7%20hisar%20kalesi.jpg","kulturenvanteriID":"3055"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.714611111,38.622111111]},"properties":{"item":"http://www.wikidata.org/entity/Q116759069","itemLabel":"Kurşunlu Mosque","typeLabel":"Mosque","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Nev%C5%9Fehir%20Kur%C5%9Funlu%20Mosque%20in%202011%209870.jpg","kulturenvanteriID":"10820"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.712861111,38.619722222]},"properties":{"item":"http://www.wikidata.org/entity/Q118188189","itemLabel":"Nevşehir Castle","typeLabel":"Castle","adminLabel":"Nevşehir","kulturenvanteriID":"3254"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.734666666,38.376333333]},"properties":{"item":"http://www.wikidata.org/entity/Q118947587","itemLabel":"Derinkuyu Cumhuriyet Mosque","typeLabel":"Mosque","adminLabel":"Nevşehir","kulturenvanteriID":"274845"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.839127063,38.6386709]},"properties":{"item":"http://www.wikidata.org/entity/Q109519139","itemLabel":"El Nazar Church","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"3307"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.61553812,38.747929248]},"properties":{"item":"http://www.wikidata.org/entity/Q131526402","itemLabel":"St Demetrius Church","typeLabel":"Church","adminLabel":"Gülşehir","kulturenvanteriID":"3293"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.634850025,38.740958784]},"properties":{"item":"http://www.wikidata.org/entity/Q131539130","itemLabel":"Aziz Jean Kilisesi","typeLabel":"Church","adminLabel":"Gülşehir","kulturenvanteriID":"3305"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6169392,38.7415023]},"properties":{"item":"http://www.wikidata.org/entity/Q131738430","itemLabel":"Sadrazam Silahtar Baths","typeLabel":"Hammām","adminLabel":"Gülşehir","kulturenvanteriID":"2435"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.2901878,38.6137352]},"properties":{"item":"http://www.wikidata.org/entity/Q132182797","itemLabel":"Topakhöyük","typeLabel":"Tell","adminLabel":"Gülşehir","kulturenvanteriID":"148438"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.7943,38.9522]},"properties":{"item":"http://www.wikidata.org/entity/Q6093345","itemLabel":"Zank Höyük","typeLabel":"Mound","adminLabel":"Avanos","kulturenvanteriID":"176223"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8473,38.7191]},"properties":{"item":"http://www.wikidata.org/entity/Q98091558","itemLabel":"Avanos Mosque","typeLabel":"Mosque","adminLabel":"Avanos","kulturenvanteriID":"10451"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.559956,38.941734]},"properties":{"item":"http://www.wikidata.org/entity/Q109520382","itemLabel":"Hacıbektaş Museum","typeLabel":"Museum","adminLabel":"Hacıbektaş","kulturenvanteriID":"3943"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.560753,38.942855]},"properties":{"item":"http://www.wikidata.org/entity/Q109520387","itemLabel":"Hacıbektaş Atatürk House","typeLabel":"Museum","adminLabel":"Hacıbektaş","kulturenvanteriID":"3945"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.7675,38.717805555]},"properties":{"item":"http://www.wikidata.org/entity/Q130640522","itemLabel":"Çeç Tumulus","typeLabel":"Tumulus","adminLabel":"Avanos","kulturenvanteriID":"39172"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8335266,38.8033295]},"properties":{"item":"http://www.wikidata.org/entity/Q130718376","itemLabel":"Özkonak Ağa Fountain","typeLabel":"Fountain","adminLabel":"Avanos","kulturenvanteriID":"199874"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5583954,38.945591]},"properties":{"item":"http://www.wikidata.org/entity/Q130718383","itemLabel":"Tip Fountain","typeLabel":"Fountain","adminLabel":"Hacıbektaş","kulturenvanteriID":"200089"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5648003,38.9407997]},"properties":{"item":"http://www.wikidata.org/entity/Q130718384","itemLabel":"Feyzullah Baba Fountain","typeLabel":"Fountain","adminLabel":"Hacıbektaş","kulturenvanteriID":"200102"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5624084,38.9423065]},"properties":{"item":"http://www.wikidata.org/entity/Q130718394","itemLabel":"Üçler Fountain","typeLabel":"Fountain","adminLabel":"Hacıbektaş","kulturenvanteriID":"200158"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5623131,38.9424858]},"properties":{"item":"http://www.wikidata.org/entity/Q130718395","itemLabel":"Lion Fountain","typeLabel":"Fountain","adminLabel":"Hacıbektaş","kulturenvanteriID":"200161"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5613976,38.9408722]},"properties":{"item":"http://www.wikidata.org/entity/Q131391285","itemLabel":"Bektash Efendi Tomb","typeLabel":"Tomb","adminLabel":"Hacıbektaş","kulturenvanteriID":"11158"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8242552,38.7907196]},"properties":{"item":"http://www.wikidata.org/entity/Q131523701","itemLabel":"Monastery of Belha","typeLabel":"Monastery","adminLabel":"Avanos","kulturenvanteriID":"3396"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.858385324,38.654231401]},"properties":{"item":"http://www.wikidata.org/entity/Q131526409","itemLabel":"Ayvalı Kilise","typeLabel":"Rock Church","adminLabel":"Avanos","kulturenvanteriID":"3313"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.842948,38.667169]},"properties":{"item":"http://www.wikidata.org/entity/Q131539160","itemLabel":"Vaftizci Yahya Church","typeLabel":"Church","adminLabel":"Avanos","kulturenvanteriID":"9168"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5597687,38.9450684]},"properties":{"item":"http://www.wikidata.org/entity/Q132134023","itemLabel":"Cuma Mosque","typeLabel":"Mosque","adminLabel":"Hacıbektaş","kulturenvanteriID":"27852"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.826767444,39.007279436]},"properties":{"item":"http://www.wikidata.org/entity/Q132182649","itemLabel":"Topaklı Höyük","typeLabel":"Tell","adminLabel":"Avanos","kulturenvanteriID":"3345"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.660965,38.880455]},"properties":{"item":"http://www.wikidata.org/entity/Q132182735","itemLabel":"Abdal Castle","typeLabel":"Tell","adminLabel":"Hacıbektaş","kulturenvanteriID":"66009"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.561405,38.946934]},"properties":{"item":"http://www.wikidata.org/entity/Q132182737","itemLabel":"Suluca Karahöyük","typeLabel":"Tell","adminLabel":"Hacıbektaş","kulturenvanteriID":"66020"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6967316,38.8829994]},"properties":{"item":"http://www.wikidata.org/entity/Q132182793","itemLabel":"Acıçeşme Höyüğü","typeLabel":"Tell","adminLabel":"Hacıbektaş","kulturenvanteriID":"148365"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6974182,38.8793602]},"properties":{"item":"http://www.wikidata.org/entity/Q132182795","itemLabel":"Acıtepe Höyüğü","typeLabel":"Tell","adminLabel":"Hacıbektaş","kulturenvanteriID":"148379"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.562643,38.942114]},"properties":{"item":"http://www.wikidata.org/entity/Q132682066","itemLabel":"Hacı Bektaş-ı Veli Museum","typeLabel":"Museum","adminLabel":"Hacıbektaş","kulturenvanteriID":"3944"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.454075,38.879597]},"properties":{"item":"http://www.wikidata.org/entity/Q133236751","itemLabel":"Karaburna Castle","typeLabel":"Castle","adminLabel":"Hacıbektaş","kulturenvanteriID":"65877"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.844527777,38.666944444]},"properties":{"item":"http://www.wikidata.org/entity/Q134590936","itemLabel":"Çavuşin Kaya Cami","typeLabel":"Mosque","adminLabel":"Çavuşin","image":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%87avu%C5%9Fin%20Eski%20Kaya%20Cami.jpg","kulturenvanteriID":"248525"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.846267,38.6387]},"properties":{"item":"http://www.wikidata.org/entity/Q114383869","itemLabel":"Dark Church","typeLabel":"Rock Church","heritageLabel":"UNESCO World Heritage","adminLabel":"Göreme","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Dark%20Church%20%28Karanl%C4%B1k%20Kilise%29%20in%20Cappadocia%2C%20G%C3%B6reme.jpg"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8460344,38.6387425]},"properties":{"item":"http://www.wikidata.org/entity/Q115445879","itemLabel":"Azize Catherine Şapeli","typeLabel":"Rock Church","adminLabel":"Göreme","image":"http://commons.wikimedia.org/wiki/Special:FilePath/J22%20230%20Agia%20Katharina.jpg","kulturenvanteriID":"9165"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.845178127,38.638905548]},"properties":{"item":"http://www.wikidata.org/entity/Q131523584","itemLabel":"Aziz Basil Şapeli","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"3303"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.845516085,38.639492163]},"properties":{"item":"http://www.wikidata.org/entity/Q131523695","itemLabel":"Rahibeler Manastırı","typeLabel":"Monastery","adminLabel":"Göreme","kulturenvanteriID":"3304"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.845202267,38.642039696]},"properties":{"item":"http://www.wikidata.org/entity/Q131526407","itemLabel":"Kılıçlar Church","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"3310"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8248558,38.6449547]},"properties":{"item":"http://www.wikidata.org/entity/Q131526846","itemLabel":"Bezirhane Kilisesi","typeLabel":"Rock Church","adminLabel":"Göreme","kulturenvanteriID":"14630"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.845076203,38.641471956]},"properties":{"item":"http://www.wikidata.org/entity/Q131539131","itemLabel":"Meryem Ana Kilisesi","typeLabel":"Rock Church","adminLabel":"Göreme","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Elmal%C4%B1%20kilisesi.jpg","kulturenvanteriID":"3311"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6781082,38.4530106]},"properties":{"item":"http://www.wikidata.org/entity/Q132134584","itemLabel":"Özlüce Village Mosque","typeLabel":"Mosque","adminLabel":"Derinkuyu","kulturenvanteriID":"274830"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.5972562,38.4313035]},"properties":{"item":"http://www.wikidata.org/entity/Q132752892","itemLabel":"Doğala Han","typeLabel":"Caravanserai","adminLabel":"Derinkuyu","kulturenvanteriID":"2613"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.822986,38.414535]},"properties":{"item":"http://www.wikidata.org/entity/Q132752952","itemLabel":"Dolay Han","typeLabel":"Caravanserai","adminLabel":"Derinkuyu","kulturenvanteriID":"2605"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8154454,38.4199091]},"properties":{"item":"http://www.wikidata.org/entity/Q134960345","itemLabel":"Manayı Höyüğü","typeLabel":"Tell","adminLabel":"Derinkuyu","kulturenvanteriID":"305864"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.8220817,39.226286]},"properties":{"item":"http://www.wikidata.org/entity/Q134960375","itemLabel":"Hacımusa Höyük","typeLabel":"Tell","adminLabel":"Kozaklı","kulturenvanteriID":"305837"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.6390648,38.3418525]},"properties":{"item":"http://www.wikidata.org/entity/Q134960527","itemLabel":"Yazıhöyük","typeLabel":"Tell","adminLabel":"Derinkuyu","kulturenvanteriID":"305567"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.896897222,38.584194444]},"properties":{"item":"http://www.wikidata.org/entity/Q1377935","itemLabel":"Mustafapaşa","typeLabel":"Village","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadoce-Mustafapasa.jpg","kulturenvanteriID":"46711"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.910361111,38.630166666]},"properties":{"item":"http://www.wikidata.org/entity/Q21528347","itemLabel":"Ürgüp Clock Tower","typeLabel":"Clock Tower","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/%C3%9Crg%C3%BCp%20Saat%20Kulesi.JPG","kulturenvanteriID":"15711"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.73375,38.372194444]},"properties":{"item":"http://www.wikidata.org/entity/Q25472378","itemLabel":"Saint Theodore Church","typeLabel":"Church","adminLabel":"Derinkuyu","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Catholic%20Church%20Derinkuyu%20Turkey%20-%20panoramio%20-%20Chanilim714%20%281%29.jpg","kulturenvanteriID":"3333"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.9426537,38.5144196]},"properties":{"item":"http://www.wikidata.org/entity/Q56245523","itemLabel":"Keşlik Monastery","typeLabel":"Monastery","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Keslik.JPG","kulturenvanteriID":"11763"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.864329046,38.619935365]},"properties":{"item":"http://www.wikidata.org/entity/Q95640040","itemLabel":"Ortahisar Castle","typeLabel":"Castle","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Cappadocia%20March%202006.jpg","kulturenvanteriID":"302912"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.910194444,38.632638888]},"properties":{"item":"http://www.wikidata.org/entity/Q98091589","itemLabel":"Karamanoğlu Mosque","typeLabel":"Mosque","adminLabel":"Ürgüp","kulturenvanteriID":"10431"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.9128,38.6321]},"properties":{"item":"http://www.wikidata.org/entity/Q109530966","itemLabel":"Ürgüp Museum","typeLabel":"Museum","adminLabel":"Ürgüp","kulturenvanteriID":"3921"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.9661,38.4641]},"properties":{"item":"http://www.wikidata.org/entity/Q124519571","itemLabel":"Sobesos Ancient City","typeLabel":"Archaeological Site","adminLabel":"Ürgüp","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Capadoccia%20Jul%202023%2023%2000%2016%20105000.jpeg","kulturenvanteriID":"2091"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.895396,38.576889]},"properties":{"item":"http://www.wikidata.org/entity/Q131523702","itemLabel":"Monastery of St Nicholas","typeLabel":"Monastery","adminLabel":"Ürgüp","kulturenvanteriID":"3402"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.9498367,38.4953156]},"properties":{"item":"http://www.wikidata.org/entity/Q131741222","itemLabel":"Taşkın Paşa Medresesi","typeLabel":"Madrasa","adminLabel":"Ürgüp","kulturenvanteriID":"3784"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.863055555,38.652777777]},"properties":{"item":"http://www.wikidata.org/entity/Q620593","itemLabel":"Göreme National Park","typeLabel":"National Park","heritageLabel":"UNESCO World Heritage","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Goreme%20valley.jpg","kulturenvanteriID":"2028"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.90888889,38.71166667]},"properties":{"item":"http://www.wikidata.org/entity/Q2225271","itemLabel":"Sarıhan Caravanserai","typeLabel":"Caravanserai","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Sarihangesamt.jpg","kulturenvanteriID":"2560"}},
+    {"type":"Feature","geometry":{"type":"Point","coordinates":[34.56222222,38.94277778]},"properties":{"item":"http://www.wikidata.org/entity/Q20474091","itemLabel":"Hacı Bektaş Complex","typeLabel":"Museum","heritageLabel":"UNESCO Tentative","adminLabel":"Nevşehir","image":"http://commons.wikimedia.org/wiki/Special:FilePath/Hacibektas-01-mihalorel.jpg","kulturenvanteriID":"5260"}}
+  ,
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5784988,
+        38.9383011
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718386",
+      "itemLabel": "Zamzam Spring Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "200118"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5689316,
+        38.9594421
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718387",
+      "itemLabel": "Grandfather's Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "200126"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5641174,
+        38.9462357
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718388",
+      "itemLabel": "Savat Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "200143"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5530777,
+        38.9745598
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718389",
+      "itemLabel": "Baba Spring Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "200146"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5603523,
+        38.9456367
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718390",
+      "itemLabel": "Hodja Fiqh Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "200152"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5625954,
+        38.942585
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134732058",
+      "itemLabel": "Hacı Bektâş-ı Velî Dergâhı Aşevi",
+      "typeLabel": "Imaret",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "282665"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5627518,
+        38.9428215
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134734751",
+      "itemLabel": "Hacı Bektaş-ı Velî Dergâhı Haziresi",
+      "typeLabel": "hazire",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "282661"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8473,
+        38.80592
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960317",
+      "itemLabel": "Fesleğen Höyüğü",
+      "typeLabel": "Tell",
+      "adminLabel": "Avanos",
+      "kulturenvanteriID": "312340"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.844527777,
+        38.666944444
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q19613323",
+      "itemLabel": "Çavuşin Köyü Eski Kaya Cami",
+      "typeLabel": "Moschee",
+      "adminLabel": "Çavuşin",
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%C3%87avu%C5%9Fin%20Eski%20Kaya%20Cami.jpg",
+      "kulturenvanteriID": "248525"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5972562,
+        38.4313035
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132752949",
+      "itemLabel": "Doğala Han",
+      "typeLabel": "Karawanserei",
+      "adminLabel": "Derinkuyu",
+      "kulturenvanteriID": "2613"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8247531,
+        39.3037591
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960377",
+      "itemLabel": "Kül I Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Kozaklı district",
+      "kulturenvanteriID": "305839"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.656525,
+        39.2369276
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960472",
+      "itemLabel": "Karaçayır Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Kozaklı district",
+      "kulturenvanteriID": "305711"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.6861553,
+        39.2170081
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960473",
+      "itemLabel": "Çatal Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Kozaklı district",
+      "kulturenvanteriID": "305712"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.6700379,
+        39.165499
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960474",
+      "itemLabel": "Hasanlar Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Kozaklı district",
+      "kulturenvanteriID": "305713"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7905791,
+        39.1138648
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960475",
+      "itemLabel": "Abdi Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Kozaklı district",
+      "kulturenvanteriID": "305714"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.99881,
+        38.59472
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q64705498",
+      "itemLabel": "Karain",
+      "typeLabel": "Region",
+      "heritageLabel": "Teil einer UNESCO Welterbestätte",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "320699"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.99822,
+        38.57361
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q64705500",
+      "itemLabel": "Karlık",
+      "typeLabel": "Region",
+      "heritageLabel": "Teil einer UNESCO Welterbestätte",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "320704"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        35.00364,
+        38.55439
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q64705501",
+      "itemLabel": "Yeşilöz",
+      "typeLabel": "Region",
+      "heritageLabel": "Teil einer UNESCO Welterbestätte",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "320707"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9064064,
+        38.6263733
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718352",
+      "itemLabel": "Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199888"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.905426,
+        38.6337433
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718353",
+      "itemLabel": "Yunak Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199750"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9076576,
+        38.632
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718355",
+      "itemLabel": "Pancarci Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199756"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9090691,
+        38.6316376
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718356",
+      "itemLabel": "Madrasa Yahya Efendi Mosque Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199765"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9078293,
+        38.6328468
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718357",
+      "itemLabel": "Musa Efendi Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199768"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9112434,
+        38.6336479
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718377",
+      "itemLabel": "School Front Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199880"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9090996,
+        38.6282349
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718378",
+      "itemLabel": "Columned Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199883"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9100113,
+        38.6288071
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718379",
+      "itemLabel": "Cingilli Street Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199894"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9106598,
+        38.6291199
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718380",
+      "itemLabel": "Cingilli Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199897"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9094124,
+        38.6326523
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718391",
+      "itemLabel": "Kaya Hotel Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "200155"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9471512,
+        38.4920616
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131391582",
+      "itemLabel": "Hızır Bey Open Tomb",
+      "typeLabel": "Türbe",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "143450"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.94239211,
+        38.514392687
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131523696",
+      "itemLabel": "Monastery of the Holy Archangel",
+      "typeLabel": "Kloster",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "3315"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.897947,
+        38.59
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131526541",
+      "itemLabel": "St Basil Church",
+      "typeLabel": "Kirchengebäude",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "9172"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.897227,
+        38.583441
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131539161",
+      "itemLabel": "Eleni Church",
+      "typeLabel": "Kirchengebäude",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "9171"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.909668,
+        38.6299438
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131739221",
+      "itemLabel": "Ürgüp Baths",
+      "typeLabel": "Hammām",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "267025"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9091606,
+        38.6316681
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131741524",
+      "itemLabel": "Medreseli Yahya Efendi Mosque",
+      "typeLabel": "Madrasa",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199762"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9066391,
+        38.6326523
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131836655",
+      "itemLabel": "Burhankale Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199753"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9076195,
+        38.6328964
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131903106",
+      "itemLabel": "Zafer Primary School (Ürgüp)",
+      "typeLabel": "Schule",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "255172"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9469719,
+        38.491909
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132134524",
+      "itemLabel": "Damseköy Taşkın Pasha Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "143447"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.87018089,
+        38.621701582
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q133236273",
+      "itemLabel": "İshak Castle",
+      "typeLabel": "Festung",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "303401"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.6735049,
+        39.2383365
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960772",
+      "itemLabel": "Küllüce Höyüğü",
+      "typeLabel": "Tell",
+      "adminLabel": "Kozaklı district",
+      "kulturenvanteriID": "305027"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.898048457,
+        38.584428565
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q137637960",
+      "itemLabel": "Mustafapaşa Cami-i Kebir",
+      "typeLabel": "Moschee",
+      "adminLabel": "Mustafapaşa",
+      "kulturenvanteriID": "424920"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7561288,
+        39.0525495
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960476",
+      "itemLabel": "Pazarcı Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "305715"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9837544,
+        39.0108091
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960477",
+      "itemLabel": "Paşalı Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Avanos",
+      "kulturenvanteriID": "305717"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        35.0034607,
+        38.9654246
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960478",
+      "itemLabel": "Karayusuf Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Avanos",
+      "kulturenvanteriID": "305719"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.638525,
+        38.8968434
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960522",
+      "itemLabel": "Yalnızmezar",
+      "typeLabel": "Tell",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "305603"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9994918,
+        38.7851707
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960633",
+      "itemLabel": "Akkaya Hill",
+      "typeLabel": "Tell",
+      "adminLabel": "Avanos",
+      "kulturenvanteriID": "305336"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.6325474,
+        39.0125331
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960770",
+      "itemLabel": "İlicek Höyüğü",
+      "typeLabel": "Tell",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "305025"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8354988,
+        38.8126526
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q135004160",
+      "itemLabel": "Aynıgüle Çeşmesi ve Çamaşırhanesi",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Avanos",
+      "kulturenvanteriID": "200149"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.562233,
+        38.942997
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q135582367",
+      "itemLabel": "Güvenç Abdal Türbesi",
+      "typeLabel": "Türbe",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "282659"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.84042135,
+        38.79376662
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q135959713",
+      "itemLabel": "Mavsut Mound",
+      "typeLabel": "Hügelgrab",
+      "adminLabel": "Avanos",
+      "kulturenvanteriID": "215532"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8541794,
+        38.7813148
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q135959715",
+      "itemLabel": "Avanos Tumulus",
+      "typeLabel": "Hügelgrab",
+      "adminLabel": "Avanos",
+      "kulturenvanteriID": "119354"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.6640647,
+        38.800602
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960373",
+      "itemLabel": "Cemel Höyüğü",
+      "typeLabel": "Tell",
+      "adminLabel": "Gülşehir",
+      "kulturenvanteriID": "305831"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.3073308,
+        38.7354544
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960383",
+      "itemLabel": "Terlemez Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Gülşehir",
+      "kulturenvanteriID": "305828"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.4086212,
+        38.9025134
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960523",
+      "itemLabel": "Kar Höyüğü",
+      "typeLabel": "Tell",
+      "adminLabel": "Gülşehir",
+      "kulturenvanteriID": "305605"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.4100902,
+        38.91009
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960628",
+      "itemLabel": "Gavurhöyüğü",
+      "typeLabel": "Tell",
+      "adminLabel": "Gülşehir",
+      "kulturenvanteriID": "305341"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.6997174,
+        38.7669725
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960778",
+      "itemLabel": "Kızılözün Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Gülşehir",
+      "kulturenvanteriID": "305014"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.2921227,
+        38.6877626
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960877",
+      "itemLabel": "Aptalhöyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Gülşehir",
+      "kulturenvanteriID": "304758"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.574672,
+        38.7009994
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960879",
+      "itemLabel": "Karacaşar Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Gülşehir",
+      "kulturenvanteriID": "304759"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7988953,
+        38.7378415
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960382",
+      "itemLabel": "Karaburun Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Avanos",
+      "kulturenvanteriID": "305827"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7088227,
+        38.92689
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960468",
+      "itemLabel": "Hacıbayram Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Hacıbektaş",
+      "kulturenvanteriID": "305704"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.715313,
+        38.6217842
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718361",
+      "itemLabel": "Damat İbrahim Pasha Mosque Fountain 2",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199796"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7093849,
+        38.6222496
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718363",
+      "itemLabel": "Orduoğlu Fountain 2",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199799"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7084579,
+        38.6215515
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718364",
+      "itemLabel": "Kütüklü Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199804"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7147102,
+        38.6412277
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718365",
+      "itemLabel": "Hacı Osman Ağa Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199807"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7101288,
+        38.620945
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718366",
+      "itemLabel": "Seferci Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199834"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7088089,
+        38.6205444
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718367",
+      "itemLabel": "Şekerci Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199841"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7107353,
+        38.6217308
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718368",
+      "itemLabel": "Wooden Mosque Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199844"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7130966,
+        38.6215858
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718369",
+      "itemLabel": "Morukçu Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199851"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7133293,
+        38.6110878
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718370",
+      "itemLabel": "Kurtlu Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199854"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7112846,
+        38.6242104
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718371",
+      "itemLabel": "Gazi Mustafa Kemal Pasha Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199857"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7113724,
+        38.6243019
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718372",
+      "itemLabel": "Türkiye Independence Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199862"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5486641,
+        38.5164566
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718373",
+      "itemLabel": "Karapınar Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Acıgöl",
+      "kulturenvanteriID": "199865"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.4846001,
+        38.6348
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718374",
+      "itemLabel": "Bosphorus Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Acıgöl",
+      "kulturenvanteriID": "199868"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.4701157,
+        38.6365204
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718375",
+      "itemLabel": "Orta Mahalle Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Acıgöl",
+      "kulturenvanteriID": "199871"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7154617,
+        38.6181984
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718382",
+      "itemLabel": "Hafız İnce Karar Street Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199900"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.817368984,
+        38.618094347
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131526404",
+      "itemLabel": "Sarnıç Kilise",
+      "typeLabel": "Kirchengebäude",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "3308"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.817111492,
+        38.616384257
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131526405",
+      "itemLabel": "Karabulut Church",
+      "typeLabel": "Kirchengebäude",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "3309"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7140503,
+        38.6143036
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131539204",
+      "itemLabel": "Meryem Ana Kilisesi",
+      "typeLabel": "Kirchengebäude",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "143181"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.713887,
+        38.622756
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131738431",
+      "itemLabel": "Baths of Damat İbrahim Paşa",
+      "typeLabel": "Hammām",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "2436"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7119942,
+        38.6105919
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131739034",
+      "itemLabel": "Rum Hamamı",
+      "typeLabel": "Hammām",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "161116"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7142677,
+        38.6220894
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131741359",
+      "itemLabel": "Damat İbrahim Paşa Medresesi",
+      "typeLabel": "Madrasa",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "10821"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7159271,
+        38.6277924
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q131902910",
+      "itemLabel": "Nevşehir High School",
+      "typeLabel": "Schule",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "156643"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7115707,
+        38.6229897
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132088912",
+      "itemLabel": "Atabey Mansion (Nevşehir)",
+      "typeLabel": "konak",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "143186"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7152748,
+        38.6201057
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132134181",
+      "itemLabel": "Kara Mosque (Nevşehir)",
+      "typeLabel": "Moschee",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "100051"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7106171,
+        38.6215973
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132134182",
+      "itemLabel": "Tahta Mosque, Nevşehir",
+      "typeLabel": "Moschee",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "100080"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7141151,
+        38.6200638
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132134183",
+      "itemLabel": "Kaya Mosque (Nevşehir)",
+      "typeLabel": "Moschee",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "100146"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7145462,
+        38.6217537
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132530298",
+      "itemLabel": "Damat İbrahim Paşa School",
+      "typeLabel": "elementary school in the Ottoman Empire/rüştiye",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "10823"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.4815016,
+        38.6434337
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960537",
+      "itemLabel": "Tatların Kalesi Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Acıgöl",
+      "kulturenvanteriID": "305555"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.4796646,
+        38.480291
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960779",
+      "itemLabel": "Ağıllı Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Acıgöl",
+      "kulturenvanteriID": "305019"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        35.027788347,
+        38.512052868
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q135960861",
+      "itemLabel": "Hodul Mountain Tumulus",
+      "typeLabel": "Hügelgrab",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "215529"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.894210555,
+        38.583308888
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q137628933",
+      "itemLabel": "Şeyh Ali Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "424922"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5518893,
+        38.8394464
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960372",
+      "itemLabel": "Kaletepe Höyüğü",
+      "typeLabel": "Tell",
+      "adminLabel": "Gülşehir",
+      "kulturenvanteriID": "305830"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.4846382,
+        38.6347733
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q127634922",
+      "itemLabel": "Boğazağzı Mosque",
+      "typeLabel": "Bauwerk",
+      "adminLabel": "Acıgöl",
+      "kulturenvanteriID": "206605"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9187845,
+        38.7711977
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960774",
+      "itemLabel": "İdisdağı Hill",
+      "typeLabel": "Tell",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "305031"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.947113,
+        38.4918747
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q135582370",
+      "itemLabel": "Taşkın Paşa Kümbeti",
+      "typeLabel": "Türbe",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "143453"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5624199,
+        38.9426651
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q127643321",
+      "itemLabel": "Hacı Bektaş-ı Veli Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "10882"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7118301,
+        38.6229057
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q127643434",
+      "itemLabel": "Hacı Şeyh Efendi Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "123886"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7541542,
+        38.4597549
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q127786936",
+      "itemLabel": "Kaymaklı Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "190027"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7091484,
+        38.6196632
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q127787933",
+      "itemLabel": "Orta Bekdik Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "107082"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9077606,
+        38.6318321
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q127787956",
+      "itemLabel": "Pancarcı Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199759"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9113159,
+        38.6331444
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q127788011",
+      "itemLabel": "Sagir Masjid Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Ürgüp",
+      "image": "http://commons.wikimedia.org/wiki/Special:FilePath/%C3%9Crg%C3%BCp%20Sagir%20Mescid%20Camii%200776.jpg",
+      "kulturenvanteriID": "199877"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.9056473,
+        38.6335564
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q127788372",
+      "itemLabel": "Yunak Mosque",
+      "typeLabel": "Moschee",
+      "adminLabel": "Ürgüp",
+      "kulturenvanteriID": "199746"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7110443,
+        38.6256218
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718358",
+      "itemLabel": "Tavukçu Mosque Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199771"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7092056,
+        38.6197281
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718359",
+      "itemLabel": "Bekdik Fountain",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199784"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7147217,
+        38.6216202
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q130718360",
+      "itemLabel": "Damat İbrahim Pasha Mosque Fountain 1",
+      "typeLabel": "Zierbrunnen",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "199792"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7076136,
+        39.2493172
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960771",
+      "itemLabel": "Gökçe Höyüğü",
+      "typeLabel": "Tell",
+      "adminLabel": "Kozaklı district",
+      "kulturenvanteriID": "305026"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7143326,
+        38.6218948
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134732082",
+      "itemLabel": "Damat İbrahim Paşa İmareti, Nevşehir",
+      "typeLabel": "Imaret",
+      "adminLabel": "Nevşehir",
+      "kulturenvanteriID": "10822"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7240238,
+        39.291929
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q134960546",
+      "itemLabel": "Incebucak Höyük",
+      "typeLabel": "Tell",
+      "adminLabel": "Kozaklı district",
+      "kulturenvanteriID": "305536"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8455909,
+        38.6390817
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q15210336",
+      "itemLabel": "Göreme Open Air Museum",
+      "typeLabel": "Museum",
+      "adminLabel": "Göreme",
+      "image": "https://photos.app.goo.gl/fH3QrjJJZ4URnMcRA"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.297967,
+        38.60852
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132182796",
+      "itemLabel": "Yassıhöyük",
+      "typeLabel": "Archaeological Site",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8648523,
+        38.6213041
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q6037885",
+      "itemLabel": "Ethnographic Museum",
+      "typeLabel": "Museum",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8451292,
+        38.6387322
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q73249333",
+      "itemLabel": "St. Barbara’s Chapel",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8462644,
+        38.6388367
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q115446076",
+      "itemLabel": "Church with Sandals",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8450054,
+        38.6387193
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q115454836",
+      "itemLabel": "Apple Church",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8452643,
+        38.6383052
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q115455275",
+      "itemLabel": "Snake Church",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8446742,
+        38.6411002
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q115456380",
+      "itemLabel": "Church of the Buckle",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.7130514,
+        38.61989
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q115801729",
+      "itemLabel": "Nevşehir Castle",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.6347408,
+        38.7407136
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q1297810",
+      "itemLabel": "St. Jean Church",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.6624123,
+        38.7379843
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q289015",
+      "itemLabel": "Açıksaray",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.5622909,
+        39.1007027
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q132182798",
+      "itemLabel": "Ağıl Höyük",
+      "typeLabel": "Archaeological Site",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8389111,
+        38.4699909
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q16889342",
+      "itemLabel": "Mazi Underground City",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8407311,
+        38.8068654
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q307912",
+      "itemLabel": "Özkonak Underground City",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8346834,
+        38.7099942
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q125797576",
+      "itemLabel": "Güray Underground Ceramics Museum",
+      "typeLabel": "Museum",
+      "adminLabel": "Nevşehir"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        34.8453726,
+        38.6382477
+      ]
+    },
+    "properties": {
+      "item": "http://www.wikidata.org/entity/Q115456669",
+      "itemLabel": "Pantocrator Church",
+      "typeLabel": "Landmark",
+      "adminLabel": "Nevşehir"
+    }
+  }
+]
 };
