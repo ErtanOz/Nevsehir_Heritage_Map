@@ -6,48 +6,47 @@ import { SiteCard } from './components/SiteCard';
 import { DetailCard } from './components/DetailCard';
 import { MapLayersControl } from './components/MapLayersControl';
 
-declare const L: any;
+import * as L from 'leaflet';
+import 'leaflet.markercluster';
 
-type MapType = 'standard' | 'satellite' | 'terrain';
+// Process static data once outside the component
+const STATIC_SITES = Array.from(
+  RAW_GEOJSON_DATA.features.reduce((acc, feature) => {
+    const lat = feature.geometry.coordinates[1];
+    const lng = feature.geometry.coordinates[0];
+    const id = `${feature.properties.item}_${lat}_${lng}`;
 
-const getProcessedSites = (userSites: HeritageSite[]): HeritageSite[] => {
-  const dataSites = Array.from(
-    RAW_GEOJSON_DATA.features.reduce((acc, feature) => {
-      const lat = feature.geometry.coordinates[1];
-      const lng = feature.geometry.coordinates[0];
-      const id = `${feature.properties.item}_${lat}_${lng}`;
-
-      if (!acc.has(id)) {
-        let imageName = undefined;
-        if (feature.properties.image) {
-          const parts = feature.properties.image.split('/');
-          imageName = parts[parts.length - 1];
+    if (!acc.has(id)) {
+      let imageName = undefined;
+      if (feature.properties.image) {
+        const parts = feature.properties.image.split('/');
+        imageName = parts[parts.length - 1];
+      }
+      acc.set(id, {
+        id: id,
+        name: feature.properties.itemLabel,
+        types: [],
+        coords: [lat, lng],
+        image: imageName,
+        admin: feature.properties.adminLabel,
+        isUnesco: feature.properties.heritageLabel?.toLowerCase().includes('unesco') || false,
+        externalLinks: {
+          wiki: feature.properties.item,
+          kultur: feature.properties.kulturenvanteriID
         }
-        acc.set(id, {
-          id: id,
-          name: feature.properties.itemLabel,
-          types: [],
-          coords: [lat, lng],
-          image: imageName,
-          admin: feature.properties.adminLabel,
-          isUnesco: feature.properties.heritageLabel?.toLowerCase().includes('unesco') || false,
-          externalLinks: {
-            wiki: feature.properties.item,
-            kultur: feature.properties.kulturenvanteriID
-          }
-        });
-      }
-      const site = acc.get(id)!;
-      if (!site.types.includes(feature.properties.typeLabel)) {
-        site.types.push(feature.properties.typeLabel);
-      }
-      return acc;
-    }, new Map<string, HeritageSite>()).values()
-  );
-  return [...userSites, ...dataSites];
-};
+      });
+    }
+    const site = acc.get(id)!;
+    if (!site.types.includes(feature.properties.typeLabel)) {
+      site.types.push(feature.properties.typeLabel);
+    }
+    return acc;
+  }, new Map<string, HeritageSite>()).values()
+);
 
-const CATEGORIES = ["ALL", "MY LANDMARKS", "ARCHAEOLOGICAL SITE", "CAVE", "FAIRY CHIMNEY", "MUSEUM", "ROCK CHURCH", "FOUNTAIN", "MOSQUE", "CASTLE", "MONASTERY"];
+type MapType = 'standard' | 'satellite' | 'terrain' | '3d';
+
+const CATEGORIES = ["ALL", "ARCHAEOLOGICAL SITE", "CAVE", "FAIRY CHIMNEY", "MUSEUM", "ROCK CHURCH", "FOUNTAIN", "MOSQUE", "CASTLE", "MONASTERY"];
 
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -58,10 +57,7 @@ const App: React.FC = () => {
   const [mapType, setMapType] = useState<MapType>('standard');
   const [showLabels, setShowLabels] = useState(true);
 
-  const [userSites, setUserSites] = useState<HeritageSite[]>(() => {
-    const saved = localStorage.getItem('nevsehir_user_points');
-    return saved ? JSON.parse(saved) : [];
-  });
+
 
   const mapRef = useRef<any>(null);
   const clusterGroupRef = useRef<any>(null);
@@ -69,24 +65,18 @@ const App: React.FC = () => {
   const layersRef = useRef<{ [key: string]: any }>({});
   const userMarkerRef = useRef<any>(null);
 
-  const processedSites = useMemo(() => getProcessedSites(userSites), [userSites]);
-
   const filteredSites = useMemo(() => {
-    return processedSites.filter(s => {
+    return STATIC_SITES.filter(s => {
       const matchesSearch = s.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         s.admin.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = activeCategory === 'ALL' ||
-        (activeCategory === 'MY LANDMARKS' ? s.isUserGenerated : s.types.some(t => t.toUpperCase().includes(activeCategory)));
+        s.types.some(t => t.toUpperCase().includes(activeCategory));
       const matchesUnesco = !unescoOnly || s.isUnesco;
       return matchesSearch && matchesCategory && matchesUnesco;
     });
-  }, [searchTerm, activeCategory, unescoOnly, processedSites]);
+  }, [searchTerm, activeCategory, unescoOnly]);
 
-  const selectedSite = useMemo(() => processedSites.find(s => s.id === selectedSiteId), [selectedSiteId, processedSites]);
-
-  useEffect(() => {
-    localStorage.setItem('nevsehir_user_points', JSON.stringify(userSites));
-  }, [userSites]);
+  const selectedSite = useMemo(() => STATIC_SITES.find(s => s.id === selectedSiteId), [selectedSiteId]);
 
   useEffect(() => {
     if (typeof L === 'undefined') return;
@@ -102,6 +92,7 @@ const App: React.FC = () => {
     layersRef.current.standard = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO' });
     layersRef.current.satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Esri' });
     layersRef.current.terrain = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: 'OpenTopoMap' });
+    layersRef.current['3d'] = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}', { attribution: 'Esri' });
     layersRef.current.labels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO', pane: 'shadowPane' });
 
     layersRef.current.standard.addTo(map);
@@ -131,23 +122,7 @@ const App: React.FC = () => {
     mapRef.current = map;
     clusterGroupRef.current = clusterGroup;
 
-    map.on('contextmenu', (e: any) => {
-      const name = prompt("Enter a name for this discovery:");
-      if (name) {
-        const newPoint: HeritageSite = {
-          id: `user_${Date.now()}`,
-          name,
-          types: ['User Landmark'],
-          coords: [e.latlng.lat, e.latlng.lng],
-          admin: 'Discovery',
-          isUnesco: false,
-          isUserGenerated: true,
-          externalLinks: { wiki: '#' }
-        };
-        setUserSites(prev => [newPoint, ...prev]);
-        setSelectedSiteId(newPoint.id);
-      }
-    });
+
 
     updateMarkers(filteredSites);
 
@@ -163,10 +138,25 @@ const App: React.FC = () => {
 
   const updateMarkers = (sitesToMark: HeritageSite[]) => {
     if (!clusterGroupRef.current || !mapRef.current) return;
-    clusterGroupRef.current.clearLayers();
-    markersRef.current = {};
 
-    sitesToMark.forEach(site => {
+    const newSiteIds = new Set(sitesToMark.map(s => s.id));
+    const currentSiteIds = Object.keys(markersRef.current);
+    
+    // Find markers to remove
+    const toRemoveIds = currentSiteIds.filter(id => !newSiteIds.has(id));
+    const markersToRemove = toRemoveIds.map(id => {
+      const marker = markersRef.current[id];
+      delete markersRef.current[id];
+      return marker;
+    });
+
+    if (markersToRemove.length > 0) {
+      clusterGroupRef.current.removeLayers(markersToRemove);
+    }
+
+    // Find markers to add
+    const toAdd = sitesToMark.filter(s => !markersRef.current[s.id]);
+    const markersToAdd = toAdd.map(site => {
       const { path, color } = getIconConfig(site.types, site.isUnesco, site.isUserGenerated);
       const markerIcon = L.divIcon({
         className: 'custom-heritage-marker',
@@ -177,17 +167,23 @@ const App: React.FC = () => {
         iconSize: [36, 36], iconAnchor: [18, 18], popupAnchor: [0, -18]
       });
 
-      const marker = L.marker(site.coords, {
+      const marker = L.marker(site.coords as [number, number], {
         icon: markerIcon,
-        isUnesco: site.isUnesco,
-        isUserGenerated: site.isUserGenerated
-      })
+      } as any)
         .bindPopup(`<b>${site.name}</b>`)
         .on('click', () => { setSelectedSiteId(site.id); setViewMode('map'); });
+        
+      // Store custom properties for clustering logic
+      (marker as any).options.isUnesco = site.isUnesco;
+      (marker as any).options.isUserGenerated = site.isUserGenerated;
 
       markersRef.current[site.id] = marker;
-      clusterGroupRef.current.addLayer(marker);
+      return marker;
     });
+
+    if (markersToAdd.length > 0) {
+      clusterGroupRef.current.addLayers(markersToAdd);
+    }
   };
 
   useEffect(() => {
@@ -196,7 +192,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (!mapRef.current) return;
-    ['standard', 'satellite', 'terrain', 'labels'].forEach(l => {
+    ['standard', 'satellite', 'terrain', '3d', 'labels'].forEach(l => {
       if (layersRef.current[l]) mapRef.current.removeLayer(layersRef.current[l]);
     });
 
@@ -205,6 +201,9 @@ const App: React.FC = () => {
       if (showLabels) mapRef.current.addLayer(layersRef.current.labels);
     } else if (mapType === 'terrain') {
       mapRef.current.addLayer(layersRef.current.terrain);
+    } else if (mapType === '3d') {
+      mapRef.current.addLayer(layersRef.current['3d']);
+      if (showLabels) mapRef.current.addLayer(layersRef.current.labels);
     } else {
       mapRef.current.addLayer(layersRef.current.standard);
     }
@@ -243,12 +242,6 @@ const App: React.FC = () => {
     });
   };
 
-  const deleteUserSite = (id: string) => {
-    if (confirm("Delete this landmark?")) {
-      setUserSites(prev => prev.filter(s => s.id !== id));
-      if (selectedSiteId === id) setSelectedSiteId(null);
-    }
-  };
 
   return (
     <div className="flex h-full w-full bg-slate-50 font-sans text-slate-900 overflow-hidden">
@@ -308,7 +301,6 @@ const App: React.FC = () => {
               site={site}
               onClick={() => { setSelectedSiteId(site.id); setViewMode('map'); }}
               isActive={selectedSiteId === site.id}
-              onDelete={site.isUserGenerated ? () => deleteUserSite(site.id) : undefined}
             />
           ))}
         </div>
@@ -321,9 +313,6 @@ const App: React.FC = () => {
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 7m0 13V7" /></svg>
         </button>
-        <div className="p-4 border-t border-slate-100 bg-slate-50 text-[9px] text-slate-400 font-bold uppercase tracking-widest text-center">
-          Right-click on map to drop a pin
-        </div>
       </div>
 
       <div className={`${viewMode === 'map' ? 'block' : 'hidden md:block'} flex-1 relative h-full bg-slate-200`}>
