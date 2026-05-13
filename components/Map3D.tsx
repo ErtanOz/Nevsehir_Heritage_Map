@@ -43,22 +43,13 @@ export const Map3D: React.FC<Map3DProps> = ({
             tileSize: 256,
             attribution: '&copy; Google',
           },
-          'terrain-source': {
+          'terrain-dem': {
             type: 'raster-dem',
             tiles: [
-              'https://s3.amazonaws.com/elevation-tiles-prod/terrainrgb/{z}/{x}/{y}.png',
+              'https://demotiles.maplibre.org/terrain-tiles/{z}/{x}/{y}.png',
             ],
             tileSize: 256,
-            encoding: 'terrarium',
-            attribution: '&copy; AWS Terrain',
-          },
-          'hillshade-source': {
-            type: 'raster-dem',
-            tiles: [
-              'https://s3.amazonaws.com/elevation-tiles-prod/terrainrgb/{z}/{x}/{y}.png',
-            ],
-            tileSize: 256,
-            encoding: 'terrarium',
+            attribution: '&copy; MapLibre',
           },
         },
         layers: [
@@ -72,7 +63,7 @@ export const Map3D: React.FC<Map3DProps> = ({
           {
             id: 'hillshade',
             type: 'hillshade',
-            source: 'hillshade-source',
+            source: 'terrain-dem',
             paint: {
               'hillshade-shadow-color': '#000000',
               'hillshade-highlight-color': '#ffffff',
@@ -82,7 +73,7 @@ export const Map3D: React.FC<Map3DProps> = ({
           },
         ],
         terrain: {
-          source: 'terrain-source',
+          source: 'terrain-dem',
           exaggeration: 1.5,
         },
       },
@@ -91,7 +82,6 @@ export const Map3D: React.FC<Map3DProps> = ({
       pitch: 55,
       bearing: -20,
       maxPitch: 80,
-      antialias: true,
     });
 
     // Navigation controls with compass

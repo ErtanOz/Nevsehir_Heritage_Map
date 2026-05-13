@@ -37,8 +37,8 @@ export const MapLayersControl: React.FC<MapLayersControlProps> = ({ mapType, set
                                 <span className="text-[9px] font-bold uppercase">Terrain</span>
                             </button>
                             <button onClick={() => setMapType('3d')} className={`flex flex-col items-center gap-1 p-2 rounded-xl border transition-all ${mapType === '3d' ? 'border-amber-500 bg-amber-50' : 'border-slate-100 hover:bg-slate-50'}`}>
-                                <div className="w-full aspect-video rounded-lg bg-amber-200 overflow-hidden"><img src="https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/10/619/913" className="w-full h-full object-cover" alt="3d" /></div>
-                                <span className="text-[9px] font-bold uppercase">3D Relief</span>
+                                <div className="w-full aspect-video rounded-lg bg-amber-200 overflow-hidden"><img src="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/10/619/913" className="w-full h-full object-cover" alt="3d" /></div>
+                                <span className="text-[9px] font-bold uppercase">3D Terrain</span>
                             </button>
                             <button onClick={() => setMapType('photorealistic')} className={`flex flex-col items-center gap-1 p-2 rounded-xl border transition-all ${mapType === 'photorealistic' ? 'border-amber-500 bg-amber-50' : 'border-slate-100 hover:bg-slate-50'}`}>
                                 <div className="w-full aspect-video rounded-lg bg-blue-200 overflow-hidden"><img src="https://mt1.google.com/vt/lyrs=s&x=619&y=913&z=10" className="w-full h-full object-cover" alt="photorealistic" /></div>

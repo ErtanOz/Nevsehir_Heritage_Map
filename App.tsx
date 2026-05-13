@@ -5,6 +5,7 @@ import { getIconConfig } from './utils/mapIcons';
 import { SiteCard } from './components/SiteCard';
 import { DetailCard } from './components/DetailCard';
 import { MapLayersControl } from './components/MapLayersControl';
+import { Map3D } from './components/Map3D';
 
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
@@ -45,6 +46,8 @@ const STATIC_SITES = Array.from(
 );
 
 type MapType = 'standard' | 'satellite' | 'terrain' | '3d' | 'photorealistic';
+
+const is3DMode = (mt: MapType) => mt === '3d';
 
 const CATEGORIES = ["ALL", "ARCHAEOLOGICAL SITE", "CAVE", "FAIRY CHIMNEY", "MUSEUM", "ROCK CHURCH", "FOUNTAIN", "MOSQUE", "CASTLE", "MONASTERY"];
 
@@ -92,7 +95,6 @@ const App: React.FC = () => {
     layersRef.current.standard = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO' });
     layersRef.current.satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Esri' });
     layersRef.current.terrain = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: 'OpenTopoMap' });
-    layersRef.current['3d'] = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}', { attribution: 'Esri' });
     layersRef.current.photorealistic = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', { attribution: 'Google' });
     layersRef.current.labels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO', pane: 'shadowPane' });
 
@@ -192,8 +194,8 @@ const App: React.FC = () => {
   }, [filteredSites]);
 
   useEffect(() => {
-    if (!mapRef.current) return;
-    ['standard', 'satellite', 'terrain', '3d', 'photorealistic', 'labels'].forEach(l => {
+    if (!mapRef.current || is3DMode(mapType)) return;
+    ['standard', 'satellite', 'terrain', 'photorealistic', 'labels'].forEach(l => {
       if (layersRef.current[l]) mapRef.current.removeLayer(layersRef.current[l]);
     });
 
@@ -202,9 +204,6 @@ const App: React.FC = () => {
       if (showLabels) mapRef.current.addLayer(layersRef.current.labels);
     } else if (mapType === 'terrain') {
       mapRef.current.addLayer(layersRef.current.terrain);
-    } else if (mapType === '3d') {
-      mapRef.current.addLayer(layersRef.current['3d']);
-      if (showLabels) mapRef.current.addLayer(layersRef.current.labels);
     } else if (mapType === 'photorealistic') {
       mapRef.current.addLayer(layersRef.current.photorealistic);
     } else {
@@ -319,7 +318,19 @@ const App: React.FC = () => {
       </div>
 
       <div className={`${viewMode === 'map' ? 'block' : 'hidden md:block'} flex-1 relative h-full bg-slate-200`}>
-        <div id="map" className="h-full w-full z-0"></div>
+        {/* Leaflet 2D Map – hidden when 3D mode is active */}
+        <div id="map" className="h-full w-full z-0" style={{ display: is3DMode(mapType) ? 'none' : 'block' }}></div>
+
+        {/* MapLibre 3D Map – shown only in 3D mode */}
+        {is3DMode(mapType) && (
+          <div className="h-full w-full z-0">
+            <Map3D
+              sites={filteredSites}
+              selectedSiteId={selectedSiteId}
+              onSelectSite={(id) => { setSelectedSiteId(id); setViewMode('map'); }}
+            />
+          </div>
+        )}
 
         <div className="absolute top-6 left-6 flex flex-col gap-3 z-[1000]">
           <button onClick={() => setViewMode('list')} className="md:hidden px-6 py-3 bg-white/90 backdrop-blur rounded-2xl shadow-2xl font-black text-[11px] uppercase border border-slate-100 flex items-center gap-2">
@@ -327,6 +338,12 @@ const App: React.FC = () => {
           </button>
 
           <MapLayersControl mapType={mapType} setMapType={setMapType} />
+
+          {is3DMode(mapType) && (
+            <div className="px-4 py-2 bg-white/90 backdrop-blur rounded-xl shadow-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+              🖱️ Right-drag to tilt · Scroll to zoom
+            </div>
+          )}
         </div>
 
         {selectedSite && <DetailCard site={selectedSite} onClose={() => setSelectedSiteId(null)} />}
