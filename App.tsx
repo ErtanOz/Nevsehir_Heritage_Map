@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { Suspense, lazy, useState, useMemo, useEffect, useRef } from 'react';
 import { RAW_GEOJSON_DATA } from './data';
 import { HeritageSite } from './types';
 import { getIconConfig } from './utils/mapIcons';
@@ -48,6 +48,13 @@ const STATIC_SITES = Array.from(
 type MapType = 'standard' | 'satellite' | 'terrain' | '3d' | 'photorealistic';
 
 const is3DMode = (mt: MapType) => mt === '3d';
+const isImmersiveMode = (mt: MapType) => mt === '3d' || mt === 'photorealistic';
+
+const CesiumPhotorealisticMap = lazy(() =>
+  import('./components/CesiumPhotorealisticMap').then((module) => ({
+    default: module.CesiumPhotorealisticMap,
+  }))
+);
 
 const CATEGORIES = ["ALL", "ARCHAEOLOGICAL SITE", "CAVE", "FAIRY CHIMNEY", "MUSEUM", "ROCK CHURCH", "FOUNTAIN", "MOSQUE", "CASTLE", "MONASTERY"];
 
@@ -95,7 +102,6 @@ const App: React.FC = () => {
     layersRef.current.standard = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO' });
     layersRef.current.satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Esri' });
     layersRef.current.terrain = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: 'OpenTopoMap' });
-    layersRef.current.photorealistic = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', { attribution: 'Google' });
     layersRef.current.labels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO', pane: 'shadowPane' });
 
     layersRef.current.standard.addTo(map);
@@ -194,8 +200,8 @@ const App: React.FC = () => {
   }, [filteredSites]);
 
   useEffect(() => {
-    if (!mapRef.current || is3DMode(mapType)) return;
-    ['standard', 'satellite', 'terrain', 'photorealistic', 'labels'].forEach(l => {
+    if (!mapRef.current || isImmersiveMode(mapType)) return;
+    ['standard', 'satellite', 'terrain', 'labels'].forEach(l => {
       if (layersRef.current[l]) mapRef.current.removeLayer(layersRef.current[l]);
     });
 
@@ -204,8 +210,6 @@ const App: React.FC = () => {
       if (showLabels) mapRef.current.addLayer(layersRef.current.labels);
     } else if (mapType === 'terrain') {
       mapRef.current.addLayer(layersRef.current.terrain);
-    } else if (mapType === 'photorealistic') {
-      mapRef.current.addLayer(layersRef.current.photorealistic);
     } else {
       mapRef.current.addLayer(layersRef.current.standard);
     }
@@ -319,7 +323,7 @@ const App: React.FC = () => {
 
       <div className={`${viewMode === 'map' ? 'block' : 'hidden md:block'} flex-1 relative h-full bg-slate-200`}>
         {/* Leaflet 2D Map – hidden when 3D mode is active */}
-        <div id="map" className="h-full w-full z-0" style={{ display: is3DMode(mapType) ? 'none' : 'block' }}></div>
+        <div id="map" className="h-full w-full z-0" style={{ display: isImmersiveMode(mapType) ? 'none' : 'block' }}></div>
 
         {/* MapLibre 3D Map – shown only in 3D mode */}
         {is3DMode(mapType) && (
@@ -329,6 +333,18 @@ const App: React.FC = () => {
               selectedSiteId={selectedSiteId}
               onSelectSite={(id) => { setSelectedSiteId(id); setViewMode('map'); }}
             />
+          </div>
+        )}
+
+        {mapType === 'photorealistic' && (
+          <div className="h-full w-full z-0">
+            <Suspense fallback={<div className="flex h-full w-full items-center justify-center bg-slate-900 text-xs font-black uppercase tracking-widest text-white">Loading Google 3D</div>}>
+              <CesiumPhotorealisticMap
+                sites={filteredSites}
+                selectedSiteId={selectedSiteId}
+                onSelectSite={(id) => { setSelectedSiteId(id); setViewMode('map'); }}
+              />
+            </Suspense>
           </div>
         )}
 
@@ -342,6 +358,11 @@ const App: React.FC = () => {
           {is3DMode(mapType) && (
             <div className="px-4 py-2 bg-white/90 backdrop-blur rounded-xl shadow-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">
               🖱️ Right-drag to tilt · Scroll to zoom
+            </div>
+          )}
+          {mapType === 'photorealistic' && (
+            <div className="px-4 py-2 bg-white/90 backdrop-blur rounded-xl shadow-lg text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+              Ctrl-drag to tilt · Scroll to zoom
             </div>
           )}
         </div>
