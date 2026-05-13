@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  BoundingSphere,
   Cartesian2,
   Cartesian3,
   Cesium3DTileset,
   Color,
   Entity,
-  HeadingPitchRange,
   Ion,
   LabelStyle,
   Math as CesiumMath,
@@ -27,27 +25,8 @@ interface CesiumPhotorealisticMapProps {
 
 const DEFAULT_CENTER: [number, number] = [38.62, 34.72];
 const GOOGLE_PHOTOREALISTIC_3D_TILES_ASSET_ID = 2275207;
-const SELECTED_SITE_RANGE_METERS = 1200;
 
 const colorFromHex = (hex: string) => Color.fromCssColorString(hex);
-
-const flyToSite = (viewer: Viewer, site: HeritageSite) => {
-  const target = Cartesian3.fromDegrees(site.coords[1], site.coords[0], 80);
-  const targetSphere = new BoundingSphere(target, 180);
-
-  viewer.camera.flyToBoundingSphere(targetSphere, {
-    duration: 1.25,
-    offset: new HeadingPitchRange(
-      viewer.camera.heading,
-      CesiumMath.toRadians(-58),
-      SELECTED_SITE_RANGE_METERS
-    ),
-    complete: () => {
-      viewer.selectedEntity = viewer.entities.getById(site.id);
-      viewer.scene.requestRender();
-    },
-  });
-};
 
 export const CesiumPhotorealisticMap: React.FC<CesiumPhotorealisticMapProps> = ({
   sites,
@@ -183,7 +162,19 @@ export const CesiumPhotorealisticMap: React.FC<CesiumPhotorealisticMapProps> = (
     const site = sites.find((s) => s.id === selectedSiteId);
     if (!site) return;
 
-    flyToSite(viewer, site);
+    viewer.camera.flyTo({
+      destination: Cartesian3.fromDegrees(site.coords[1], site.coords[0], 900),
+      orientation: {
+        heading: viewer.camera.heading,
+        pitch: CesiumMath.toRadians(-35),
+        roll: 0,
+      },
+      duration: 1.4,
+      complete: () => {
+        viewer.selectedEntity = viewer.entities.getById(site.id);
+        viewer.scene.requestRender();
+      },
+    });
   }, [selectedSiteId, sites]);
 
   return (
