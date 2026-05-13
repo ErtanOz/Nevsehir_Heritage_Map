@@ -41,7 +41,12 @@ export const MapLayersControl: React.FC<MapLayersControlProps> = ({ mapType, set
                                 <span className="text-[9px] font-bold uppercase">3D Terrain</span>
                             </button>
                             <button onClick={() => setMapType('photorealistic')} className={`flex flex-col items-center gap-1 p-2 rounded-xl border transition-all ${mapType === 'photorealistic' ? 'border-amber-500 bg-amber-50' : 'border-slate-100 hover:bg-slate-50'}`}>
-                                <div className="w-full aspect-video rounded-lg bg-blue-200 overflow-hidden"><img src="https://mt1.google.com/vt/lyrs=s&x=619&y=913&z=10" className="w-full h-full object-cover" alt="photorealistic" /></div>
+                                <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-sky-200 via-emerald-100 to-stone-300 shadow-inner">
+                                    <div className="absolute inset-x-0 bottom-0 h-3/5 bg-[linear-gradient(150deg,#4d7c0f_0%,#65a30d_36%,#78716c_37%,#a8a29e_58%,#166534_59%,#22c55e_100%)] [clip-path:polygon(0_58%,22%_34%,38%_48%,56%_16%,78%_46%,100%_24%,100%_100%,0_100%)]" />
+                                    <div className="absolute left-[18%] top-[34%] h-5 w-6 -skew-y-12 rounded-sm bg-white/85 shadow-md ring-1 ring-black/10" />
+                                    <div className="absolute left-[48%] top-[24%] h-7 w-8 -skew-y-12 rounded-sm bg-stone-50/90 shadow-lg ring-1 ring-black/10" />
+                                    <div className="absolute right-2 top-2 rounded-md bg-white/95 px-1.5 py-0.5 text-[8px] font-black text-slate-800 shadow-sm ring-1 ring-black/10">3D</div>
+                                </div>
                                 <span className="text-[9px] font-bold uppercase">Google 3D</span>
                             </button>
                         </div>
