@@ -44,7 +44,7 @@ const STATIC_SITES = Array.from(
   }, new Map<string, HeritageSite>()).values()
 );
 
-type MapType = 'standard' | 'satellite' | 'terrain' | '3d';
+type MapType = 'standard' | 'satellite' | 'terrain' | '3d' | 'photorealistic';
 
 const CATEGORIES = ["ALL", "ARCHAEOLOGICAL SITE", "CAVE", "FAIRY CHIMNEY", "MUSEUM", "ROCK CHURCH", "FOUNTAIN", "MOSQUE", "CASTLE", "MONASTERY"];
 
@@ -93,6 +93,7 @@ const App: React.FC = () => {
     layersRef.current.satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: 'Esri' });
     layersRef.current.terrain = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { attribution: 'OpenTopoMap' });
     layersRef.current['3d'] = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{y}/{x}', { attribution: 'Esri' });
+    layersRef.current.photorealistic = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', { attribution: 'Google' });
     layersRef.current.labels = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO', pane: 'shadowPane' });
 
     layersRef.current.standard.addTo(map);
@@ -192,7 +193,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (!mapRef.current) return;
-    ['standard', 'satellite', 'terrain', '3d', 'labels'].forEach(l => {
+    ['standard', 'satellite', 'terrain', '3d', 'photorealistic', 'labels'].forEach(l => {
       if (layersRef.current[l]) mapRef.current.removeLayer(layersRef.current[l]);
     });
 
@@ -204,6 +205,8 @@ const App: React.FC = () => {
     } else if (mapType === '3d') {
       mapRef.current.addLayer(layersRef.current['3d']);
       if (showLabels) mapRef.current.addLayer(layersRef.current.labels);
+    } else if (mapType === 'photorealistic') {
+      mapRef.current.addLayer(layersRef.current.photorealistic);
     } else {
       mapRef.current.addLayer(layersRef.current.standard);
     }
