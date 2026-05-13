@@ -81,7 +81,7 @@ const App: React.FC = () => {
   useEffect(() => {
     if (typeof L === 'undefined') return;
 
-    const container = L.DomUtil.get('map');
+    const container = L.DomUtil.get('map') as any;
     if (container !== null && container._leaflet_id !== undefined) {
       return;
     }
