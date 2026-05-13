@@ -51,6 +51,10 @@ export const Map3D: React.FC<Map3DProps> = ({
             tileSize: 256,
             attribution: '&copy; MapLibre',
           },
+          'openfreemap': {
+            type: 'vector',
+            url: 'https://tiles.openfreemap.org/planet',
+          },
         },
         layers: [
           {
@@ -69,6 +73,19 @@ export const Map3D: React.FC<Map3DProps> = ({
               'hillshade-highlight-color': '#ffffff',
               'hillshade-accent-color': '#555555',
               'hillshade-exaggeration': 0.3,
+            },
+          },
+          {
+            id: '3d-buildings',
+            source: 'openfreemap',
+            'source-layer': 'building',
+            type: 'fill-extrusion',
+            minzoom: 13,
+            paint: {
+              'fill-extrusion-color': '#ffffff',
+              'fill-extrusion-height': ['get', 'render_height'],
+              'fill-extrusion-base': ['get', 'render_min_height'],
+              'fill-extrusion-opacity': 0.7,
             },
           },
         ],
