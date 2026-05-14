@@ -25,6 +25,7 @@ interface CesiumPhotorealisticMapProps {
 
 const DEFAULT_CENTER: [number, number] = [38.62, 34.72];
 const GOOGLE_PHOTOREALISTIC_3D_TILES_ASSET_ID = 2275207;
+const SELECTED_SITE_CAMERA_HEIGHT = 2500;
 
 const colorFromHex = (hex: string) => Color.fromCssColorString(hex);
 
@@ -163,7 +164,11 @@ export const CesiumPhotorealisticMap: React.FC<CesiumPhotorealisticMapProps> = (
     if (!site) return;
 
     viewer.camera.flyTo({
-      destination: Cartesian3.fromDegrees(site.coords[1], site.coords[0], 900),
+      destination: Cartesian3.fromDegrees(
+        site.coords[1],
+        site.coords[0],
+        SELECTED_SITE_CAMERA_HEIGHT
+      ),
       orientation: {
         heading: viewer.camera.heading,
         pitch: CesiumMath.toRadians(-35),
